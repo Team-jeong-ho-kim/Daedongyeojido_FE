@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Header from "../components/Header";
+import Q_A from "../components/Q_A";
 
 const Applicationpage = () => {
   const questions = [
@@ -27,10 +28,7 @@ const Applicationpage = () => {
       <Wrapper>
         <Title>&#123;동아리이름&#125; 지원서</Title>
         {questions.map((element) => (
-          <QuestionWrapper>
-            <Question>{element.ask}</Question>
-            <Input placeholder={element.placeholder}></Input>
-          </QuestionWrapper>
+          <Q_A ask={element.ask} placeholder={element.placeholder} />
         ))}
         <ApplyButton>지원하기</ApplyButton>
       </Wrapper>
@@ -51,36 +49,6 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 36px;
   margin-top: 60px;
-`;
-
-const QuestionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-`;
-
-const Question = styled.p`
-  font-size: 24px;
-  font-weight: 600;
-`;
-
-const Input = styled.input`
-  width: 1200px;
-  height: 70px;
-  padding: 20px 24px;
-  color: black;
-  font-size: 20px;
-  font-weight: 400;
-  border-radius: 5px;
-  border: 1px solid rgba(110, 110, 135, 0.5);
-  &::placeholder {
-    color: #6e6e87;
-    font-size: 20px;
-    font-weight: 400;
-  }
-  &:focus {
-    box-shadow: 0px 0px 10px 0px #5148bf;
-  }
 `;
 
 const ApplyButton = styled.div`
