@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Header from "../components/Header";
+import { useState } from "react";
 
 const Dinepage = () => {
+  const [alarmVisible, setAlarmVisible_] = useState(false);
+  const [manageVisible, setManageVisible_] = useState(false);
   const Dines = [
     { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
     { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
@@ -10,7 +13,10 @@ const Dinepage = () => {
   ];
   return (
     <Container>
-      <Header />
+      <Header
+        setAlarmVisible={setAlarmVisible_}
+        setManageVisible={setManageVisible_}
+      />
       <Wrapper>
         <Title>동아리 회식 관리</Title>
         {Dines.map((element) => (

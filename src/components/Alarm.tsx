@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-const Alarm = () => {
+interface AlarmProps {
+  setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Alarm: React.FC<AlarmProps> = ({ setAlarmVisible }) => {
+
   const elapsedTime = (date: number): string => {
     const start = new Date(date);
     const end = new Date();
