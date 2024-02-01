@@ -10,3 +10,10 @@ export { default as LeftArrow } from "./img/LeftArrow.png";
 export { default as RightArrow } from "./img/RigntArrow.png";
 export { default as ClubImg } from "./img/ClubImg.png";
 export { default as LogoImg } from "./img/Bonobono.png";
+<<<<<<< Updated upstream
+=======
+export { default as Profile } from "./img/Profile.png";
+export { default as Edit } from "./img/Edit.png";
+export { default as Plus } from "./img/Plus.png";
+export { default as Remove } from "./img/Remove.png";
+>>>>>>> Stashed changes

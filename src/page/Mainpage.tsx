@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
-import Club from "../components/Club";
+import MainClub from "../components/MainClub";
 import Footer from "../components/Footer";
 import Alarm from "../components/Alarm";
 import ClubMgt from "../components/ClubMgt";
@@ -11,7 +11,7 @@ const Mainpage = () => {
     <Container>
       <Header />
       <Banner />
-      <Club />
+      <MainClub />
       <Footer />
       <Alarm />
       <ClubMgt />

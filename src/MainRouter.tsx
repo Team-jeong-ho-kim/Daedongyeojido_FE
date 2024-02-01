@@ -4,6 +4,8 @@ import { GlobalStyle } from "./GlobalStyle.style";
 import Applicationpage from "./page/Applicationpage";
 import Dinepage from "./page/Dinepage";
 import ApplicantMgtpage from "./page/ApplicantMgtpage";
+import Mypage from "./page/Mypage";
+import ClubMgtpage from "./page/ClubMgtpage";
 function MainRouter() {
   return (
     <BrowserRouter>
@@ -13,6 +15,8 @@ function MainRouter() {
         <Route path="/Application" element={<Applicationpage />} />
         <Route path="/Dine" element={<Dinepage />} />
         <Route path="/ApplicantMgt" element={<ApplicantMgtpage />} />
+        <Route path="/My" element={<Mypage />} />
+        <Route path="/ClubMgt" element={<ClubMgtpage />} />
       </Routes>
     </BrowserRouter>
   );
