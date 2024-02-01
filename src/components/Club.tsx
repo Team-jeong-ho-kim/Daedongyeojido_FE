@@ -98,8 +98,6 @@ const Line = styled.div`
   border: 0.5px solid #cccccc;
 `;
 
-const MemberWrapper = styled.div``;
-
 const Member = styled.div`
   display: flex;
   gap: 73px;

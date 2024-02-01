@@ -2,10 +2,12 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Club from "../components/Club";
 import Announce from "../components/Announce";
+import PlusMember from "../components/PlusMember";
 
 const ClubMgtpage = () => {
   return (
     <Container>
+      <PlusMember />
       <Announce />
       <Header />
       <Buttons>

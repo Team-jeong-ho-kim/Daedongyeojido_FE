@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import { useState } from "react";
-import { Profile } from "../assets";
-import MyAlarm from "../components/MyAlarm";
 
 const Mypage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
@@ -18,11 +16,10 @@ const Mypage = () => {
   ];
   return (
     <Container>
-      <MyAlarm />
-      <Header/>
+      <Header />
       <MyPageWrapper>
         <ProfileWrapper>
-          <ProfileImg src={Profile} />
+          <ProfileImg />
           <MyName>김정호</MyName>
           <MyClub>동아리 없음</MyClub>
         </ProfileWrapper>
