@@ -5,6 +5,7 @@ import Applicationpage from "./page/Applicationpage";
 import Dinepage from "./page/Dinepage";
 import ApplicantMgtpage from "./page/ApplicantMgtpage";
 import Mypage from "./page/Mypage";
+import ApplicantDetailpage from "./page/ApplicantDetailpage";
 function MainRouter() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function MainRouter() {
         <Route path="/Dine" element={<Dinepage />} />
         <Route path="/ApplicantMgt" element={<ApplicantMgtpage />} />
         <Route path="/My" element={<Mypage />} />
+        <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
       </Routes>
     </BrowserRouter>
   );
