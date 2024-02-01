@@ -1,32 +1,24 @@
-# Node 이미지를 기반으로 합니다.
+# 가져올 이미지를 정의
 FROM node:18
-
-# 앱 디렉터리 생성
-WORKDIR /usr/src/app
-
-# 앱 의존성 설치
-COPY package*.json ./
-
-RUN npm install
-# axios 설치
-RUN npm install axios
-# 프로덕션을 위한 코드를 빌드하려면 아래를 사용하세요.
-# RUN npm ci --only=production
-
-# 앱 소스 추가
+# 경로 설정하기
+WORKDIR /app
+# package.json 워킹 디렉토리에 복사 (.은 설정한 워킹 디렉토리를 뜻함)
+COPY package.json .
+# 명령어 실행 (의존성 설치)
+RUN yarn add
+# 현재 디렉토리의 모든 파일을 도커 컨테이너의 워킹 디렉토리에 복사한다.
 COPY . .
 
-# Yarn global 설치
-RUN npm install -g yarn
+# 각각의 명령어들은 한줄 한줄씩 캐싱되어 실행된다.
+# package.json의 내용은 자주 바뀌진 않을 거지만
+# 소스 코드는 자주 바뀌는데
+# npm install과 COPY . . 를 동시에 수행하면
+# 소스 코드가 조금 달라질때도 항상 npm install을 수행해서 리소스가 낭비된다.
 
-# dependencies 설치
-RUN yarn install
-
-# React 앱 빌드
- yarn build
-
-# 앱이 3000번 포트에서 실행될 것이라는 것을 Docker에 알려줍니다.
+ARG BASE_URL
+ENV REACT_APP_API_URL $BASE_URL
+# 3000번 포트 노출
 EXPOSE 3000
 
-# 앱 실행
-CMD [ "yarn", "start" ]
+# npm start 스크립트 실행
+CMD ["yarn", "start"]
