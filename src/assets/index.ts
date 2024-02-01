@@ -10,3 +10,4 @@ export { default as LeftArrow } from "./img/LeftArrow.png";
 export { default as RightArrow } from "./img/RigntArrow.png";
 export { default as ClubImg } from "./img/ClubImg.png";
 export { default as LogoImg } from "./img/Bonobono.png";
+export { default as Profile } from "./img/Profile.png";
