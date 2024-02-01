@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Profile } from "../assets";
 import MyAlarm from "../components/MyAlarm";
+import axios from "axios";
 
 const Mypage = () => {
+  interface UserData {
+    name: string;
+  }
+
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [manageVisible, setManageVisible_] = useState(false);
+  const [userData, setUserData] = useState({ name: "" });
 
   const Clubs = [
     { name: "대동여지도", major: "프론트엔드", date: "~", state: "대기" },
@@ -16,6 +22,23 @@ const Mypage = () => {
     { name: "대동여지도", major: "디자인", date: "~", state: "불합격" },
     { name: "대동여지도", major: "프론트엔드", date: "~", state: "합격" },
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.post(
+        "https://prod-server.xquare.app/jung-ho/user/student-info",
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      );
+      setUserData(response.data);
+    };
+    fetchData();
+  });
+
   return (
     <Container>
       <MyAlarm />
@@ -26,7 +49,7 @@ const Mypage = () => {
       <MyPageWrapper>
         <ProfileWrapper>
           <ProfileImg src={Profile} />
-          <MyName>김정호</MyName>
+          <MyName>{userData?.name}</MyName>
           <MyClub>동아리 없음</MyClub>
         </ProfileWrapper>
         <ApplyWrapper>
