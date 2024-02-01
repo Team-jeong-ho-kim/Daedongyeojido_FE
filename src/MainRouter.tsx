@@ -7,6 +7,8 @@ import ApplicantMgtpage from "./page/ApplicantMgtpage";
 import Mypage from "./page/Mypage";
 import ClubMgtpage from "./page/ClubMgtpage";
 import ApplicantDetailpage from "./page/ApplicantDetailpage";
+import Loginpage from "./page/Loginpage";
+
 function MainRouter() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function MainRouter() {
         <Route path="/My" element={<Mypage />} />
         <Route path="/ClubMgt" element={<ClubMgtpage />} />
         <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
+        <Route path="/Login" element={<Loginpage />} />
       </Routes>
     </BrowserRouter>
   );
