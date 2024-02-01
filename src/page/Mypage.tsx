@@ -18,10 +18,6 @@ const Mypage = () => {
   ];
   return (
     <Container>
-      <Header />
-      <MyPageWrapper>
-        <ProfileWrapper>
-          <ProfileImg />
       <MyAlarm />
       <Header
         setAlarmVisible={setAlarmVisible_}

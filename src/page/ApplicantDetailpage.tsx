@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Q_A from "../components/Q_A";
+import { useState } from "react";
 
 const ApplicantDetailpage = () => {
+  const [alarmVisible, setAlarmVisible_] = useState(false);
+  const [manageVisible, setManageVisible_] = useState(false);
   const questions = [
     {
       ask: "자신을 한 줄로 설명한다면?",
@@ -24,7 +27,10 @@ const ApplicantDetailpage = () => {
   ];
   return (
     <Container>
-      <Header />
+      <Header
+        setAlarmVisible={setAlarmVisible_}
+        setManageVisible={setManageVisible_}
+      />
       <Wrapper>
         <Title>1305 김정호 - 지원서</Title>
         {questions.map((element) => (

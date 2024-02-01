@@ -3,13 +3,19 @@ import Header from "../components/Header";
 import Club from "../components/Club";
 import Announce from "../components/Announce";
 import PlusMember from "../components/PlusMember";
+import { useState } from "react";
 
 const ClubMgtpage = () => {
+  const [alarmVisible, setAlarmVisible_] = useState(false);
+  const [manageVisible, setManageVisible_] = useState(false);
   return (
     <Container>
       <PlusMember />
       <Announce />
-      <Header />
+      <Header
+        setAlarmVisible={setAlarmVisible_}
+        setManageVisible={setManageVisible_}
+      />
       <Buttons>
         <AnnounceBtn>공지사항 등록</AnnounceBtn>
         <DineBtn>회식 관리</DineBtn>
