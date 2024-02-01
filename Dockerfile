@@ -8,6 +8,8 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
+# axios 설치
+RUN npm install axios
 # 프로덕션을 위한 코드를 빌드하려면 아래를 사용하세요.
 # RUN npm ci --only=production
 
@@ -21,7 +23,7 @@ RUN npm install -g yarn
 RUN yarn install
 
 # React 앱 빌드
-RUN yarn build
+ yarn build
 
 # 앱이 3000번 포트에서 실행될 것이라는 것을 Docker에 알려줍니다.
 EXPOSE 3000
