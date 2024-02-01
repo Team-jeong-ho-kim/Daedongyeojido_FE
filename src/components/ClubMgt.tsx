@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const ClubMgt = () => {
+interface AlarmProps {
+  setManageVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ClubMgt: React.FC<AlarmProps> = ({ setManageVisible }) => {
   return (
     <Container>
       <Check>
