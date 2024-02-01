@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Q_A from "../components/Q_A";
-import { useState } from "react";
 
-const Applicationpage = () => {
-  const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
+const ApplicantDetailpage = () => {
   const questions = [
     {
       ask: "자신을 한 줄로 설명한다면?",
@@ -27,20 +24,17 @@ const Applicationpage = () => {
   ];
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
+      <Header />
       <Wrapper>
-        <Title>&#123;동아리이름&#125; 지원서</Title>
+        <Title>1305 김정호 - 지원서</Title>
         {questions.map((element) => (
           <Q_A ask={element.ask} placeholder={element.placeholder} />
         ))}
-        <ApplyButton>지원하기</ApplyButton>
       </Wrapper>
     </Container>
   );
 };
+
 const Container = styled.div``;
 
 const Title = styled.p`
@@ -57,17 +51,4 @@ const Wrapper = styled.div`
   margin-top: 60px;
 `;
 
-const ApplyButton = styled.div`
-  width: 185px;
-  height: 50px;
-  background-color: #ffb800;
-  padding: 12px 44px;
-  color: #ffffff;
-  font-size: 24px;
-  font-weight: 500;
-  border-radius: 8px;
-  margin-left: 1000px;
-  cursor: pointer;
-`;
-
-export default Applicationpage;
+export default ApplicantDetailpage;

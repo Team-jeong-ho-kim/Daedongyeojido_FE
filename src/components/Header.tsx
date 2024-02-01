@@ -1,15 +1,38 @@
 import styled from "styled-components";
 import { Alarm, Logo } from "../assets";
+import { useState } from "react";
+import ClubMgt from "./ClubMgt";
 
-const Header = () => {
+interface HeaderProps {
+  setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setManageVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  setAlarmVisible,
+  setManageVisible,
+}) => {
+  const [alarmVisible, setAlarmVisible_] = useState(false);
+  const [manageVisible, setManageVisible_] = useState(false);
+
+  const AlarmClick = () => {
+    setAlarmVisible((prevVisible) => !prevVisible);
+  };
+
+  const ManageClick = () => {
+    setManageVisible((prevVisible) => !prevVisible);
+  };
+
   return (
     <Container>
       <LogoImg src={Logo} />
       <ButtonWrapper>
-        <AlarmImg src={Alarm} />
-        <ManageButton>동아리 관리</ManageButton>
+        <AlarmImg src={Alarm} onClick={AlarmClick} />
+        <ManageButton onClick={ManageClick}>동아리 관리</ManageButton>
         <LoginButton>로그인</LoginButton>
       </ButtonWrapper>
+      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
+      {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
     </Container>
   );
 };

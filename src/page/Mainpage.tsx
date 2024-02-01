@@ -5,16 +5,22 @@ import MainClub from "../components/MainClub";
 import Footer from "../components/Footer";
 import Alarm from "../components/Alarm";
 import ClubMgt from "../components/ClubMgt";
+import { useState } from "react";
 
 const Mainpage = () => {
+  const [alarmVisible, setAlarmVisible_] = useState(false);
+  const [manageVisible, setManageVisible_] = useState(false);
   return (
     <Container>
-      <Header />
+      <Header
+        setAlarmVisible={setAlarmVisible_}
+        setManageVisible={setManageVisible_}
+      />
       <Banner />
       <MainClub />
       <Footer />
-      <Alarm />
-      <ClubMgt />
+      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
+      {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
     </Container>
   );
 };

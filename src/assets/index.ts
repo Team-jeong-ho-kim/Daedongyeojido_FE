@@ -14,3 +14,4 @@ export { default as Edit } from "./img/Edit.png";
 export { default as Plus } from "./img/Plus.png";
 export { default as Remove } from "./img/Remove.png";
 export { default as MemberPlus } from "./img/MemberPlus.png";
+export { default as Profile } from "./img/Profile.png";
