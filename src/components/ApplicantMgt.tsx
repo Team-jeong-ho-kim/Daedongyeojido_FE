@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 interface Props {
@@ -10,7 +11,7 @@ const ApplicantMgt: React.FC<Props> = (props) => {
     <Container>
       <ApplicantWrapper>
         <Applicant>
-          <ApplicantName>{props.name}</ApplicantName>
+          <ApplicantName to="/ApplicantDetail">{props.name}</ApplicantName>
           <ApplicantInfo>{props.info}</ApplicantInfo>
         </Applicant>
         <Button>
@@ -41,7 +42,7 @@ const Applicant = styled.div`
   gap: 5px;
 `;
 
-const ApplicantName = styled.p`
+const ApplicantName = styled(Link)`
   font-size: 32px;
   font-weight: 900;
 `;

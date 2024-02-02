@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { Edit, Plus, Remove } from "../assets";
 import PlusMemberInput from "./PlusMemberInput";
+interface PlusMemberProps {
+  setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const PlusMember = () => {
+const PlusMember: React.FC<PlusMemberProps> = ({ setPlusMemberVisible }) => {
   const info = [
     { name: "원은지", classNumber: "2210" },
     { name: "김가은", classNumber: "2210" },
