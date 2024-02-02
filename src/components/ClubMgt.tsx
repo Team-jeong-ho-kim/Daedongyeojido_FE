@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 interface AlarmProps {
@@ -7,10 +8,10 @@ interface AlarmProps {
 const ClubMgt: React.FC<AlarmProps> = ({ setManageVisible }) => {
   return (
     <Container>
-      <Check>
+      <Check to="/ApplicantMgt">
         <p>지원자 확인</p>
       </Check>
-      <Check>
+      <Check to="/ApplicantMgt">
         <p>회식 신청</p>
       </Check>
     </Container>
@@ -28,7 +29,7 @@ const Container = styled.div`
   border-radius: 10px;
 `;
 
-const Check = styled.div`
+const Check = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,24 +4,43 @@ import Club from "../components/Club";
 import Announce from "../components/Announce";
 import PlusMember from "../components/PlusMember";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ClubMgtpage = () => {
+interface ClubProps {
+  setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ClubMgtpage: React.FC<ClubProps> = ({
+  setAnnounceVisible,
+  setPlusMemberVisible,
+}) => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [manageVisible, setManageVisible_] = useState(false);
+  const [announceVisible, setAnnounceVisible_] = useState(false);
+  const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
+  const AnnounceClick = () => {
+    setAnnounceVisible_((prevVisible) => !prevVisible);
+  };
+  const PlusMemberClick = () => {
+    setPlusMemberVisible_((prevVisible) => !prevVisible);
+  };
   return (
     <Container>
-      <PlusMember />
-      <Announce />
       <Header
         setAlarmVisible={setAlarmVisible_}
         setManageVisible={setManageVisible_}
       />
       <Buttons>
-        <AnnounceBtn>공지사항 등록</AnnounceBtn>
-        <DineBtn>회식 관리</DineBtn>
-        <PlusClubBtn>동아리 추가하기</PlusClubBtn>
+        <AnnounceBtn onClick={AnnounceClick}>공지사항 등록</AnnounceBtn>
+        <DineBtn to="/Dine">회식 관리</DineBtn>
+        <PlusClubBtn onClick={PlusMemberClick}>동아리 추가하기</PlusClubBtn>
       </Buttons>
       <Club />
+      {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible_} />}
+      {plusMemberVisible && 
+        <PlusMember setPlusMemberVisible={setPlusMemberVisible_} />
+      }
     </Container>
   );
 };
@@ -49,7 +68,7 @@ const AnnounceBtn = styled.div`
   font-size: 16px;
   font-weight: 400;
 `;
-const DineBtn = styled.div`
+const DineBtn = styled(Link)`
   width: 120px;
   height: 35px;
   padding: 8px 24px;

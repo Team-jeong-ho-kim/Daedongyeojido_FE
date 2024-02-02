@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Alarm, Logo } from "../assets";
 import { useState } from "react";
 import ClubMgt from "./ClubMgt";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
       <ButtonWrapper>
         <AlarmImg src={Alarm} onClick={AlarmClick} />
         <ManageButton onClick={ManageClick}>동아리 관리</ManageButton>
-        <LoginButton>로그인</LoginButton>
+        <LoginButton to="/login">로그인</LoginButton>
       </ButtonWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
       {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
@@ -72,7 +73,7 @@ const ManageButton = styled.div`
   line-height: 30px;
 `;
 
-const LoginButton = styled.div`
+const LoginButton = styled(Link)`
   width: 70px;
   height: 30px;
   background-color: #ffb800;

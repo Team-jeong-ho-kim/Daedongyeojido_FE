@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Announce = () => {
+interface AnnounceProps {
+  setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Announce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
   return (
     <Container>
       <Text>공지사항 등록</Text>
