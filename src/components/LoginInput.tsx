@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 interface LoginInputProps {
   placeholder: string;
-  type: string;
+  value: any;
+  onChange: any;
 }
 
-const LoginInput: React.FC<LoginInputProps> = ({ placeholder, type }) => {
-  return <Input placeholder={placeholder} type={type} />;
+const LoginInput: React.FC<LoginInputProps> = ({
+  placeholder,
+  value,
+  onChange,
+}) => {
+  return <Input placeholder={placeholder} value={value} onChange={onChange} />;
 };
 
 const Input = styled.input`
