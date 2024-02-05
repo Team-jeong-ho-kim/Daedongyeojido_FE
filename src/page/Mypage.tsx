@@ -5,14 +5,28 @@ import { Profile } from "../assets";
 import MyAlarm from "../components/MyAlarm";
 import axios from "axios";
 
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("access_token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const Mypage = () => {
   interface UserData {
     name: string;
+    myClub: string;
   }
 
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [manageVisible, setManageVisible_] = useState(false);
-  const [userData, setUserData] = useState({ name: "" });
+  const [userData, setUserData] = useState({ name: "", myClub: "" });
 
   const Clubs = [
     { name: "대동여지도", major: "프론트엔드", date: "~", state: "대기" },
@@ -50,10 +64,10 @@ const Mypage = () => {
         <ProfileWrapper>
           <ProfileImg src={Profile} />
           <MyName>{userData?.name}</MyName>
-          <MyClub>동아리 없음</MyClub>
+          <MyClub>{userData?.myClub || "동아리 없음"}</MyClub>
         </ProfileWrapper>
         <ApplyWrapper>
-          <MyApply>김정호님의 지원 내역</MyApply>
+          <MyApply>{userData?.name}님의 지원 내역</MyApply>
           <ClubWrapper>
             {Clubs.map((element) => (
               <Club>
