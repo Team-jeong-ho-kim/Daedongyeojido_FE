@@ -4,7 +4,7 @@ interface AnnounceProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Announce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
+const UploadAnnounce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
   return (
     <Container>
       <Text>공지사항 등록</Text>
@@ -81,4 +81,4 @@ const AnnounceBtn = styled.div`
   margin-left: 400px;
 `;
 
-export default Announce;
+export default UploadAnnounce;

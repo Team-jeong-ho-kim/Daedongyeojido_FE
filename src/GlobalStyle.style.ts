@@ -54,6 +54,7 @@ table {
    outline: none;
 }
 body {
+  font-family: 'DXhimchan';
   font-weight: 500;
   color:black;
   line-height: 1.2;
@@ -63,4 +64,12 @@ a {
   text-decoration:none;
   color:inherit;
 }
+@font-face {
+    font-family: 'DXhimchan';
+    src: url('./assets/font/DX힘찬Bold.ttf') format('truetype');
+    src: url('./assets/font/DX힘찬Midium.ttf') format('truetype');
+    src: url('./assets/font/DX힘찬Light.ttf') format('truetype');
+    font-weight: medium;
+  }
+
 `;

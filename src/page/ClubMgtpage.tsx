@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Club from "../components/Club";
-import Announce from "../components/Announce";
+import Announce from "../components/UploadAnnounce";
 import PlusMember from "../components/PlusMember";
 import { useState } from "react";
 import { Link } from "react-router-dom";

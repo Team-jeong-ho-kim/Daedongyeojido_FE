@@ -11,25 +11,36 @@ import {
   RightArrow,
 } from "../assets";
 
+interface BannerExplainProps {
+  borderIndex: number;
+}
+
 const AdBanner: React.FC = () => {
+  const banners = [
+    { explain: "1번배너소개" },
+    { explain: "2번배너소개" },
+    { explain: "3번배너소개" },
+    { explain: "4번배너소개" },
+    { explain: "5번배너소개" },
+    { explain: "6번배너소개" },
+    { explain: "7번배너소개" },
+    { explain: "8번배너소개" },
+    { explain: "9번배너소개" },
+    { explain: "10번배너소개" },
+  ];
+
   const [img, setImg] = useState(1);
-  const [display, setDisplay] = useState("none");
+  const [borderIndex, setBorderIndex] = useState(0);
   const images = [Banner1, Banner2, Banner3, Banner4, Banner5, Banner6];
 
   const imgChangeLeft = () => {
     setImg((prevImg) => (prevImg > 1 ? prevImg - 1 : 6));
+    setBorderIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 9));
   };
 
   const imgChangeRight = () => {
     setImg((prevImg) => (prevImg < 6 ? prevImg + 1 : 1));
-  };
-
-  const buttonDisplayOn = () => {
-    setDisplay("block");
-  };
-
-  const buttonDisplayOff = () => {
-    setDisplay("none");
+    setBorderIndex((prevIndex) => (prevIndex < 9 ? prevIndex + 1 : 0));
   };
 
   useEffect(() => {
@@ -46,61 +57,108 @@ const AdBanner: React.FC = () => {
 
   return (
     <Container>
-      {/* 배너 영역 */}
-      <BannerWrapper
-        onMouseOver={buttonDisplayOn}
-        onMouseOut={buttonDisplayOff}
-      >
-        <BannerImage src={currentImage} alt="배너이미지" />
-        <LeftArrowButton onClick={imgChangeLeft} style={{ display }}>
-          <img src={LeftArrow} alt="왼쪽 화살표" />
-        </LeftArrowButton>
-        <RightArrowButton onClick={imgChangeRight} style={{ display }}>
-          <img src={RightArrow} alt="오른쪽 화살표" />
-        </RightArrowButton>
-      </BannerWrapper>
+      <BannerImage src={currentImage} alt="배너이미지" />
+      <BannerBar>
+        <MoveBanner>
+          <NumberWrapper>
+            <CurrentNumber>{img}</CurrentNumber>
+            <And>/</And>
+            <TotalNumber>10</TotalNumber>
+          </NumberWrapper>
+          <ArrowImg src={LeftArrow} onClick={imgChangeLeft} alt="왼쪽 화살표" />
+          <ArrowImg
+            src={RightArrow}
+            onClick={imgChangeRight}
+            alt="오른쪽 화살표"
+          />
+        </MoveBanner>
+        <ExplainWrapper>
+          {banners.map((element) => (
+            <BannerExplain borderIndex={borderIndex}>
+              <p>{element.explain}</p>
+            </BannerExplain>
+          ))}
+        </ExplainWrapper>
+      </BannerBar>
     </Container>
   );
 };
 
 const Container = styled.div``;
 
-const BannerWrapper = styled.div``;
-
-const LeftArrowButton = styled.div`
-  position: absolute;
-  top: 290px;
-  left: 0px;
-  width: 55px;
-  height: 110px;
-  background-color: #6e6e87;
-  opacity: 0.36;
-  padding: 35px 16px;
-  > img {
-    width: 20px;
-    height: 40px;
-  }
-`;
-
-const RightArrowButton = styled.div`
-  position: absolute;
-  top: 290px;
-  right: 0px;
-  width: 55px;
-  height: 110px;
-  background-color: #6e6e87;
-  opacity: 0.36;
-  padding: 35px 16px;
-  > img {
-    width: 20px;
-    height: 40px;
-  }
-`;
-
 const BannerImage = styled.img`
   position: relative;
   width: 100%;
-  height: 360px;
+  height: 335px;
+`;
+
+const BannerBar = styled.div`
+  display: flex;
+  gap: 44px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 76px;
+  border-bottom: 1px solid #b0b0b0;
+`;
+
+const MoveBanner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 168px;
+  height: 52px;
+  background-color: #000000;
+  opacity: 0.4;
+  border-radius: 90px;
+`;
+
+const NumberWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const CurrentNumber = styled.p`
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+`;
+
+const And = styled.p`
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+`;
+
+const TotalNumber = styled.p`
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+`;
+
+const ArrowImg = styled.img`
+  width: 7px;
+  height: 14px;
+  cursor: pointer;
+`;
+
+const ExplainWrapper = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+const BannerExplain = styled.div<BannerExplainProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 38px;
+  border: 1px solid #e1e1e1;
+  border-radius: 30px;
+  color: #333b3d;
+  font-size: 18px;
+  font-weight: 500;
 `;
 
 export default AdBanner;
