@@ -5,7 +5,6 @@ interface AlarmProps {
 }
 
 const Alarm: React.FC<AlarmProps> = ({ setAlarmVisible }) => {
-
   const elapsedTime = (date: number): string => {
     const start = new Date(date);
     const end = new Date();
@@ -66,7 +65,7 @@ const Alarm: React.FC<AlarmProps> = ({ setAlarmVisible }) => {
 const Container = styled.div`
   position: absolute;
   top: 100px;
-  right: 200px;
+  right: 260px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -80,7 +79,7 @@ const Container = styled.div`
 const AlarmText = styled.p`
   padding: 30px 0px 0px 40px;
   font-size: 28px;
-  font-weight: 700;
+  font-weight: bold;
 `;
 
 const AlarmWrappers = styled.div`
@@ -99,17 +98,17 @@ const AlarmWrapper = styled.div`
 const AlarmTime = styled.div`
   color: #6e6e87;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: bold;
 `;
 
 const AlarmTitle = styled.div`
   font-size: 20px;
-  font-weight: 700;
+  font-weight: bold;
 `;
 
 const AlarmDetail = styled.div`
   font-size: 16px;
-  font-weight: 500;
+  font-weight: medium;
 `;
 
 export default Alarm;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Alarm, Logo } from "../assets";
+import { Alarm, LogoBlack, MyPage } from "../assets";
 import { useState } from "react";
 import ClubMgt from "./ClubMgt";
 import { Link } from "react-router-dom";
@@ -26,12 +26,23 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <Container>
-      <LogoImg src={Logo} />
-      <ButtonWrapper>
+      <Wrapper>
+        <LogoWrapper to="/">
+          <LogoImg src={LogoBlack} />
+          <Name>대동여지도</Name>
+        </LogoWrapper>
+        <ButtonWrapper>
+          <TextButton>지원서 확인</TextButton>
+          <TextButton onClick={ManageClick}>동아리 관리</TextButton>
+          <TextButton>회식 신청</TextButton>
+        </ButtonWrapper>
+      </Wrapper>
+      <IconWrapper>
         <AlarmImg src={Alarm} onClick={AlarmClick} />
-        <ManageButton onClick={ManageClick}>동아리 관리</ManageButton>
-        <LoginButton to="/login">로그인</LoginButton>
-      </ButtonWrapper>
+        <Link to="/My">
+          <MyPageImg src={MyPage} />
+        </Link>
+      </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
       {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
     </Container>
@@ -41,20 +52,50 @@ const Header: React.FC<HeaderProps> = ({
 const Container = styled.div`
   width: 100%;
   height: 80px;
-  background-color: #050045;
+  background-color: White;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1300px;
+  gap: 650px;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  gap: 100px;
+`;
+
+const LogoWrapper = styled(Link)`
+  display: flex;
+  align-items: center;
+`;
+
+const TextButton = styled.div`
+  font-size: 20px;
+  font-weight: Light;
 `;
 
 const LogoImg = styled.img`
-  height: 60px;
+  width: 32px;
+  height: 48px;
+`;
+
+const Name = styled.p`
+  font-size: 26px;
+  font-weight: bold;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
-  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 `;
 
 const AlarmImg = styled.img`
@@ -62,26 +103,9 @@ const AlarmImg = styled.img`
   height: 36px;
 `;
 
-const ManageButton = styled.div`
-  width: 100px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
-`;
-
-const LoginButton = styled(Link)`
-  width: 70px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
+const MyPageImg = styled.img`
+  width: 48px;
+  height: 48px;
 `;
 
 export default Header;

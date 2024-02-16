@@ -11,59 +11,59 @@ const Loginpage = () => {
   const [name, setName] = useState("");
   const [part, setPart] = useState("");
   const [userData, setUserData] = useState({});
-  useEffect(() => {
-    const requestInterceptor = axios.interceptors.request.use(
-      (config) => {
-        if (
-          classNumber &&
-          name &&
-          part &&
-          localStorage.getItem("access_token")
-        ) {
-          config.headers.Authorization = `Bearer ${localStorage.getItem(
-            "access_token"
-          )}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-    return () => {
-      axios.interceptors.request.eject(requestInterceptor);
-    };
-  }, [classNumber, name, part]);
-  const fetchData = async () => {
-    try {
-      const requestData = {
-        classNumber,
-        name,
-        part,
-      };
+  // useEffect(() => {
+  //   const requestInterceptor = axios.interceptors.request.use(
+  //     (config) => {
+  //       if (
+  //         classNumber &&
+  //         name &&
+  //         part &&
+  //         localStorage.getItem("access_token")
+  //       ) {
+  //         config.headers.Authorization = `Bearer ${localStorage.getItem(
+  //           "access_token"
+  //         )}`;
+  //       }
+  //       return config;
+  //     },
+  //     (error) => {
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  //   return () => {
+  //     axios.interceptors.request.eject(requestInterceptor);
+  //   };
+  // }, [classNumber, name, part]);
+  // const fetchData = async () => {
+  //   try {
+  //     const requestData = {
+  //       classNumber,
+  //       name,
+  //       part,
+  //     };
 
-      const response = await axios.post(
-        "https://prod-server.xquare.app/jung-ho/auth/login",
-        requestData
-      );
+  //     const response = await axios.post(
+  //       "https://prod-server.xquare.app/jung-ho/auth/login",
+  //       requestData
+  //     );
 
-      const accessToken = response.data.access_token;
+  //     const accessToken = response.data.access_token;
 
-      localStorage.setItem("access_token", accessToken);
+  //     localStorage.setItem("access_token", accessToken);
 
-      setUserData(response.data);
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
-  };
+  //     setUserData(response.data);
+  //   } catch (error) {
+  //     console.error("Login failed:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  const handleLogin = async () => {
-    fetchData();
-  };
+  // const handleLogin = async () => {
+  //   fetchData();
+  // };
 
   return (
     <Container>
@@ -72,61 +72,82 @@ const Loginpage = () => {
         setManageVisible={setManageVisible_}
       />
       <LoginWrapper>
-        <Welcome>대동여지도에 오신 걸 환영해요!</Welcome>
-        <LoginInput
-          placeholder="학번"
-          value={classNumber}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setClassNumber(e.target.value)
-          }
-        />
-        <LoginInput
-          placeholder="이름"
-          value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
-          }
-        />
-        <LoginInput
-          placeholder="역할"
-          value={part}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setPart(e.target.value)
-          }
-        />
-        <Login onClick={handleLogin}>로그인</Login>
+        <TextWrapper>
+          <Welcome>대동여지도에 오신 걸 환영합니다!</Welcome>
+          <LoginText>로그인 후 더 많은 기능을 사용해보세요 :&#41;</LoginText>
+        </TextWrapper>
+        <InputWrapper>
+          <LoginInput
+            placeholder="아이디"
+            value={classNumber}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setClassNumber(e.target.value)
+            }
+          />
+          <LoginInput
+            placeholder="비밀번호"
+            value={name}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setName(e.target.value)
+            }
+          />
+          <Login>로그인</Login>
+        </InputWrapper>
       </LoginWrapper>
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
 const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 100px;
+  margin-top: 160px;
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 15px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 30px;
-  margin-top: 200px;
 `;
 
 const Welcome = styled.p`
-  font-size: 36px;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: bold;
+`;
+
+const LoginText = styled.p`
+  font-size: 28px;
+  color: #676767;
 `;
 
 const Login = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 55px;
-  padding: 16px 24px;
+  width: 900px;
+  height: 80px;
   border-radius: 10px;
-  background-color: #ffb800;
+  background-color: #333b3d;
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 36px;
+  font-weight: bold;
   border: none;
 `;
 

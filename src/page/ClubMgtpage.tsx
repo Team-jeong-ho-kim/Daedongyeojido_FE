@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Club from "../components/Club";
-import Announce from "../components/Announce";
-import PlusMember from "../components/PlusMember";
+import Announce from "../components/UploadAnnounce";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { PlusWhite } from "../assets";
 
 interface ClubProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,9 +22,6 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
-  const PlusMemberClick = () => {
-    setPlusMemberVisible_((prevVisible) => !prevVisible);
-  };
   return (
     <Container>
       <Header
@@ -32,15 +29,19 @@ const ClubMgtpage: React.FC<ClubProps> = ({
         setManageVisible={setManageVisible_}
       />
       <Buttons>
-        <AnnounceBtn onClick={AnnounceClick}>공지사항 등록</AnnounceBtn>
-        <DineBtn to="/Dine">회식 관리</DineBtn>
-        <PlusClubBtn onClick={PlusMemberClick}>동아리 추가하기</PlusClubBtn>
+        <LeftBtns>
+          <Button to="" onClick={AnnounceClick}>
+            공지사항 등록
+          </Button>
+          <Button to="/Dine">회식 관리</Button>
+        </LeftBtns>
+        <PlusClubBtn>
+          <input type="text" placeholder="동아리명을 입력해주세요" />
+          <PlusIcon src={PlusWhite} />
+        </PlusClubBtn>
       </Buttons>
-      <Club />
+      <Club setPlusMemberVisible={setPlusMemberVisible_} />
       {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible_} />}
-      {plusMemberVisible && 
-        <PlusMember setPlusMemberVisible={setPlusMemberVisible_} />
-      }
     </Container>
   );
 };
@@ -54,40 +55,54 @@ const Container = styled.div`
 
 const Buttons = styled.div`
   display: flex;
-  gap: 20px;
-  margin-left: 375px;
+  justify-content: center;
+  gap: 793px;
 `;
 
-const AnnounceBtn = styled.div`
+const LeftBtns = styled.div`
+  display: flex;
+  gap: 40px;
+`;
+
+const Button = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 150px;
   height: 35px;
-  padding: 8px 24px;
-  border-radius: 8px;
-  background-color: #ffb800;
+  border-radius: 5px;
+  background-color: #333b3d;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: 400;
-`;
-const DineBtn = styled(Link)`
-  width: 120px;
-  height: 35px;
-  padding: 8px 24px;
-  border-radius: 8px;
-  background-color: #ffb800;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 20px;
 `;
 
 const PlusClubBtn = styled.div`
-  width: 168px;
-  height: 35px;
-  padding: 8px 24px;
-  border-radius: 8px;
-  background-color: #ffb800;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 237px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: #333b3d;
+  input {
+    background-color: #333b3d;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+
+    &::placeholder {
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 300;
+    }
+  }
+`;
+
+const PlusIcon = styled.img`
+  width: 15px;
+  height: 15px;
 `;
 
 export default ClubMgtpage;
