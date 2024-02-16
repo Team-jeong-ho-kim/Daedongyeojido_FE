@@ -15,17 +15,10 @@ const PlusMember: React.FC<PlusMemberProps> = ({ setPlusMemberVisible }) => {
   ];
   return (
     <Container>
-      <Top>
-        <Text>
-          <ClubName placeholder="동아리 이름" />
-          <Teacher placeholder="동아리 담당 선생님" />
-        </Text>
-        <Icons>
-          <Icon src={Edit} />
-          <Icon src={Plus} />
-          <Icon src={Remove} />
-        </Icons>
-      </Top>
+      <Text>
+        <ClubName placeholder="동아리 이름" />
+        <Teacher placeholder="동아리 담당 선생님" />
+      </Text>
       <Line></Line>
       <MemberWrapper>
         {info.map((element) => (
@@ -65,13 +58,6 @@ const Container = styled.div`
   box-shadow: 0px 2px 16px 0px rgba(0, 0, 0, 0.5);
 `;
 
-const Top = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 180px;
-`;
-
 const Text = styled.div`
   display: flex;
   gap: 8px;
@@ -106,7 +92,6 @@ const Member = styled.div`
 
 const Delete = styled.p`
   font-size: 16px;
-  font-weight: 400;
   color: #6e6e87;
 `;
 
@@ -120,18 +105,6 @@ const NameNumber = styled.div`
   border: 1px solid #cccccc;
   color: black;
 `;
-
-const Icons = styled.div`
-  display: flex;
-  gap: 12px;
-  margin-left: 20px;
-`;
-
-const Icon = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
 const MemberWrapper = styled.div`
   display: flex;
   flex-direction: column;

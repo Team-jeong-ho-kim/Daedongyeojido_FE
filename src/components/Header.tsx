@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <Container>
       <Wrapper>
-        <LogoWrapper>
+        <LogoWrapper to="/">
           <LogoImg src={LogoBlack} />
           <Name>대동여지도</Name>
         </LogoWrapper>
@@ -39,7 +39,9 @@ const Header: React.FC<HeaderProps> = ({
       </Wrapper>
       <IconWrapper>
         <AlarmImg src={Alarm} onClick={AlarmClick} />
-        <MyPageImg src={MyPage} />
+        <Link to="/My">
+          <MyPageImg src={MyPage} />
+        </Link>
       </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
       {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
@@ -62,7 +64,7 @@ const Wrapper = styled.div`
   gap: 100px;
 `;
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled(Link)`
   display: flex;
   align-items: center;
 `;
