@@ -17,8 +17,8 @@ const Dinepage = () => {
         setAlarmVisible={setAlarmVisible_}
         setManageVisible={setManageVisible_}
       />
+      <Title>동아리 회식 관리</Title>
       <Wrapper>
-        <Title>동아리 회식 관리</Title>
         {Dines.map((element) => (
           <DineWrapper>
             <Club>
@@ -27,7 +27,6 @@ const Dinepage = () => {
             </Club>
             <Button>
               <AcceptanceBtn>수락</AcceptanceBtn>
-              <RefusalBtn>반대</RefusalBtn>
             </Button>
           </DineWrapper>
         ))}
@@ -36,28 +35,32 @@ const Dinepage = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 55px;
+`;
 
 const Title = styled.p`
-  font-size: 44px;
-  font-weight: 900;
-  margin: 0px 870px 30px 0px;
+  font-size: 48px;
+  font-weight: bold;
+  margin-right: 1100px;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  margin-top: 60px;
+  justify-content: center;
+  gap: 15px;
 `;
 
 const DineWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 1200px;
-  height: 110px;
-  padding: 20px 36px;
+  width: 1392px;
+  height: 130px;
+  padding: 25px 35px 30px 35px;
   border-radius: 10px;
   border: 1px solid rgba(110, 110, 135, 0.5);
 `;
@@ -65,17 +68,16 @@ const DineWrapper = styled.div`
 const Club = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 `;
 
 const ClubName = styled.p`
-  font-size: 36px;
-  font-weight: 900;
+  font-size: 40px;
+  font-weight: bold;
 `;
 
 const DineTime = styled.p`
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 24px;
 `;
 
 const Button = styled.div`
@@ -84,21 +86,12 @@ const Button = styled.div`
 `;
 
 const AcceptanceBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 140px;
   height: 50px;
-  background-color: #ffb800;
-  border-radius: 8px;
-  padding: 12px 44px;
-  font-size: 24px;
-  font-weight: 500;
-  color: #ffffff;
-  cursor: pointer;
-`;
-
-const RefusalBtn = styled.div`
-  width: 140px;
-  height: 50px;
-  background-color: #cccccc;
+  background-color: #333b3d;
   border-radius: 8px;
   padding: 12px 44px;
   font-size: 24px;

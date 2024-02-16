@@ -81,7 +81,7 @@ const ClubName = styled.input`
   width: 140px;
   border: none;
   border-bottom: 1px solid #6e6e87;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
 `;
 
@@ -89,8 +89,7 @@ const Teacher = styled.input`
   width: 110px;
   border: none;
   border-bottom: 1px solid #6e6e87;
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
 `;
 
 const Line = styled.div`
@@ -119,6 +118,7 @@ const NameNumber = styled.div`
   height: 27px;
   border-radius: 5px;
   border: 1px solid #cccccc;
+  color: black;
 `;
 
 const Icons = styled.div`
@@ -143,9 +143,12 @@ const Select = styled.select`
   height: 27px;
   border-radius: 5px;
   border: 1px solid #cccccc;
+  color: black;
 `;
 
-const Option = styled.option``;
+const Option = styled.option`
+  color: black;
+`;
 
 const SaveBtn = styled.div`
   display: flex;
@@ -155,7 +158,7 @@ const SaveBtn = styled.div`
   height: 35px;
   padding: 8px 24px;
   border-radius: 8px;
-  background-color: #ffb800;
+  background-color: #333b3d;
   color: #ffffff;
   font-size: 16px;
   font-weight: 400;

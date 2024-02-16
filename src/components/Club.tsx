@@ -1,7 +1,14 @@
 import styled from "styled-components";
-import { Edit, Plus, Remove } from "../assets";
+import { Edit, Remove } from "../assets";
+import { useState } from "react";
+import PlusMember from "../components/PlusMember";
 
-const Club = () => {
+interface ClubProps {
+  setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Club: React.FC<ClubProps> = ({ setPlusMemberVisible }) => {
+  const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
   const clubs = [
     { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
     { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
@@ -12,7 +19,20 @@ const Club = () => {
     { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
     { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
     { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
+    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
   ];
+
+  const PlusMemberClick = () => {
+    setPlusMemberVisible_((prevVisible) => !prevVisible);
+  };
   return (
     <Container>
       {clubs.map((element) => (
@@ -23,29 +43,30 @@ const Club = () => {
               <ClubDetail>{element.teacher}</ClubDetail>
               <ClubDetail>{element.dine}</ClubDetail>
             </Detail>
-            <Icons>
-              <Icon src={Edit} />
-              <Icon src={Plus} />
-              <Icon src={Remove} />
-            </Icons>
           </ClubWrapper>
-          <Line></Line>
           <Member>
             <Info>김정호</Info>
             <Info>2210</Info>
             <Info>동아리장</Info>
           </Member>
+          <Icons>
+            <Icon onClick={PlusMemberClick} src={Edit} />
+            <Icon src={Remove} />
+          </Icons>
         </Border>
       ))}
+      {plusMemberVisible && (
+        <PlusMember setPlusMemberVisible={setPlusMemberVisible_} />
+      )}
     </Container>
   );
 };
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 360px 360px 360px);
-  row-gap: 20px;
-  column-gap: 38px;
+  grid-template-columns: repeat(auto-fill, 240px 240px 240px 240px 240px);
+  row-gap: 28px;
+  column-gap: 48px;
   justify-content: center;
 `;
 
@@ -53,11 +74,11 @@ const Border = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 360px;
-  height: 240px;
-  border: 1px solid #6e6e87;
+  width: 240px;
+  height: 350px;
+  border: 1px solid #333b3d;
   border-radius: 10px;
-  padding: 16px 24px;
+  padding: 20px;
 `;
 
 const ClubWrapper = styled.div`
@@ -67,7 +88,7 @@ const ClubWrapper = styled.div`
 `;
 
 const ClubName = styled.p`
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
 `;
 
@@ -78,34 +99,28 @@ const Detail = styled.div`
 
 const ClubDetail = styled.p`
   font-size: 12px;
-  font-weight: 400;
 `;
 
 const Icons = styled.div`
   display: flex;
-  gap: 12px;
-  margin-left: 20px;
+  justify-content: end;
+  align-items: flex-end;
+  gap: 5px;
+  margin-top: auto;
 `;
 
 const Icon = styled.img`
-  width: 16px;
-  height: 16px;
-`;
-
-const Line = styled.div`
-  width: 312px;
-  height: 1px;
-  border: 0.5px solid #cccccc;
+  width: 14px;
+  height: 14px;
 `;
 
 const Member = styled.div`
   display: flex;
-  gap: 73px;
+  gap: 50px;
 `;
 
 const Info = styled.p`
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 15px;
 `;
 
 export default Club;
