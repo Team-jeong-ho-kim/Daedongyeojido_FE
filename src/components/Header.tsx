@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Alarm, LogoBlack, MyPage } from "../assets";
 import { useState } from "react";
-import ClubMgt from "./ClubMgt";
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
@@ -9,19 +8,11 @@ interface HeaderProps {
   setManageVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  setAlarmVisible,
-  setManageVisible,
-}) => {
+const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
 
   const AlarmClick = () => {
     setAlarmVisible((prevVisible) => !prevVisible);
-  };
-
-  const ManageClick = () => {
-    setManageVisible((prevVisible) => !prevVisible);
   };
 
   return (
@@ -32,9 +23,9 @@ const Header: React.FC<HeaderProps> = ({
           <Name>대동여지도</Name>
         </LogoWrapper>
         <ButtonWrapper>
-          <TextButton>지원서 확인</TextButton>
-          <TextButton onClick={ManageClick}>동아리 관리</TextButton>
-          <TextButton>회식 신청</TextButton>
+          <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
+          <TextButton to="/ClubMgt">동아리 관리</TextButton>
+          <TextButton to="">회식 신청</TextButton>
         </ButtonWrapper>
       </Wrapper>
       <IconWrapper>
@@ -44,14 +35,13 @@ const Header: React.FC<HeaderProps> = ({
         </Link>
       </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
-      {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100%;
-  height: 80px;
+  height: 64px;
   background-color: White;
   display: flex;
   justify-content: center;
@@ -69,7 +59,7 @@ const LogoWrapper = styled(Link)`
   align-items: center;
 `;
 
-const TextButton = styled.div`
+const TextButton = styled(Link)`
   font-size: 20px;
   font-weight: Light;
 `;
