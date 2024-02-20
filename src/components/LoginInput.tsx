@@ -4,12 +4,14 @@ interface LoginInputProps {
   placeholder: string;
   value: any;
   onChange: any;
+  onKeyUp?: any;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
   placeholder,
   value,
   onChange,
+  onKeyUp,
 }) => {
   return <Input placeholder={placeholder} value={value} onChange={onChange} />;
 };

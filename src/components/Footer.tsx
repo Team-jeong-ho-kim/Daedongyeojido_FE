@@ -31,7 +31,16 @@ const Container = styled.div`
 
 const FooterWrapper = styled.div`
   display: flex;
+<<<<<<< Updated upstream
   gap: 1094px;
+=======
+  gap: 510px;
+`;
+
+const MajorWrapper = styled.div`
+  display: flex;
+  gap: 64px;
+>>>>>>> Stashed changes
 `;
 
 const Majors = styled.div`
@@ -51,7 +60,11 @@ const Logo = styled.img`
 `;
 
 const Line = styled.div`
+<<<<<<< Updated upstream
   width: 1770px;
+=======
+  width: 1170px;
+>>>>>>> Stashed changes
   height: 1px;
   background-color: black;
 `;

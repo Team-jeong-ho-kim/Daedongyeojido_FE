@@ -4,11 +4,11 @@ import Banner from "../components/Banner";
 import MainClub from "../components/MainClub";
 import Footer from "../components/Footer";
 import Alarm from "../components/Alarm";
-import ClubMgt from "../components/ClubMgt";
 import { useState } from "react";
 
 const Mainpage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
+<<<<<<< Updated upstream
   const [manageVisible, setManageVisible_] = useState(false);
   return (
     <Container>
@@ -21,6 +21,20 @@ const Mainpage = () => {
       <Footer />
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
       {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
+=======
+  const [announceVisible, setAnnounceVisible] = useState(true);
+  return (
+    <Container>
+      <Header setAlarmVisible={setAlarmVisible_} />
+      <GapWrapper>
+        <Banner />
+        <Major />
+        <MainClub />
+        <Footer />
+        {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
+      </GapWrapper>
+      {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible} />}
+>>>>>>> Stashed changes
     </Container>
   );
 };

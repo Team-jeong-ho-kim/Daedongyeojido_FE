@@ -1,99 +1,39 @@
 import styled from "styled-components";
-import { ClubImg } from "../assets";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+interface Club {
+  clubImageUrl: string;
+  clubName: string;
+  title: string;
+  tags: string;
+}
 
 const MainClub = () => {
-  const clubs = [
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-    {
-      img: ClubImg,
-      name: "대동여지도",
-      info: "아아ㅏ아앙아아ㅏ아아아아아ㅏㅇ",
-      tag1: "#친밀한",
-      tag2: "#화목한",
-      tag3: "#가족같은",
-    },
-  ];
+  const [clubs, setClubs] = useState<Club[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "https://prod-server.xquare.app/jung-ho/main"
+      );
+      const allClubResponses = response.data.allClubResponses;
+
+      if (Array.isArray(allClubResponses)) {
+        setClubs(allClubResponses);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Container>
+<<<<<<< Updated upstream
       {clubs.map((element) => (
         <ClubWrapper>
           <ClubLogo src={element.img} alt="동아리 이미지" />
@@ -106,6 +46,18 @@ const MainClub = () => {
               <ClubTag>{element.tag3}</ClubTag>
             </TagWrapper>
           </SmallText>
+=======
+      {clubs.map((club, index) => (
+        <ClubWrapper key={index}>
+          <ClubLogo src={club.clubImageUrl} alt="동아리 이미지" />
+          <ClubName>{club.clubName}</ClubName>
+          <ClubInfo>{club.title}</ClubInfo>
+          <TagWrapper>
+            <ClubTag>{club.tags}</ClubTag>
+            <ClubTag>{club.tags}</ClubTag>
+            <ClubTag>{club.tags}</ClubTag>
+          </TagWrapper>
+>>>>>>> Stashed changes
         </ClubWrapper>
       ))}
     </Container>
@@ -115,7 +67,11 @@ const MainClub = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px 200px 200px 200px 200px);
+<<<<<<< Updated upstream
   row-gap: 50px;
+=======
+  row-gap: 40px;
+>>>>>>> Stashed changes
   column-gap: 40px;
   justify-content: center;
 `;

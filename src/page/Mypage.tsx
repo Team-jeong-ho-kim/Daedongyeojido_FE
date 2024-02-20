@@ -4,28 +4,20 @@ import { useEffect, useState } from "react";
 import { Profile } from "../assets";
 import MyAlarm from "../components/MyAlarm";
 import axios from "axios";
+<<<<<<< Updated upstream
+=======
+import Footer from "../components/Footer";
+import Alarm from "../components/Alarm";
+import ClubMgt from "../components/ClubMgt";
+>>>>>>> Stashed changes
 
-axios.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+interface UserData {
+  name: string;
+  myClub: string;
+}
 
 const Mypage = () => {
-  interface UserData {
-    name: string;
-    myClub: string;
-  }
-
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const [userData, setUserData] = useState({ name: "", myClub: "" });
 
   const Clubs = [
@@ -55,11 +47,16 @@ const Mypage = () => {
 
   return (
     <Container>
+<<<<<<< Updated upstream
       <MyAlarm />
       <Header
         setAlarmVisible={setAlarmVisible_}
         setManageVisible={setManageVisible_}
       />
+=======
+      {/* <MyAlarm /> */}
+      <Header setAlarmVisible={setAlarmVisible_} />
+>>>>>>> Stashed changes
       <MyPageWrapper>
         <ProfileWrapper>
           <ProfileImg src={Profile} />
@@ -82,6 +79,7 @@ const Mypage = () => {
           </ClubWrapper>
         </ApplyWrapper>
       </MyPageWrapper>
+      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
 };
