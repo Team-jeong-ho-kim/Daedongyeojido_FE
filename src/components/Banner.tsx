@@ -117,7 +117,7 @@ const BannerBar = styled.div`
   align-items: center;
   width: 100%;
   height: 76px;
-  border-bottom: 1px solid #b0b0b0;
+  border-bottom: 1px solid #e9ecef;
 `;
 
 const MoveBanner = styled.div`

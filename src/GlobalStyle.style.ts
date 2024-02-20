@@ -69,18 +69,15 @@ a {
 }
 @font-face {
     font-family: 'DXhimchanLight';
-    src:local('DXhimchanLight'),local('DXhimchanLight');
-    src: url(${DXhimchanLight}) format('truetype');
+    src: url('https://daedong.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EB%8F%99%EC%97%AC%EC%A7%80%EB%8F%84+%ED%8F%B0%ED%8A%B8/DXLight.ttf') format('truetype');
   }
 @font-face {
     font-family: 'DXhimchanMedium';
-    src:local('DXhimchanMedium'),local('DXhimchanMedium');
-    src: url(${DXhimchanMedium}) format('truetype');
+    src: url('https://daedong.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EB%8F%99%EC%97%AC%EC%A7%80%EB%8F%84+%ED%8F%B0%ED%8A%B8/DXMedium.ttf') format('truetype');
   }
 @font-face {
     font-family: 'DXhimchanBold';
-    src:local('DXhimchanBold'),local('DXhimchanBold');
-    src: url(${DXhimchanBold}) format('truetype');
+    src: url('https://daedong.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EB%8F%99%EC%97%AC%EC%A7%80%EB%8F%84+%ED%8F%B0%ED%8A%B8/DXBold.ttf') format('truetype');
   }
 
 `;
