@@ -127,8 +127,7 @@ const MoveBanner = styled.div`
   gap: 16px;
   width: 150px;
   height: 38px;
-  background-color: #000000;
-  opacity: 0.4;
+  background-color: #333b3d;
   border-radius: 90px;
 `;
 

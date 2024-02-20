@@ -47,7 +47,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 710px;
+  gap: 610px;
   z-index: 10;
 `;
 
