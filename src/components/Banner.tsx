@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import {
-  Banner1,
-  Banner2,
-  Banner3,
-  Banner4,
-  Banner5,
-  Banner6,
-  LeftArrow,
-  RightArrow,
-} from "../assets";
+import { LeftArrow, RightArrow } from "../assets";
+import axios from "axios";
 
 interface BannerExplainProps {
   borderIndex: number;
+}
+
+interface UrlProps {
+  id: number;
+  bannerImgUrl: string;
 }
 
 const AdBanner: React.FC = () => {
@@ -29,41 +26,62 @@ const AdBanner: React.FC = () => {
     { explain: "10번배너소개" },
   ];
 
-  const [img, setImg] = useState(1);
+  const [img, setImg] = useState(0);
   const [borderIndex, setBorderIndex] = useState(0);
-  const images = [Banner1, Banner2, Banner3, Banner4, Banner5, Banner6];
+  const [currentImage, setCurrentImage] = useState<UrlProps[]>([]);
 
   const imgChangeLeft = () => {
-    setImg((prevImg) => (prevImg > 1 ? prevImg - 1 : 6));
+    setImg((prevImg) =>
+      prevImg > 0 ? prevImg - 1 : currentImage?.length! - 1
+    );
     setBorderIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 9));
   };
 
   const imgChangeRight = () => {
-    setImg((prevImg) => (prevImg < 6 ? prevImg + 1 : 1));
+    setImg((prevImg) =>
+      prevImg < currentImage?.length! - 1 ? prevImg + 1 : 0
+    );
     setBorderIndex((prevIndex) => (prevIndex < 9 ? prevIndex + 1 : 0));
   };
 
-  useEffect(() => {
-    const intervalId = setInterval(imgChangeRight, 5000);
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "https://prod-server.xquare.app/jung-ho/main"
+      );
+      const images = response.data.banners;
+      setCurrentImage(images);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-    imgChangeLeft();
+  useEffect(() => {
+    const fetchDataAndChangeImage = async () => {
+      await fetchData();
+      imgChangeRight();
+    };
+
+    fetchDataAndChangeImage();
+
+    const intervalId = setInterval(() => {
+      fetchDataAndChangeImage();
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);
     };
   }, []);
 
-  const currentImage = images[img - 1];
-
   return (
     <Container>
-      <BannerImage src={currentImage} alt="배너이미지" />
+      <BannerImage src={currentImage?.[img]?.bannerImgUrl} alt="배너이미지" />
       <BannerBar>
         <MoveBanner>
           <NumberWrapper>
-            <CurrentNumber>{img}</CurrentNumber>
+            <CurrentNumber>{img + 1}</CurrentNumber>
             <And>/</And>
-            <TotalNumber>10</TotalNumber>
+            <TotalNumber>{currentImage.length}</TotalNumber>
           </NumberWrapper>
           <ArrowImg src={LeftArrow} onClick={imgChangeLeft} alt="왼쪽 화살표" />
           <ArrowImg
@@ -122,19 +140,19 @@ const NumberWrapper = styled.div`
 const CurrentNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const And = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const TotalNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const ArrowImg = styled.img`
@@ -158,7 +176,6 @@ const BannerExplain = styled.div<BannerExplainProps>`
   border-radius: 30px;
   color: #333b3d;
   font-size: 18px;
-  font-weight: 500;
 `;
 
 export default AdBanner;

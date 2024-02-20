@@ -33,13 +33,11 @@ const NameNumber = styled.input`
   width: 150px;
   height: 23px;
   font-size: 16px;
-  font-weight: 400;
   padding: 12px;
   border: 1px solid rgba(110, 110, 135, 0.5);
   border-radius: 5px;
   &::placeholder {
     font-size: 12px;
-    font-weight: 500;
     color: #6e6e87;
   }
 `;

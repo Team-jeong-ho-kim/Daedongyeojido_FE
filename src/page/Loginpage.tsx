@@ -3,74 +3,69 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import LoginInput from "../components/LoginInput";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const [classNumber, setClassNumber] = useState("");
   const [name, setName] = useState("");
   const [part, setPart] = useState("");
+  const [xquareId, setXquareId] = useState("");
+  const [password, setPassword] = useState("");
   const [userData, setUserData] = useState({});
-  // useEffect(() => {
-  //   const requestInterceptor = axios.interceptors.request.use(
-  //     (config) => {
-  //       if (
-  //         classNumber &&
-  //         name &&
-  //         part &&
-  //         localStorage.getItem("access_token")
-  //       ) {
-  //         config.headers.Authorization = `Bearer ${localStorage.getItem(
-  //           "access_token"
-  //         )}`;
-  //       }
-  //       return config;
-  //     },
-  //     (error) => {
-  //       return Promise.reject(error);
-  //     }
-  //   );
-  //   return () => {
-  //     axios.interceptors.request.eject(requestInterceptor);
-  //   };
-  // }, [classNumber, name, part]);
-  // const fetchData = async () => {
-  //   try {
-  //     const requestData = {
-  //       classNumber,
-  //       name,
-  //       part,
-  //     };
+  const [toMain, setToMain] = useState(false);
 
-  //     const response = await axios.post(
-  //       "https://prod-server.xquare.app/jung-ho/auth/login",
-  //       requestData
-  //     );
+  const navigate = useNavigate();
 
-  //     const accessToken = response.data.access_token;
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    if (accessToken) {
+    }
+  }, []);
 
-  //     localStorage.setItem("access_token", accessToken);
+  const fetchData = async () => {
+    try {
+      const userResponse = await axios.get(
+        `https://prod-server.xquare.app/users/account-id/${xquareId}`
+      );
 
-  //     setUserData(response.data);
-  //   } catch (error) {
-  //     console.error("Login failed:", error);
-  //   }
-  // };
+      const { grade, class_num, num, user_role } = userResponse.data;
+      const classNum = `${grade}${class_num}${num}`;
+      const userRole = user_role === "STU" ? "INDEPENDENT" : "TEACHER";
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+      const requestData = {
+        xquareId: userResponse.data.account_id,
+        classNumber: classNum,
+        name: userResponse.data.name,
+        part: userRole,
+        password,
+      };
 
-  // const handleLogin = async () => {
-  //   fetchData();
-  // };
+      const response = await axios.post(
+        "https://prod-server.xquare.app/jung-ho/auth/login",
+        requestData
+      );
 
+      const accessToken = response.data.access_token;
+
+      localStorage.setItem("access_token", accessToken);
+
+      setUserData(response.data);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
+  const handleLogin = async () => {
+    fetchData();
+  };
+
+  if (toMain) {
+    navigate("/");
+  }
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <LoginWrapper>
         <TextWrapper>
           <Welcome>대동여지도에 오신 걸 환영합니다!</Welcome>
@@ -79,19 +74,24 @@ const Loginpage = () => {
         <InputWrapper>
           <LoginInput
             placeholder="아이디"
-            value={classNumber}
+            value={xquareId}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setClassNumber(e.target.value)
+              setXquareId(e.target.value)
             }
           />
           <LoginInput
             placeholder="비밀번호"
-            value={name}
+            value={password}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setName(e.target.value)
+              setPassword(e.target.value)
             }
+            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+              if (e.key === "Enter") {
+                fetchData();
+              }
+            }}
           />
-          <Login>로그인</Login>
+          <Login onClick={handleLogin}>로그인</Login>
         </InputWrapper>
       </LoginWrapper>
     </Container>
@@ -129,7 +129,7 @@ const InputWrapper = styled.div`
 
 const Welcome = styled.p`
   font-size: 48px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const LoginText = styled.p`
@@ -147,7 +147,7 @@ const Login = styled.button`
   background-color: #333b3d;
   color: #ffffff;
   font-size: 36px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
   border: none;
 `;
 

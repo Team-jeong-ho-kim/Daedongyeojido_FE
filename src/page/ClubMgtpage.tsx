@@ -16,7 +16,6 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   setPlusMemberVisible,
 }) => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
   const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
   const AnnounceClick = () => {
@@ -24,10 +23,7 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   };
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <Buttons>
         <LeftBtns>
           <Button to="" onClick={AnnounceClick}>
@@ -90,12 +86,12 @@ const PlusClubBtn = styled.div`
     background-color: #333b3d;
     color: #ffffff;
     font-size: 24px;
-    font-weight: 300;
+    font-family: "DXhimchanLight";
 
     &::placeholder {
       color: #ffffff;
       font-size: 24px;
-      font-weight: 300;
+      font-family: "DXhimchanLight";
     }
   }
 `;

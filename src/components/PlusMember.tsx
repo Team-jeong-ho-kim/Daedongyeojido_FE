@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Edit, Plus, Remove } from "../assets";
 import PlusMemberInput from "./PlusMemberInput";
 interface PlusMemberProps {
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -68,7 +67,7 @@ const ClubName = styled.input`
   border: none;
   border-bottom: 1px solid #6e6e87;
   font-size: 32px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const Teacher = styled.input`
@@ -134,7 +133,6 @@ const SaveBtn = styled.div`
   background-color: #333b3d;
   color: #ffffff;
   font-size: 16px;
-  font-weight: 400;
 `;
 
 const Bottom = styled.div`

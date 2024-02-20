@@ -44,7 +44,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 36px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const Arrow = styled.div`
@@ -60,7 +60,7 @@ const ArrowIcon = styled.img`
 
 const MajorWrapper = styled.div`
   display: flex;
-  gap: 59.8px;
+  gap: 50px;
 `;
 
 const Majors = styled.div`

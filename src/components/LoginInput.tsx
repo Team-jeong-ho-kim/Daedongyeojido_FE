@@ -4,18 +4,19 @@ interface LoginInputProps {
   placeholder: string;
   value: any;
   onChange: any;
+  onKeyUp?: any;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
   placeholder,
   value,
   onChange,
+  onKeyUp,
 }) => {
   return <Input placeholder={placeholder} value={value} onChange={onChange} />;
 };
 
 const Input = styled.input`
-  font-family: "DXhimchan";
   width: 900px;
   height: 80px;
   padding: 26px 40px;

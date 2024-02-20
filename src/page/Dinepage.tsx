@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const Dinepage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const Dines = [
     { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
     { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
@@ -13,10 +12,7 @@ const Dinepage = () => {
   ];
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <Title>동아리 회식 관리</Title>
       <Wrapper>
         {Dines.map((element) => (
@@ -44,7 +40,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 48px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
   margin-right: 1100px;
 `;
 
@@ -73,7 +69,7 @@ const Club = styled.div`
 
 const ClubName = styled.p`
   font-size: 40px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const DineTime = styled.p`
@@ -95,7 +91,6 @@ const AcceptanceBtn = styled.div`
   border-radius: 8px;
   padding: 12px 44px;
   font-size: 24px;
-  font-weight: 500;
   color: #ffffff;
   cursor: pointer;
 `;

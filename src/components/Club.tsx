@@ -89,7 +89,7 @@ const ClubWrapper = styled.div`
 
 const ClubName = styled.p`
   font-size: 32px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const Detail = styled.div`

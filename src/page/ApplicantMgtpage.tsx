@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const ApplicantMgtpage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const applicants = [
     { name: "김정호", info: "1305, FrontEnd" },
     { name: "김정호", info: "1305, FrontEnd" },
@@ -18,7 +17,6 @@ const ApplicantMgtpage = () => {
     <Container>
       <Header
         setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
       />
       <Wrapper>
         <Title>동아리 지원자 관리</Title>

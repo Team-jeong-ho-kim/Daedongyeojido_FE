@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 interface HeaderProps {
   setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setManageVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
@@ -40,18 +39,21 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
 };
 
 const Container = styled.div`
+  position: sticky;
+  top: 0px;
   width: 100%;
   height: 64px;
   background-color: White;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 650px;
+  gap: 710px;
+  z-index: 10;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 100px;
+  gap: 30px;
 `;
 
 const LogoWrapper = styled(Link)`
@@ -60,8 +62,8 @@ const LogoWrapper = styled(Link)`
 `;
 
 const TextButton = styled(Link)`
+  font-family: "DXhimchanLight";
   font-size: 20px;
-  font-weight: Light;
 `;
 
 const LogoImg = styled.img`
@@ -70,15 +72,15 @@ const LogoImg = styled.img`
 `;
 
 const Name = styled.p`
+  font-family: "DXhimchanBold";
   font-size: 26px;
-  font-weight: bold;
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 80px;
+  gap: 30px;
 `;
 
 const IconWrapper = styled.div`
@@ -89,13 +91,19 @@ const IconWrapper = styled.div`
 `;
 
 const AlarmImg = styled.img`
-  width: 36px;
-  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 26px;
 `;
 
 const MyPageImg = styled.img`
-  width: 48px;
-  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
 `;
 
 export default Header;

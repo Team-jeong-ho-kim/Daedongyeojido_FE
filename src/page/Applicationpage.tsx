@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Applicationpage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const questions = [
     {
       ask: "자신을 한 줄로 설명한다면?",
@@ -29,7 +28,6 @@ const Applicationpage = () => {
     <Container>
       <Header
         setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
       />
       <Wrapper>
         <Title>&#123;동아리이름&#125; 지원서</Title>
