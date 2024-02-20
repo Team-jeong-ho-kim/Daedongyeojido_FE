@@ -80,9 +80,8 @@ const ClubInfo = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: Inter;
   font-size: 15px;
-  font-weight: Light;
+  font-family: "DXhimchanLight";
 `;
 
 const TagWrapper = styled.div`
@@ -95,7 +94,7 @@ const TagWrapper = styled.div`
 
 const ClubTag = styled.p`
   font-size: 12px;
-  font-weight: Light;
+  font-family: "DXhimchanLight";
   color: #333b3d;
 `;
 

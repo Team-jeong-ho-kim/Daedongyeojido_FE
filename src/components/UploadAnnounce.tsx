@@ -34,7 +34,7 @@ const Container = styled.div`
 
 const Text = styled.p`
   font-size: 20px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const Inputs = styled.div`

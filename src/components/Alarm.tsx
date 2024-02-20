@@ -79,7 +79,7 @@ const Container = styled.div`
 const AlarmText = styled.p`
   padding: 30px 0px 0px 40px;
   font-size: 28px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const AlarmWrappers = styled.div`
@@ -98,17 +98,16 @@ const AlarmWrapper = styled.div`
 const AlarmTime = styled.div`
   color: #6e6e87;
   font-size: 12px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const AlarmTitle = styled.div`
   font-size: 20px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const AlarmDetail = styled.div`
   font-size: 16px;
-  font-weight: medium;
 `;
 
 export default Alarm;

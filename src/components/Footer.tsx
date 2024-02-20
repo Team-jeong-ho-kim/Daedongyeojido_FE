@@ -59,14 +59,14 @@ const Majors = styled.div`
 
 const Major = styled.p`
   font-size: 24px;
-  font-weight: Light;
+  font-family: "DXhimchanLight";
   color: white;
   margin-bottom: 16px;
 `;
 
 const Name = styled.p`
   font-size: 24px;
-  font-weight: Light;
+  font-family: "DXhimchanLight";
   color: white;
 `;
 

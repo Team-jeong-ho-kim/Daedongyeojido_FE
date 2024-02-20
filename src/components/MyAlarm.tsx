@@ -45,18 +45,16 @@ const Text = styled.div`
 
 const Alarm = styled.p`
   font-size: 24px;
-  font-weight: 900;
+  font-family: "DXhimchanBold";
   color: #0000ff;
 `;
 
 const Detail = styled.p`
   font-size: 20px;
-  font-weight: 500;
 `;
 
 const Warning = styled.p`
   font-size: 16px;
-  font-weight: 500;
   color: #6e6e87;
 `;
 
@@ -86,7 +84,6 @@ const CancleBtn = styled.div`
   height: 50px;
   border-radius: 0px 0px 0px 16px;
   font-size: 16px;
-  font-weight: 400;
 `;
 
 const BackBtn = styled.div`
@@ -97,7 +94,6 @@ const BackBtn = styled.div`
   height: 50px;
   border-radius: 0px 0px 16px 0px;
   font-size: 16px;
-  font-weight: 400;
 `;
 
 export default MyAlarm;

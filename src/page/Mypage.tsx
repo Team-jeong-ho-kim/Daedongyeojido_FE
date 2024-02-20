@@ -6,7 +6,6 @@ import MyAlarm from "../components/MyAlarm";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Alarm from "../components/Alarm";
-import ClubMgt from "../components/ClubMgt";
 
 const Mypage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
@@ -77,7 +76,7 @@ const SmallBanner = styled.div`
 const Title = styled.p`
   color: White;
   font-size: 36px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const Explain = styled.p`
@@ -115,12 +114,12 @@ const MyText = styled.div`
 
 const MyName = styled.p`
   font-size: 48px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const MyClub = styled.p`
   font-size: 32px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
   color: #989898;
 `;
 
@@ -134,7 +133,7 @@ const ApplyWrapper = styled.div`
 
 const MyApply = styled.p`
   font-size: 36px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
   margin-right: 1100px;
 `;
 
@@ -180,7 +179,7 @@ const Major = styled.p`
 
 const Date = styled.p`
   font-size: 12px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
   color: #989898;
 `;
 

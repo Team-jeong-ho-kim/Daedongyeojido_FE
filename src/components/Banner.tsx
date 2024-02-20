@@ -140,19 +140,19 @@ const NumberWrapper = styled.div`
 const CurrentNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const And = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const TotalNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const ArrowImg = styled.img`
@@ -176,7 +176,6 @@ const BannerExplain = styled.div<BannerExplainProps>`
   border-radius: 30px;
   color: #333b3d;
   font-size: 18px;
-  font-weight: 500;
 `;
 
 export default AdBanner;

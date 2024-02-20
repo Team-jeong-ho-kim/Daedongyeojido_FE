@@ -47,7 +47,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1300px;
+  gap: 710px;
+  z-index: 10;
 `;
 
 const Wrapper = styled.div`
@@ -61,8 +62,8 @@ const LogoWrapper = styled(Link)`
 `;
 
 const TextButton = styled(Link)`
+  font-family: "DXhimchanLight";
   font-size: 20px;
-  font-weight: 300;
 `;
 
 const LogoImg = styled.img`
@@ -71,8 +72,8 @@ const LogoImg = styled.img`
 `;
 
 const Name = styled.p`
+  font-family: "DXhimchanBold";
   font-size: 26px;
-  font-weight: 700;
 `;
 
 const ButtonWrapper = styled.div`
@@ -95,28 +96,6 @@ const AlarmImg = styled.img`
   align-items: center;
   width: 24px;
   height: 26px;
-`;
-
-const ManageButton = styled.div`
-  width: 100px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
-`;
-
-const LoginButton = styled(Link)`
-  width: 70px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
 `;
 
 const MyPageImg = styled.img`

@@ -44,7 +44,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 36px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const Arrow = styled.div`

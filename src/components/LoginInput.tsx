@@ -17,7 +17,6 @@ const LoginInput: React.FC<LoginInputProps> = ({
 };
 
 const Input = styled.input`
-  font-family: "DXhimchan";
   width: 900px;
   height: 80px;
   padding: 26px 40px;

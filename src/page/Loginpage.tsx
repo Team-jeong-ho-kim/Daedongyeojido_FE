@@ -59,15 +59,13 @@ const Loginpage = () => {
   const handleLogin = async () => {
     fetchData();
   };
-            
+
   if (toMain) {
     navigate("/");
   }
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <LoginWrapper>
         <TextWrapper>
           <Welcome>대동여지도에 오신 걸 환영합니다!</Welcome>
@@ -131,7 +129,7 @@ const InputWrapper = styled.div`
 
 const Welcome = styled.p`
   font-size: 48px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const LoginText = styled.p`
@@ -149,7 +147,7 @@ const Login = styled.button`
   background-color: #333b3d;
   color: #ffffff;
   font-size: 36px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
   border: none;
 `;
 

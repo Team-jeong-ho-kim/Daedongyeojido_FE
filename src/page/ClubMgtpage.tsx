@@ -23,9 +23,7 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   };
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <Buttons>
         <LeftBtns>
           <Button to="" onClick={AnnounceClick}>
@@ -88,12 +86,12 @@ const PlusClubBtn = styled.div`
     background-color: #333b3d;
     color: #ffffff;
     font-size: 24px;
-    font-weight: 300;
+    font-family: "DXhimchanLight";
 
     &::placeholder {
       color: #ffffff;
       font-size: 24px;
-      font-weight: 300;
+      font-family: "DXhimchanLight";
     }
   }
 `;
