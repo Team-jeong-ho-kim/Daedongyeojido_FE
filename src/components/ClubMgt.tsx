@@ -21,7 +21,7 @@ const ClubMgt: React.FC<AlarmProps> = ({ setManageVisible }) => {
 const Container = styled.div`
   position: absolute;
   top: 100px;
-  right: 200px;
+  left: 600px;
   width: 150px;
   height: 116px;
   background-color: #ffffff;

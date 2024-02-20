@@ -13,37 +13,6 @@ const Loginpage = () => {
   const [xquareId, setXquareId] = useState("");
   const [password, setPassword] = useState("");
   const [userData, setUserData] = useState({});
-<<<<<<< Updated upstream
-  useEffect(() => {
-    const requestInterceptor = axios.interceptors.request.use(
-      (config) => {
-        if (
-          classNumber &&
-          name &&
-          part &&
-          localStorage.getItem("access_token")
-        ) {
-          config.headers.Authorization = `Bearer ${localStorage.getItem(
-            "access_token"
-          )}`;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-    return () => {
-      axios.interceptors.request.eject(requestInterceptor);
-    };
-  }, [classNumber, name, part]);
-  const fetchData = async () => {
-    try {
-      const requestData = {
-        classNumber,
-        name,
-        part,
-=======
   const [toMain, setToMain] = useState(false);
 
   const navigate = useNavigate();
@@ -70,7 +39,6 @@ const Loginpage = () => {
         name: userResponse.data.name,
         part: userRole,
         password,
->>>>>>> Stashed changes
       };
 
       const response = await axios.post(
@@ -78,82 +46,29 @@ const Loginpage = () => {
         requestData
       );
 
-<<<<<<< Updated upstream
       const accessToken = response.data.access_token;
 
       localStorage.setItem("access_token", accessToken);
 
       setUserData(response.data);
-=======
-      const accessToken = response.data.accessToken;
-      localStorage.setItem("access_token", accessToken);
-
-      const storedToken = localStorage.getItem("access_token");
-
-      if (storedToken) {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${storedToken}`;
-      } else {
-        delete axios.defaults.headers.common["Authorization"];
-      }
-
-      setUserData(response.data);
-      setToMain(true);
->>>>>>> Stashed changes
     } catch (error) {
       console.error("Login failed:", error);
     }
   };
 
-<<<<<<< Updated upstream
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-=======
->>>>>>> Stashed changes
   const handleLogin = async () => {
     fetchData();
   };
-
-<<<<<<< Updated upstream
-=======
+            
   if (toMain) {
     navigate("/");
   }
->>>>>>> Stashed changes
   return (
     <Container>
       <Header
         setAlarmVisible={setAlarmVisible_}
       />
       <LoginWrapper>
-<<<<<<< Updated upstream
-        <Welcome>대동여지도에 오신 걸 환영해요!</Welcome>
-        <LoginInput
-          placeholder="학번"
-          value={classNumber}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setClassNumber(e.target.value)
-          }
-        />
-        <LoginInput
-          placeholder="이름"
-          value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
-          }
-        />
-        <LoginInput
-          placeholder="역할"
-          value={part}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setPart(e.target.value)
-          }
-        />
-        <Login onClick={handleLogin}>로그인</Login>
-=======
         <TextWrapper>
           <Welcome>대동여지도에 오신 걸 환영합니다!</Welcome>
           <LoginText>로그인 후 더 많은 기능을 사용해보세요 :&#41;</LoginText>
@@ -180,39 +95,61 @@ const Loginpage = () => {
           />
           <Login onClick={handleLogin}>로그인</Login>
         </InputWrapper>
->>>>>>> Stashed changes
       </LoginWrapper>
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
 
 const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 100px;
+  margin-top: 160px;
+`;
+
+const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 15px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 30px;
-  margin-top: 200px;
 `;
 
 const Welcome = styled.p`
-  font-size: 36px;
-  font-weight: 900;
+  font-size: 48px;
+  font-weight: bold;
+`;
+
+const LoginText = styled.p`
+  font-size: 28px;
+  color: #676767;
 `;
 
 const Login = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 55px;
-  padding: 16px 24px;
+  width: 900px;
+  height: 80px;
   border-radius: 10px;
-  background-color: #ffb800;
+  background-color: #333b3d;
   color: #ffffff;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 36px;
+  font-weight: bold;
   border: none;
 `;
 

@@ -4,17 +4,9 @@ import { useEffect, useState } from "react";
 import { Profile } from "../assets";
 import MyAlarm from "../components/MyAlarm";
 import axios from "axios";
-<<<<<<< Updated upstream
-=======
 import Footer from "../components/Footer";
 import Alarm from "../components/Alarm";
 import ClubMgt from "../components/ClubMgt";
->>>>>>> Stashed changes
-
-interface UserData {
-  name: string;
-  myClub: string;
-}
 
 const Mypage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
@@ -29,42 +21,24 @@ const Mypage = () => {
     { name: "대동여지도", major: "프론트엔드", date: "~", state: "합격" },
   ];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.post(
-        "https://prod-server.xquare.app/jung-ho/user/student-info",
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        }
-      );
-      setUserData(response.data);
-    };
-    fetchData();
-  });
-
   return (
     <Container>
-<<<<<<< Updated upstream
-      <MyAlarm />
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
-=======
       {/* <MyAlarm /> */}
       <Header setAlarmVisible={setAlarmVisible_} />
->>>>>>> Stashed changes
       <MyPageWrapper>
+        <SmallBanner>
+          <Title>마이페이지</Title>
+          <Explain>마이페이지에서 나의 동아리 지원내역을 확인하세요</Explain>
+        </SmallBanner>
         <ProfileWrapper>
           <ProfileImg src={Profile} />
-          <MyName>{userData?.name}</MyName>
-          <MyClub>{userData?.myClub || "동아리 없음"}</MyClub>
+          <MyText>
+            <MyName>김정호</MyName>
+            <MyClub>{userData?.myClub || "동아리 없음"}</MyClub>
+          </MyText>
         </ProfileWrapper>
         <ApplyWrapper>
-          <MyApply>{userData?.name}님의 지원 내역</MyApply>
+          <MyApply>{userData?.name}님의 동아리 지원 내역</MyApply>
           <ClubWrapper>
             {Clubs.map((element) => (
               <Club>
@@ -78,6 +52,7 @@ const Mypage = () => {
             ))}
           </ClubWrapper>
         </ApplyWrapper>
+        <Footer />
       </MyPageWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
@@ -88,21 +63,42 @@ const Container = styled.div`
   position: relative;
 `;
 
+const SmallBanner = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+  background-color: #333b3d;
+  padding-left: 264px;
+`;
+
+const Title = styled.p`
+  color: White;
+  font-size: 36px;
+  font-weight: 700;
+`;
+
+const Explain = styled.p`
+  color: White;
+  font-size: 28px;
+`;
+
 const MyPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-top: 50px;
+  gap: 100px;
 `;
 
 const ProfileWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 40px;
+  margin-right: 1100px;
 `;
 
 const ProfileImg = styled.img`
@@ -111,16 +107,21 @@ const ProfileImg = styled.img`
   border-radius: 100px;
 `;
 
+const MyText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
 const MyName = styled.p`
-  font-size: 36px;
-  font-weight: 900;
-  margin-top: 16px;
+  font-size: 48px;
+  font-weight: 700;
 `;
 
 const MyClub = styled.p`
-  font-size: 20px;
-  font-weight: 500;
-  color: #6e6e87;
+  font-size: 32px;
+  font-weight: 300;
+  color: #989898;
 `;
 
 const ApplyWrapper = styled.div`
@@ -132,21 +133,24 @@ const ApplyWrapper = styled.div`
 `;
 
 const MyApply = styled.p`
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
-  margin-right: 920px;
+  margin-right: 1100px;
 `;
 
 const ClubWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 350px 350px 350px);
-  row-gap: 16px;
-  column-gap: 10px;
-  width: 1156px;
-  height: 370px;
+  grid-template-columns: repeat(auto-fill, 608px 608px);
+  row-gap: 20px;
+  column-gap: 48px;
+  justify-content: center;
+  align-items: center;
+  width: 1392px;
+  height: 530px;
   border: 1px solid rgba(110, 110, 135, 0.5);
   border-radius: 16px;
   padding: 52px 40px;
+  background-color: #717678;
 `;
 
 const Club = styled.div`
@@ -154,28 +158,30 @@ const Club = styled.div`
   border: 1px solid #cccccc;
   border-radius: 5px;
   padding: 16px 16px 20px 36px;
-  gap: 90px;
+  gap: 319px;
+  height: 124px;
+  background-color: #ffffff;
 `;
 
 const ClubInfo = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 6px;
 `;
 
 const ClubName = styled.p`
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 32px;
 `;
 
 const Major = styled.p`
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 20px;
+  color: #495052;
 `;
 
 const Date = styled.p`
   font-size: 12px;
   font-weight: 300;
-  color: #6e6e87;
+  color: #989898;
 `;
 
 const Button = styled.div`
@@ -183,10 +189,11 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  width: 75px;
-  height: 30px;
-  padding: 8px 20px;
-  background-color: #cccccc;
+  width: 100px;
+  height: 32px;
+  background-color: #333b3d;
+  color: White;
+  font-size: 16px;
 `;
 
 export default Mypage;

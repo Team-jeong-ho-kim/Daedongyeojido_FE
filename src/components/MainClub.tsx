@@ -33,20 +33,6 @@ const MainClub = () => {
 
   return (
     <Container>
-<<<<<<< Updated upstream
-      {clubs.map((element) => (
-        <ClubWrapper>
-          <ClubLogo src={element.img} alt="동아리 이미지" />
-          <ClubName>{element.name}</ClubName>
-          <SmallText>
-            <ClubInfo>{element.info}</ClubInfo>
-            <TagWrapper>
-              <ClubTag>{element.tag1}</ClubTag>
-              <ClubTag>{element.tag2}</ClubTag>
-              <ClubTag>{element.tag3}</ClubTag>
-            </TagWrapper>
-          </SmallText>
-=======
       {clubs.map((club, index) => (
         <ClubWrapper key={index}>
           <ClubLogo src={club.clubImageUrl} alt="동아리 이미지" />
@@ -57,7 +43,6 @@ const MainClub = () => {
             <ClubTag>{club.tags}</ClubTag>
             <ClubTag>{club.tags}</ClubTag>
           </TagWrapper>
->>>>>>> Stashed changes
         </ClubWrapper>
       ))}
     </Container>
@@ -67,11 +52,7 @@ const MainClub = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px 200px 200px 200px 200px);
-<<<<<<< Updated upstream
-  row-gap: 50px;
-=======
   row-gap: 40px;
->>>>>>> Stashed changes
   column-gap: 40px;
   justify-content: center;
 `;
@@ -79,7 +60,7 @@ const Container = styled.div`
 const ClubWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
   width: 200px;
   height: 300px;
 `;
@@ -91,37 +72,31 @@ const ClubLogo = styled.img`
 `;
 
 const ClubName = styled.p`
-  font-size: 24px;
-  font-weight: 900;
-`;
-
-const SmallText = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  font-size: 32px;
 `;
 
 const ClubInfo = styled.p`
-  color: #6e6e87;
+  color: #333b3d;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: Inter;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: Light;
 `;
 
 const TagWrapper = styled.div`
   display: flex;
+  gap: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
 `;
 
 const ClubTag = styled.p`
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: Light;
+  color: #333b3d;
 `;
 
 export default MainClub;

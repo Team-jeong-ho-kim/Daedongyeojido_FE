@@ -49,6 +49,7 @@ const Select = styled.select`
   height: 23px;
   border-radius: 5px;
   border: 1px solid rgba(110, 110, 135, 0.5);
+  color: #6e6e87;
 `;
 
 const Option = styled.option``;

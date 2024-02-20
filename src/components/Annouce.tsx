@@ -11,6 +11,7 @@ const Announce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
   const [announces, setAnnounces] = useState<
     { title: string; contents: string }[]
   >([]);
+
   const handleClose = () => {
     setAnnounceVisible(false);
   };
@@ -55,6 +56,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 23px;
   width: 500px;
+
   height: 377px;
   background-color: White;
   border: 1px solid black;

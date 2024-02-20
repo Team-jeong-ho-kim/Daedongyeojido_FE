@@ -44,6 +44,7 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 36px;
+  font-weight: bold;
 `;
 
 const Arrow = styled.div`

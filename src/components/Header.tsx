@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Alarm, Logo } from "../assets";
+import { Alarm, LogoBlack, MyPage } from "../assets";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,10 +16,6 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
 
   return (
     <Container>
-<<<<<<< Updated upstream
-      <LogoImg src={Logo} />
-      <ButtonWrapper>
-=======
       <Wrapper>
         <LogoWrapper to="/">
           <LogoImg src={LogoBlack} />
@@ -32,11 +28,11 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
         </ButtonWrapper>
       </Wrapper>
       <IconWrapper>
->>>>>>> Stashed changes
         <AlarmImg src={Alarm} onClick={AlarmClick} />
-        <ManageButton onClick={ManageClick}>동아리 관리</ManageButton>
-        <LoginButton to="/login">로그인</LoginButton>
-      </ButtonWrapper>
+        <Link to="/My">
+          <MyPageImg src={MyPage} />
+        </Link>
+      </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
@@ -47,17 +43,15 @@ const Container = styled.div`
   top: 0px;
   width: 100%;
   height: 80px;
-  background-color: #050045;
+  background-color: White;
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< Updated upstream
   gap: 1300px;
 `;
 
 const LogoImg = styled.img`
   height: 60px;
-=======
   gap: 650px;
   z-index: 1;
 `;
@@ -85,25 +79,20 @@ const LogoImg = styled.img`
 const Name = styled.p`
   font-size: 26px;
   font-weight: 700;
->>>>>>> Stashed changes
+
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
-<<<<<<< Updated upstream
-  gap: 30px;
-=======
   justify-content: center;
   align-items: center;
   gap: 30px;
-`;
 
 const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
->>>>>>> Stashed changes
 `;
 
 const AlarmImg = styled.img`
@@ -114,7 +103,6 @@ const AlarmImg = styled.img`
   height: 26px;
 `;
 
-<<<<<<< Updated upstream
 const ManageButton = styled.div`
   width: 100px;
   height: 30px;
@@ -135,14 +123,12 @@ const LoginButton = styled(Link)`
   text-align: center;
   text-justify: center;
   line-height: 30px;
-=======
+        
 const MyPageImg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
->>>>>>> Stashed changes
-`;
 
 export default Header;

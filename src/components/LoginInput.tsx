@@ -17,17 +17,19 @@ const LoginInput: React.FC<LoginInputProps> = ({
 };
 
 const Input = styled.input`
-  width: 600px;
-  height: 56px;
-  padding: 16px 36px;
-  font-size: 20px;
-  font-weight: 400;
+  font-family: "DXhimchan";
+  width: 900px;
+  height: 80px;
+  padding: 26px 40px;
+  font-size: 28px;
   border-radius: 10px;
-  border: 1px solid rgba(110, 110, 135, 0.5);
+  border: 1px solid black;
   &::placeholder {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 28px;
     color: #6e6e87;
+  }
+  &:focus {
+    border: 2px solid black;
   }
 `;
 

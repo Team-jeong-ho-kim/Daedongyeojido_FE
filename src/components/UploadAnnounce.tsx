@@ -4,7 +4,7 @@ interface AnnounceProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Announce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
+const UploadAnnounce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
   return (
     <Container>
       <Text>공지사항 등록</Text>
@@ -45,40 +45,40 @@ const Inputs = styled.div`
 
 const TitleInput = styled.input`
   height: 43px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 24px;
   padding: 16px 24px;
   border-radius: 10px;
   border: 1px solid rgba(110, 110, 135, 0.5);
   &::placeholder {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 24px;
     color: #6e6e87;
   }
 `;
 
 const ContentsInput = styled.textarea`
   height: 286px;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 20px;
   padding: 24px;
   border-radius: 10px;
   resize: none;
   border: 1px solid rgba(110, 110, 135, 0.5);
   &::placeholder {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 20px;
     color: #6e6e87;
   }
 `;
 
 const AnnounceBtn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 150px;
-  padding: 8px 24px;
+  height: 35px;
   color: #ffffff;
   border-radius: 8px;
-  background-color: #cccccc;
+  background-color: #333b3d;
   margin-left: 400px;
 `;
 
-export default Announce;
+export default UploadAnnounce;
