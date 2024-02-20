@@ -1,7 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import DXhimchanLight from "./assets/font/DX힘찬Light.ttf";
-import DXhimchanMedium from "./assets/font/DX힘찬Medium.ttf";
-import DXhimchanBold from "./assets/font/DX힘찬Bold.ttf";
 
 export const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -26,12 +23,12 @@ time, mark, audio, video, input, button, select, option, textarea {
   cursor: default;
   font-family: 'DXhimchanMedium';
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, main, menu, nav, section {
   display: block;
 }
-/* HTML5 hidden-attribute fix for newer browsers */
+
 *[hidden] {
     display: none;
 }

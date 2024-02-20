@@ -5,6 +5,7 @@ const Major = () => {
   const majors = [
     { img: ClubImg, name: "프론트엔드" },
     { img: ClubImg, name: "백엔드" },
+    { img: ClubImg, name: "데브옵스" },
     { img: ClubImg, name: "안드로이드" },
     { img: ClubImg, name: "ios" },
     { img: ClubImg, name: "AI" },
@@ -17,9 +18,8 @@ const Major = () => {
   ];
   return (
     <Container>
-      <Title>대마고 동아리 여기서 지원하고 도움받자!</Title>
+      <Title>대마고 동아리 여기서 지원하고 도움받자</Title>
       <Arrow>
-        <ArrowIcon src={LeftArrowBlack} />
         <MajorWrapper>
           {majors.map((element) => (
             <Majors>
@@ -28,7 +28,6 @@ const Major = () => {
             </Majors>
           ))}
         </MajorWrapper>
-        <ArrowIcon src={RightArrowBlack} />
       </Arrow>
     </Container>
   );
@@ -44,18 +43,13 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 36px;
-  font-family: "DXhimchanBold";
+  font-family: "DXhimchanLight";
 `;
 
 const Arrow = styled.div`
   display: flex;
   align-items: center;
   gap: 48px;
-`;
-
-const ArrowIcon = styled.img`
-  width: 10px;
-  height: 20px;
 `;
 
 const MajorWrapper = styled.div`
