@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
         <ButtonWrapper>
           <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
           <TextButton to="/ClubMgt">동아리 관리</TextButton>
-          <TextButton to="" >회식 신청</TextButton>
+          <TextButton to="">회식 신청</TextButton>
         </ButtonWrapper>
       </Wrapper>
       <IconWrapper>
@@ -50,12 +50,6 @@ const Container = styled.div`
   gap: 1300px;
 `;
 
-const LogoImg = styled.img`
-  height: 60px;
-  gap: 650px;
-  z-index: 1;
-`;
-
 const Wrapper = styled.div`
   display: flex;
   gap: 30px;
@@ -79,7 +73,6 @@ const LogoImg = styled.img`
 const Name = styled.p`
   font-size: 26px;
   font-weight: 700;
-
 `;
 
 const ButtonWrapper = styled.div`
@@ -87,6 +80,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+`;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -123,12 +117,14 @@ const LoginButton = styled(Link)`
   text-align: center;
   text-justify: center;
   line-height: 30px;
-        
+`;
+
 const MyPageImg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
+`;
 
 export default Header;
