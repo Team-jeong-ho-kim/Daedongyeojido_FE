@@ -1,27 +1,17 @@
 import styled from "styled-components";
 import { Alarm, LogoBlack, MyPage } from "../assets";
 import { useState } from "react";
-import ClubMgt from "./ClubMgt";
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
   setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setManageVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  setAlarmVisible,
-  setManageVisible,
-}) => {
+const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
 
   const AlarmClick = () => {
     setAlarmVisible((prevVisible) => !prevVisible);
-  };
-
-  const ManageClick = () => {
-    setManageVisible((prevVisible) => !prevVisible);
   };
 
   return (
@@ -32,9 +22,9 @@ const Header: React.FC<HeaderProps> = ({
           <Name>대동여지도</Name>
         </LogoWrapper>
         <ButtonWrapper>
-          <TextButton>지원서 확인</TextButton>
-          <TextButton onClick={ManageClick}>동아리 관리</TextButton>
-          <TextButton>회식 신청</TextButton>
+          <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
+          <TextButton to="/ClubMgt">동아리 관리</TextButton>
+          <TextButton to="" >회식 신청</TextButton>
         </ButtonWrapper>
       </Wrapper>
       <IconWrapper>
@@ -44,24 +34,31 @@ const Header: React.FC<HeaderProps> = ({
         </Link>
       </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
-      {manageVisible && <ClubMgt setManageVisible={setManageVisible_} />}
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: sticky;
+  top: 0px;
   width: 100%;
   height: 80px;
   background-color: White;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1300px;
+`;
+
+const LogoImg = styled.img`
+  height: 60px;
   gap: 650px;
+  z-index: 1;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 100px;
+  gap: 30px;
 `;
 
 const LogoWrapper = styled(Link)`
@@ -69,9 +66,9 @@ const LogoWrapper = styled(Link)`
   align-items: center;
 `;
 
-const TextButton = styled.div`
+const TextButton = styled(Link)`
   font-size: 20px;
-  font-weight: Light;
+  font-weight: 300;
 `;
 
 const LogoImg = styled.img`
@@ -81,15 +78,15 @@ const LogoImg = styled.img`
 
 const Name = styled.p`
   font-size: 26px;
-  font-weight: bold;
+  font-weight: 700;
+
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 80px;
-`;
+  gap: 30px;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -99,13 +96,39 @@ const IconWrapper = styled.div`
 `;
 
 const AlarmImg = styled.img`
-  width: 36px;
-  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 26px;
 `;
 
-const MyPageImg = styled.img`
-  width: 48px;
-  height: 48px;
+const ManageButton = styled.div`
+  width: 100px;
+  height: 30px;
+  background-color: #ffb800;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  text-justify: center;
+  line-height: 30px;
 `;
+
+const LoginButton = styled(Link)`
+  width: 70px;
+  height: 30px;
+  background-color: #ffb800;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  text-justify: center;
+  line-height: 30px;
+        
+const MyPageImg = styled.img`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
 
 export default Header;

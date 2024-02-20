@@ -60,7 +60,7 @@ const ArrowIcon = styled.img`
 
 const MajorWrapper = styled.div`
   display: flex;
-  gap: 59.8px;
+  gap: 50px;
 `;
 
 const Majors = styled.div`

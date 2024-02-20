@@ -16,7 +16,6 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   setPlusMemberVisible,
 }) => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
   const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
   const AnnounceClick = () => {
@@ -26,7 +25,6 @@ const ClubMgtpage: React.FC<ClubProps> = ({
     <Container>
       <Header
         setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
       />
       <Buttons>
         <LeftBtns>

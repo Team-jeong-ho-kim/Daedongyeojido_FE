@@ -5,28 +5,11 @@ import { Profile } from "../assets";
 import MyAlarm from "../components/MyAlarm";
 import axios from "axios";
 import Footer from "../components/Footer";
-
-axios.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("access_token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import Alarm from "../components/Alarm";
+import ClubMgt from "../components/ClubMgt";
 
 const Mypage = () => {
-  interface UserData {
-    name: string;
-    myClub: string;
-  }
-
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const [manageVisible, setManageVisible_] = useState(false);
   const [userData, setUserData] = useState({ name: "", myClub: "" });
 
   const Clubs = [
@@ -38,29 +21,10 @@ const Mypage = () => {
     { name: "대동여지도", major: "프론트엔드", date: "~", state: "합격" },
   ];
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.post(
-  //       "https://prod-server.xquare.app/jung-ho/user/student-info",
-  //       null,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-  //         },
-  //       }
-  //     );
-  //     setUserData(response.data);
-  //   };
-  //   fetchData();
-  // });
-
   return (
     <Container>
       {/* <MyAlarm /> */}
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-        setManageVisible={setManageVisible_}
-      />
+      <Header setAlarmVisible={setAlarmVisible_} />
       <MyPageWrapper>
         <SmallBanner>
           <Title>마이페이지</Title>
@@ -90,6 +54,7 @@ const Mypage = () => {
         </ApplyWrapper>
         <Footer />
       </MyPageWrapper>
+      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
 };

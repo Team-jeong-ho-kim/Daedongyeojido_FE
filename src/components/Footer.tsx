@@ -42,7 +42,7 @@ const Container = styled.div`
 
 const FooterWrapper = styled.div`
   display: flex;
-  gap: 710px;
+  gap: 510px;
 `;
 
 const MajorWrapper = styled.div`
@@ -76,7 +76,7 @@ const Logo = styled.img`
 `;
 
 const Line = styled.div`
-  width: 1392px;
+  width: 1170px;
   height: 1px;
   background-color: white;
 `;
