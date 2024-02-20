@@ -42,7 +42,7 @@ const Container = styled.div`
   position: sticky;
   top: 0px;
   width: 100%;
-  height: 80px;
+  height: 64px;
   background-color: White;
   display: flex;
   justify-content: center;

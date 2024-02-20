@@ -112,11 +112,11 @@ const BannerImage = styled.img`
 
 const BannerBar = styled.div`
   display: flex;
-  gap: 44px;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   width: 100%;
-  height: 76px;
+  height: 64px;
   border-bottom: 1px solid #e9ecef;
 `;
 
@@ -124,9 +124,9 @@ const MoveBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  width: 168px;
-  height: 52px;
+  gap: 16px;
+  width: 150px;
+  height: 38px;
   background-color: #000000;
   opacity: 0.4;
   border-radius: 90px;
@@ -163,7 +163,7 @@ const ArrowImg = styled.img`
 
 const ExplainWrapper = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 10px;
 `;
 
 const BannerExplain = styled.div<BannerExplainProps>`
