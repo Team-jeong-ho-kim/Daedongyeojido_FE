@@ -54,7 +54,6 @@ const Container = styled.div`
   flex-direction: column;
   gap: 23px;
   width: 500px;
-
   height: 377px;
   background-color: White;
   border: 1px solid black;
@@ -69,7 +68,7 @@ const TopWrapper = styled.div`
 
 const Title = styled.p`
   font-size: 36px;
-  font-weight: bold;
+  font-family: "DXhimchanBold";
 `;
 
 const CloseIcon = styled.img`

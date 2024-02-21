@@ -21,15 +21,14 @@ time, mark, audio, video, input, button, select, option, textarea {
   font: inherit;
   vertical-align: baseline;
   cursor: default;
-  font-family: 'DXhimchan';
-  font-weight: 500;
+  font-family: 'DXhimchanMedium';
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, main, menu, nav, section {
   display: block;
 }
-/* HTML5 hidden-attribute fix for newer browsers */
+
 *[hidden] {
     display: none;
 }
@@ -56,8 +55,7 @@ table {
    outline: none;
 }
 body {
-  font-family: 'DXhimchan';
-  font-weight: 500;
+  font-family: 'DXhimchanMedium';
   color:black;
   line-height: 1.2;
 

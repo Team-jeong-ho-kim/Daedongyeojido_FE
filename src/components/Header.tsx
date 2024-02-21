@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
         <ButtonWrapper>
           <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
           <TextButton to="/ClubMgt">동아리 관리</TextButton>
-          <TextButton to="" >회식 신청</TextButton>
+          <TextButton to="">회식 신청</TextButton>
         </ButtonWrapper>
       </Wrapper>
       <IconWrapper>
@@ -50,7 +50,7 @@ const Container = styled.div`
   position: sticky;
   top: 0px;
   width: 100%;
-  height: 80px;
+  height: 64px;
   background-color: White;
   display: flex;
   justify-content: center;
@@ -76,8 +76,8 @@ const LogoWrapper = styled(Link)`
 `;
 
 const TextButton = styled(Link)`
+  font-family: "DXhimchanLight";
   font-size: 20px;
-  font-weight: 300;
 `;
 
 const LogoImg = styled.img`
@@ -86,9 +86,8 @@ const LogoImg = styled.img`
 `;
 
 const Name = styled.p`
+  font-family: "DXhimchanBold";
   font-size: 26px;
-  font-weight: 700;
-
 `;
 
 const ButtonWrapper = styled.div`
@@ -96,6 +95,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+`;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -112,32 +112,12 @@ const AlarmImg = styled.img`
   height: 26px;
 `;
 
-const ManageButton = styled.div`
-  width: 100px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
-`;
-
-const LoginButton = styled(Link)`
-  width: 70px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
-        
 const MyPageImg = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
   height: 32px;
+`;
 
 export default Header;

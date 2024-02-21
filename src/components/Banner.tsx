@@ -110,23 +110,22 @@ const BannerImage = styled.img`
 
 const BannerBar = styled.div`
   display: flex;
-  gap: 44px;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   width: 100%;
-  height: 76px;
-  border-bottom: 1px solid #b0b0b0;
+  height: 64px;
+  border-bottom: 1px solid #e9ecef;
 `;
 
 const MoveBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  width: 168px;
-  height: 52px;
-  background-color: #000000;
-  opacity: 0.4;
+  gap: 16px;
+  width: 150px;
+  height: 38px;
+  background-color: #333b3d;
   border-radius: 90px;
 `;
 
@@ -138,19 +137,19 @@ const NumberWrapper = styled.div`
 const CurrentNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const And = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const TotalNumber = styled.p`
   color: white;
   font-size: 20px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
 `;
 
 const ArrowImg = styled.img`
@@ -161,7 +160,7 @@ const ArrowImg = styled.img`
 
 const ExplainWrapper = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 10px;
 `;
 
 const BannerExplain = styled.div<BannerExplainProps>`
@@ -174,7 +173,6 @@ const BannerExplain = styled.div<BannerExplainProps>`
   border-radius: 30px;
   color: #333b3d;
   font-size: 18px;
-  font-weight: 500;
 `;
 
 export default AdBanner;

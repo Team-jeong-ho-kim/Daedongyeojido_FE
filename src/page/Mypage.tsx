@@ -179,12 +179,12 @@ const MyText = styled.div`
 
 const MyName = styled.p`
   font-size: 48px;
-  font-weight: 700;
+  font-family: "DXhimchanBold";
 `;
 
 const MyClub = styled.p`
   font-size: 32px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
   color: #989898;
 `;
 
@@ -256,7 +256,7 @@ const Major = styled.p`
 
 const Date = styled.p`
   font-size: 12px;
-  font-weight: 300;
+  font-family: "DXhimchanLight";
   color: #989898;
 `;
 

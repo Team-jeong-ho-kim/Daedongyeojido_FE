@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LogoWhite } from "../assets";
+import { Github, Instagram, LogoWhite } from "../assets";
 
 const Footer = () => {
   const members = [
@@ -12,18 +12,12 @@ const Footer = () => {
   return (
     <Container>
       <FooterWrapper>
-        <MajorWrapper>
-          {members.map((element) => (
-            <Majors>
-              <Major>{element.major}</Major>
-              <Name>{element.name}</Name>
-              <Name>{element.name2}</Name>
-            </Majors>
-          ))}
-        </MajorWrapper>
+        <Icons>
+          <Icon src={Github} />
+          <Icon src={Instagram} />
+        </Icons>
         <Logo src={LogoWhite} />
       </FooterWrapper>
-      <Line></Line>
     </Container>
   );
 };
@@ -33,52 +27,31 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 70px;
+  gap: 40px;
   width: 100%;
-  height: 317px;
+  height: 200px;
   background-color: black;
-  padding: 48px 60px;
 `;
 
 const FooterWrapper = styled.div`
   display: flex;
-  gap: 510px;
+  gap: 800px;
 `;
 
-const MajorWrapper = styled.div`
+const Icons = styled.div`
   display: flex;
-  gap: 64px;
+  gap: 10px;
 `;
 
-const Majors = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-`;
-
-const Major = styled.p`
-  font-size: 24px;
-  font-weight: Light;
-  color: white;
-  margin-bottom: 16px;
-`;
-
-const Name = styled.p`
-  font-size: 24px;
-  font-weight: Light;
-  color: white;
+const Icon = styled.img`
+  width: 25px;
+  height: 25px;
+  border-radius: 30px;
 `;
 
 const Logo = styled.img`
   width: 100px;
   height: 100px;
-`;
-
-const Line = styled.div`
-  width: 1170px;
-  height: 1px;
-  background-color: white;
 `;
 
 export default Footer;
