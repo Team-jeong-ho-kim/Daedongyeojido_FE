@@ -15,20 +15,19 @@ const Major = () => {
     { img: ClubImg, name: "정보보안" },
     { img: ClubImg, name: "풀스택" },
     { img: ClubImg, name: "게임" },
+    { img: ClubImg, name: "데브옵스" },
   ];
   return (
     <Container>
-      <Title>대마고 동아리 여기서 지원하고 도움받자</Title>
-      <Arrow>
-        <MajorWrapper>
-          {majors.map((element) => (
-            <Majors>
-              <MajorImg src={element.img} />
-              <MajorName>{element.name}</MajorName>
-            </Majors>
-          ))}
-        </MajorWrapper>
-      </Arrow>
+      <Title>대마고 동아리 여기서 지원하고 도움받자!</Title>
+      <MajorWrapper>
+        {majors.map((element) => (
+          <Majors>
+            <MajorImg src={element.img} />
+            <MajorName>{element.name}</MajorName>
+          </Majors>
+        ))}
+      </MajorWrapper>
     </Container>
   );
 };
@@ -52,9 +51,14 @@ const Arrow = styled.div`
   gap: 48px;
 `;
 
+const ArrowIcon = styled.img`
+  width: 10px;
+  height: 20px;
+`;
+
 const MajorWrapper = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 40px;
 `;
 
 const Majors = styled.div`
