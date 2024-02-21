@@ -22,11 +22,7 @@ type ClubPropsType = {
 }
 
 const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
-  const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
-
-  const PlusMemberClick = () => {
-    setPlusMemberVisible_((prevVisible) => !prevVisible);
-  };
+  const [plusMemberVisible, setPlusMemberVisible_] = useState<number>(-1);
 
   const onDelete = (name:string) => {
     if(!window.confirm(`정말 "${name}"동아리를 삭제 하시겠습니까?`)) return;
@@ -37,29 +33,35 @@ const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
   return (
     <Container>
       {clubs?.map((element:ClubPropsType, index:number) => (
-        <Border key={index}>
-          <ClubWrapper>
-            <ClubName>{element.clubName}</ClubName>
-            <Detail>
-              <ClubDetail>{element.teacherName} 선생님</ClubDetail>
-              <ClubDetail>회식 {element.messCount}회</ClubDetail>
-            </Detail>
-          </ClubWrapper>
-          {element.memberResponses.length > 0 ? element.memberResponses.map((element, index) => (
-            <Member key={index}>
-              <Info>{element.userName}</Info>
-              <Info>{element.classNumber}</Info>
-              <Info>{element.part === 'CLUB_MEMBER' ? '동아리원' : '동아리장'}</Info>
-            </Member>
-          )) : '아직 멤버가 없습니다'}
-          <Icons>
-            <Icon onClick={PlusMemberClick} src={Edit} />
-            <Icon src={Remove} onClick={() => { onDelete(element.clubName) }} style={{cursor:"pointer"}}/>
-          </Icons>
-        </Border>
+        <>
+          <Border key={index}>
+            <ClubWrapper>
+              <ClubName>{element.clubName}</ClubName>
+              <Detail>
+                <ClubDetail>{element.teacherName} 선생님</ClubDetail>
+                <ClubDetail>회식 {element.messCount}회</ClubDetail>
+              </Detail>
+            </ClubWrapper>
+            {element.memberResponses.length > 0 ? element.memberResponses.map((element, index) => (
+              <Member key={index}>
+                <Info>{element.userName}</Info>
+                <Info>{element.classNumber}</Info>
+                <Info>{element.part === 'CLUB_MEMBER' ? '동아리원' : '동아리장'}</Info>
+              </Member>
+            )) : '아직 멤버가 없습니다'}
+            <Icons>
+              <Icon onClick={() => {
+                if(plusMemberVisible >= 0) setPlusMemberVisible_(-1);
+                else setPlusMemberVisible_(index);
+              }} src={Edit} />
+              <Icon src={Remove} onClick={() => { onDelete(element.clubName) }} style={{cursor:"pointer"}}/>
+            </Icons>
+          </Border>
+          
+        </>
       ))}
-      {plusMemberVisible && (
-        <PlusMember setPlusMemberVisible={setPlusMemberVisible_} />
+      {plusMemberVisible >= 0 && clubs &&(
+        <PlusMember club={clubs[plusMemberVisible]} />
       )}
     </Container>
   );

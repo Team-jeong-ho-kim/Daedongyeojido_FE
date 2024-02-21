@@ -3,22 +3,22 @@ import { MemberPlus } from "../assets";
 
 const PlusMemberInput = () => {
   return (
-    <Container>
-      <NameNumber placeholder="이름" />
-      <NameNumber placeholder="학번" />
-      <Select>
-        <Option disabled selected>
+    <_Container>
+      <_NameNumber placeholder="이름" />
+      <_NameNumber placeholder="학번" />
+      <_Select>
+        <_Option disabled selected>
           미정
-        </Option>
-        <Option>동아리장</Option>
-        <Option>동아리원</Option>
-      </Select>
-      <PlusIcon src={MemberPlus} />
-    </Container>
+        </_Option>
+        <_Option>동아리장</_Option>
+        <_Option>동아리원</_Option>
+      </_Select>
+      <_PlusIcon src={MemberPlus} />
+    </_Container>
   );
 };
 
-const Container = styled.div`
+const _Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +29,7 @@ const Container = styled.div`
   background-color: #cccccc;
 `;
 
-const NameNumber = styled.input`
+const _NameNumber = styled.input`
   width: 150px;
   height: 23px;
   font-size: 16px;
@@ -42,7 +42,7 @@ const NameNumber = styled.input`
   }
 `;
 
-const Select = styled.select`
+const _Select = styled.select`
   width: 150px;
   height: 23px;
   border-radius: 5px;
@@ -50,9 +50,9 @@ const Select = styled.select`
   color: #6e6e87;
 `;
 
-const Option = styled.option``;
+const _Option = styled.option``;
 
-const PlusIcon = styled.img`
+const _PlusIcon = styled.img`
   width: 16px;
   height: 16px;
 `;
