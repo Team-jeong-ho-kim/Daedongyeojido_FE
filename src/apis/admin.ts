@@ -17,3 +17,12 @@ export const createClub = async (clubName: string) => {
     }
   });
 }
+
+export const deleteClub = async (clubName: string) => {
+  const token = localStorage.getItem("access_token");
+  return await axios.delete(`https://prod-server.xquare.app/jung-ho/admin-club/delete/${clubName}`,{
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}

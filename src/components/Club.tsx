@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Edit, Remove } from "../assets";
 import { useState } from "react";
 import PlusMember from "../components/PlusMember";
+import { deleteClub } from "../apis/admin";
 
 interface ClubProps {
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -26,6 +27,13 @@ const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
   const PlusMemberClick = () => {
     setPlusMemberVisible_((prevVisible) => !prevVisible);
   };
+
+  const onDelete = (name:string) => {
+    if(!window.confirm(`정말 "${name}"동아리를 삭제 하시겠습니까?`)) return;
+
+    deleteClub(name).then(()=>window.location.reload()).catch((err)=>console.log(err))
+  }
+
   return (
     <Container>
       {clubs?.map((element:ClubPropsType, index:number) => (
@@ -46,7 +54,7 @@ const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
           )) : '아직 멤버가 없습니다'}
           <Icons>
             <Icon onClick={PlusMemberClick} src={Edit} />
-            <Icon src={Remove} />
+            <Icon src={Remove} onClick={() => { onDelete(element.clubName) }} style={{cursor:"pointer"}}/>
           </Icons>
         </Border>
       ))}
