@@ -106,27 +106,6 @@ const AlarmImg = styled.img`
   width: 24px;
   height: 26px;
 `;
-
-const ManageButton = styled.div`
-  width: 100px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
-`;
-
-const LoginButton = styled(Link)`
-  width: 70px;
-  height: 30px;
-  background-color: #ffb800;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  text-justify: center;
-  line-height: 30px;
         
 const MyPageImg = styled.img`
   display: flex;
