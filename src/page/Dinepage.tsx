@@ -24,10 +24,6 @@ const Dinepage = () => {
     acceptDine(id).then(() => window.location.reload()).catch((err) => console.log(err))
   }
 
-  const onCancle = (id:string) => {
-    cancleDine(id).then(() => window.location.reload()).catch((err) => console.log(err))
-  }
-
   return (
     <Container>
       <Header setAlarmVisible={setAlarmVisible_} />
