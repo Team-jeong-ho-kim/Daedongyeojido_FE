@@ -1,28 +1,48 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { postAll, acceptDine, cancleDine } from "../apis/dine";
+
+type dineType = {
+  myClub:string;
+  messDate:string;
+  messId:string;
+  messStartTime:number;
+  messEndTime:number;
+  acceptOrNot:boolean;
+}
 
 const Dinepage = () => {
   const [alarmVisible, setAlarmVisible_] = useState(false);
-  const Dines = [
-    { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
-    { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
-    { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
-    { name: "대동여지도", time: "2024년 02월 10일 9교시 ~ 10교시 회식 신청" },
-  ];
+  const [dines, setDines] = useState<dineType[]>();
+
+  useEffect(() => {
+    postAll().then((res)=>setDines(res.data)).catch((err)=>console.log(err));
+  },[])
+
+  const onAccept = (id:string) => {
+    acceptDine(id).then(() => window.location.reload()).catch((err) => console.log(err))
+  }
+
+  const onCancle = (id:string) => {
+    cancleDine(id).then(() => window.location.reload()).catch((err) => console.log(err))
+  }
+
   return (
     <Container>
       <Header setAlarmVisible={setAlarmVisible_} />
       <Title>동아리 회식 관리</Title>
       <Wrapper>
-        {Dines.map((element) => (
-          <DineWrapper>
+        {dines?.map((element, index) => (
+          <DineWrapper key={index}>
             <Club>
-              <ClubName>{element.name}</ClubName>
-              <DineTime>{element.time}</DineTime>
+              <ClubName>{element.myClub}</ClubName>
+              <DineTime>{element.messDate.split('-')[0]}년 {element.messDate.split('-')[1]}월 {element.messDate.split('-')[2]}일 {element.messStartTime}교시 ~ {element.messEndTime}교시 회식 신청</DineTime>
             </Club>
             <Button>
-              <AcceptanceBtn>수락</AcceptanceBtn>
+              <AcceptanceBtn onClick={()=>{
+                onAccept(element.messId)
+              }}>{element.acceptOrNot ? "취소" : "수락"}</AcceptanceBtn>
             </Button>
           </DineWrapper>
         ))}
