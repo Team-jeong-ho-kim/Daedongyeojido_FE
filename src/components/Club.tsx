@@ -63,12 +63,16 @@ const Club: React.FC<ClubProps> = ({ setPlusMemberVisible }) => {
 };
 
 const Container = styled.div`
+  margin-top:50px;
+  width:100%;
+  max-width:1392px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 240px 240px 240px 240px 240px);
-  row-gap: 28px;
-  column-gap: 48px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  justify-items: center;
+  justify-content: start;
+  gap: 48px;
 `;
+
 
 const Border = styled.div`
   display: flex;

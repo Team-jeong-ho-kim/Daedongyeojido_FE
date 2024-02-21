@@ -46,13 +46,16 @@ const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  align-items: center;
 `;
 
 const Buttons = styled.div`
+  width: 100%;
+  max-width: 1392px;
   display: flex;
-  justify-content: center;
-  gap: 793px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
 `;
 
 const LeftBtns = styled.div`
