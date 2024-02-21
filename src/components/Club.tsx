@@ -33,8 +33,8 @@ const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
           <ClubWrapper>
             <ClubName>{element.clubName}</ClubName>
             <Detail>
-              <ClubDetail>{element.teacherName}</ClubDetail>
-              <ClubDetail>{element.messCount}</ClubDetail>
+              <ClubDetail>{element.teacherName} 선생님</ClubDetail>
+              <ClubDetail>회식 {element.messCount}회</ClubDetail>
             </Detail>
           </ClubWrapper>
           <Member>

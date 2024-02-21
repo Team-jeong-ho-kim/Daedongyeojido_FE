@@ -5,7 +5,7 @@ import Announce from "../components/UploadAnnounce";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlusWhite } from "../assets";
-import { postPage } from "../apis/admin";
+import { createClub, postPage } from "../apis/admin";
 
 interface ClubProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +30,7 @@ const ClubMgtpage: React.FC<ClubProps> = ({
   setPlusMemberVisible,
 }) => {
   const [clubData, setClubData] = useState<ClubType[]>();
+  const [clubName, setClubName] = useState<string>("");
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
   const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
@@ -47,6 +48,15 @@ const ClubMgtpage: React.FC<ClubProps> = ({
     })
   },[]);
 
+  const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setClubName(e.target.value);
+  }
+
+  const handleOnKeyPress = () => {
+    createClub(clubName).then(() => window.location.reload())
+    .catch((err) => console.log(err))
+  };
+
   return (
     <Container>
       <Header setAlarmVisible={setAlarmVisible_} />
@@ -58,8 +68,8 @@ const ClubMgtpage: React.FC<ClubProps> = ({
           <Button to="/Dine">회식 관리</Button>
         </LeftBtns>
         <PlusClubBtn>
-          <input type="text" placeholder="동아리명을 입력해주세요" />
-          <PlusIcon src={PlusWhite} />
+          <input type="text" placeholder="동아리명을 입력해주세요" value={clubName} onChange={onChange}/>
+          <PlusIcon src={PlusWhite} onClick={handleOnKeyPress}/>
         </PlusClubBtn>
       </Buttons>
       <Club clubs={clubData} />
@@ -128,6 +138,7 @@ const PlusClubBtn = styled.div`
 const PlusIcon = styled.img`
   width: 15px;
   height: 15px;
+  cursor: pointer;
 `;
 
 export default ClubMgtpage;
