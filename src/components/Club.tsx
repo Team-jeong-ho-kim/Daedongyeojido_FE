@@ -7,41 +7,34 @@ interface ClubProps {
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Club: React.FC<ClubProps> = ({ setPlusMemberVisible }) => {
+type MemberType = {
+  userName: String;
+  classNumber: String;
+  part: "INDEPENDENT" | "CLUB_MEMBER" | "CLUB_LEADER" | "TEACHER" | "CLUB_LEADER_TEACHER"
+}
+
+type ClubPropsType = {
+  clubName: string;
+  teacherName: string;
+  messCount: number;
+  memberResponses: MemberType[];
+}
+
+const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
   const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
-  const clubs = [
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-  ];
 
   const PlusMemberClick = () => {
     setPlusMemberVisible_((prevVisible) => !prevVisible);
   };
   return (
     <Container>
-      {clubs.map((element) => (
-        <Border>
+      {clubs?.map((element:ClubPropsType, index:number) => (
+        <Border key={index}>
           <ClubWrapper>
-            <ClubName>{element.clubname}</ClubName>
+            <ClubName>{element.clubName}</ClubName>
             <Detail>
-              <ClubDetail>{element.teacher}</ClubDetail>
-              <ClubDetail>{element.dine}</ClubDetail>
+              <ClubDetail>{element.teacherName}</ClubDetail>
+              <ClubDetail>{element.messCount}</ClubDetail>
             </Detail>
           </ClubWrapper>
           <Member>

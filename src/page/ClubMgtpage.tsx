@@ -2,25 +2,51 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Club from "../components/Club";
 import Announce from "../components/UploadAnnounce";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlusWhite } from "../assets";
+import { postPage } from "../apis/admin";
 
 interface ClubProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type MemberType = {
+  userName: String;
+  classNumber: String;
+  part: "INDEPENDENT" | "CLUB_MEMBER" | "CLUB_LEADER" | "TEACHER" | "CLUB_LEADER_TEACHER"
+}
+
+type ClubType = {
+  clubName: string;
+  teacherName: string;
+  messCount: number;
+  memberResponses: MemberType[];
+}
+
 const ClubMgtpage: React.FC<ClubProps> = ({
   setAnnounceVisible,
   setPlusMemberVisible,
 }) => {
+  const [clubData, setClubData] = useState<ClubType[]>();
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
   const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
+
+  useEffect(() => {
+    postPage().then((res)=>{
+      setClubData(res.data);
+      console.log(res.data);
+      
+    }).catch((err)=>{
+      console.log(err);
+    })
+  },[]);
+
   return (
     <Container>
       <Header setAlarmVisible={setAlarmVisible_} />
@@ -36,7 +62,7 @@ const ClubMgtpage: React.FC<ClubProps> = ({
           <PlusIcon src={PlusWhite} />
         </PlusClubBtn>
       </Buttons>
-      <Club setPlusMemberVisible={setPlusMemberVisible_} />
+      <Club clubs={clubData} />
       {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible_} />}
     </Container>
   );
