@@ -56,13 +56,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 610px;
+  box-shadow: 0 2px 4px 0 hsla(0, 0%, 80.8%, 0.5);
   z-index: 10;
-`;
-
-const LogoImg = styled.img`
-  height: 60px;
-  gap: 650px;
-  z-index: 1;
 `;
 
 const Wrapper = styled.div`
@@ -112,6 +107,27 @@ const AlarmImg = styled.img`
   height: 26px;
 `;
 
+const ManageButton = styled.div`
+  width: 100px;
+  height: 30px;
+  background-color: #ffb800;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  text-justify: center;
+  line-height: 30px;
+`;
+
+const LoginButton = styled(Link)`
+  width: 70px;
+  height: 30px;
+  background-color: #ffb800;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  text-justify: center;
+  line-height: 30px;
+        
 const MyPageImg = styled.img`
   display: flex;
   justify-content: center;

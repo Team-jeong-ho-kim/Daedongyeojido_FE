@@ -122,8 +122,8 @@ const MoveBanner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  width: 150px;
+  gap: 12px;
+  width: 120px;
   height: 38px;
   background-color: #333b3d;
   border-radius: 90px;
