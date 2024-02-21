@@ -37,11 +37,13 @@ const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
               <ClubDetail>회식 {element.messCount}회</ClubDetail>
             </Detail>
           </ClubWrapper>
-          <Member>
-            <Info>김정호</Info>
-            <Info>2210</Info>
-            <Info>동아리장</Info>
-          </Member>
+          {element.memberResponses.length > 0 ? element.memberResponses.map((element, index) => (
+            <Member key={index}>
+              <Info>{element.userName}</Info>
+              <Info>{element.classNumber}</Info>
+              <Info>{element.part === 'CLUB_MEMBER' ? '동아리원' : '동아리장'}</Info>
+            </Member>
+          )) : '아직 멤버가 없습니다'}
           <Icons>
             <Icon onClick={PlusMemberClick} src={Edit} />
             <Icon src={Remove} />
