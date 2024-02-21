@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import axios from "axios";
+import styled from "styled-components"
 import { useEffect, useState } from "react";
+import { instance } from "../apis/axios";
 
 interface Club {
   clubImageUrl: string;
@@ -14,8 +14,8 @@ const MainClub = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post(
-        "https://prod-server.xquare.app/jung-ho/main"
+      const response = await instance.post(
+        "/main"
       );
       const allClubResponses = response.data.allClubResponses;
 

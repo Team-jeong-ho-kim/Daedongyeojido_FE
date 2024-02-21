@@ -14,6 +14,8 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
     setAlarmVisible((prevVisible) => !prevVisible);
   };
 
+  const accessToken = localStorage.getItem("access_token");
+
   return (
     <Container>
       <Wrapper>
@@ -29,9 +31,15 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
       </Wrapper>
       <IconWrapper>
         <AlarmImg src={Alarm} onClick={AlarmClick} />
-        <Link to="/My">
-          <MyPageImg src={MyPage} />
-        </Link>
+        {accessToken ? (
+          <Link to="/My">
+            <MyPageImg src={MyPage} />
+          </Link>
+        ) : (
+          <Link to="/login">
+            <MyPageImg src={MyPage} />
+          </Link>
+        )}
       </IconWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
@@ -47,7 +55,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1300px;
+  gap: 610px;
+  z-index: 10;
 `;
 
 const LogoImg = styled.img`
