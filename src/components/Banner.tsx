@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LeftArrow, RightArrow } from "../assets";
-import axios from "axios";
+import { instance } from "../apis/axios";
 
 interface BannerExplainProps {
   borderIndex: number;
@@ -46,9 +46,7 @@ const AdBanner: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post(
-        "https://prod-server.xquare.app/jung-ho/main"
-      );
+      const response = await instance.post("/main");
       const images = response.data.banners;
       setCurrentImage(images);
     } catch (error) {

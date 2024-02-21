@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Close } from "../assets";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { instance } from "../apis/axios";
 
 interface AnnounceProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,9 +18,7 @@ const Announce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post(
-        "https://prod-server.xquare.app/jung-ho/main"
-      );
+      const response = await instance.post("/main");
       const announcesData = response.data.announcement;
       setAnnounces(announcesData);
     } catch (error) {
@@ -82,6 +80,7 @@ const CloseIcon = styled.img`
 const Contents = styled.p`
   word-wrap: break-word;
   font-size: 28px;
+  font-family: "Pretendard";
 `;
 
 export default Announce;

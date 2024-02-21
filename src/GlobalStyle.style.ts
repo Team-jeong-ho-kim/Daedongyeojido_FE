@@ -76,5 +76,11 @@ a {
     font-family: 'DXhimchanBold';
     src: url('https://daedong.s3.ap-northeast-2.amazonaws.com/%EB%8C%80%EB%8F%99%EC%97%AC%EC%A7%80%EB%8F%84+%ED%8F%B0%ED%8A%B8/DXBold.ttf') format('truetype');
   }
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
 
 `;

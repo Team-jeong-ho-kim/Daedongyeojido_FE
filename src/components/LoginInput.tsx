@@ -5,6 +5,7 @@ interface LoginInputProps {
   value: any;
   onChange: any;
   onKeyUp?: any;
+  type?: any;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
@@ -12,14 +13,24 @@ const LoginInput: React.FC<LoginInputProps> = ({
   value,
   onChange,
   onKeyUp,
+  type,
 }) => {
-  return <Input placeholder={placeholder} value={value} onChange={onChange} />;
+  return (
+    <Input
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      type={type}
+      onKeyUp={onKeyUp}
+    />
+  );
 };
 
 const Input = styled.input`
-  width: 900px;
-  height: 80px;
-  padding: 26px 40px;
+  width: 400px;
+  height: 64px;
+  padding: 16px 24px;
+
   font-size: 28px;
   border-radius: 10px;
   border: 1px solid black;
