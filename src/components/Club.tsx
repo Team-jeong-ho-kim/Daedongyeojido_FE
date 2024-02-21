@@ -2,73 +2,82 @@ import styled from "styled-components";
 import { Edit, Remove } from "../assets";
 import { useState } from "react";
 import PlusMember from "../components/PlusMember";
+import { deleteClub } from "../apis/admin";
 
 interface ClubProps {
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Club: React.FC<ClubProps> = ({ setPlusMemberVisible }) => {
-  const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
-  const clubs = [
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 1회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 3회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-    { clubname: "대동여지도", teacher: "박우빈 선생님", dine: "회식 2회" },
-  ];
+type MemberType = {
+  userName: String;
+  classNumber: String;
+  part: "INDEPENDENT" | "CLUB_MEMBER" | "CLUB_LEADER" | "TEACHER" | "CLUB_LEADER_TEACHER"
+}
 
-  const PlusMemberClick = () => {
-    setPlusMemberVisible_((prevVisible) => !prevVisible);
-  };
+type ClubPropsType = {
+  clubName: string;
+  teacherName: string;
+  messCount: number;
+  memberResponses: MemberType[];
+}
+
+const Club = ({ clubs }:{clubs:ClubPropsType[] | undefined;}) => {
+  const [plusMemberVisible, setPlusMemberVisible_] = useState<number>(-1);
+
+  const onDelete = (name:string) => {
+    if(!window.confirm(`정말 "${name}"동아리를 삭제 하시겠습니까?`)) return;
+
+    deleteClub(name).then(()=>window.location.reload()).catch((err)=>console.log(err))
+  }
+
   return (
     <Container>
-      {clubs.map((element) => (
-        <Border>
-          <ClubWrapper>
-            <ClubName>{element.clubname}</ClubName>
-            <Detail>
-              <ClubDetail>{element.teacher}</ClubDetail>
-              <ClubDetail>{element.dine}</ClubDetail>
-            </Detail>
-          </ClubWrapper>
-          <Member>
-            <Info>김정호</Info>
-            <Info>2210</Info>
-            <Info>동아리장</Info>
-          </Member>
-          <Icons>
-            <Icon onClick={PlusMemberClick} src={Edit} />
-            <Icon src={Remove} />
-          </Icons>
-        </Border>
+      {clubs?.map((element:ClubPropsType, index:number) => (
+        <>
+          <Border key={index}>
+            <ClubWrapper>
+              <ClubName>{element.clubName}</ClubName>
+              <Detail>
+                <ClubDetail>{element.teacherName} 선생님</ClubDetail>
+                <ClubDetail>회식 {element.messCount}회</ClubDetail>
+              </Detail>
+            </ClubWrapper>
+            {element.memberResponses.length > 0 ? element.memberResponses.map((element, index) => (
+              <Member key={index}>
+                <Info>{element.userName}</Info>
+                <Info>{element.classNumber}</Info>
+                <Info>{element.part === 'CLUB_MEMBER' ? '동아리원' : '동아리장'}</Info>
+              </Member>
+            )) : '아직 멤버가 없습니다'}
+            <Icons>
+              <Icon onClick={() => {
+                if(plusMemberVisible >= 0) setPlusMemberVisible_(-1);
+                else setPlusMemberVisible_(index);
+              }} src={Edit} />
+              <Icon src={Remove} onClick={() => { onDelete(element.clubName) }} style={{cursor:"pointer"}}/>
+            </Icons>
+          </Border>
+          
+        </>
       ))}
-      {plusMemberVisible && (
-        <PlusMember setPlusMemberVisible={setPlusMemberVisible_} />
+      {plusMemberVisible >= 0 && clubs &&(
+        <PlusMember club={clubs[plusMemberVisible]} />
       )}
     </Container>
   );
 };
 
 const Container = styled.div`
+  margin-top:50px;
+  width:100%;
+  max-width:1392px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 240px 240px 240px 240px 240px);
-  row-gap: 28px;
-  column-gap: 48px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  justify-items: center;
+  justify-content: start;
+  gap: 48px;
 `;
+
 
 const Border = styled.div`
   display: flex;

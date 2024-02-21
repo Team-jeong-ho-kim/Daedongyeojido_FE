@@ -1,18 +1,43 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { postAlarm } from "../apis/alarm";
 
 interface AnnounceProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type FormType = {
+  title:string;
+  contents:string;
+}
+
 const UploadAnnounce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
+  const [data, setData] = useState<FormType>({
+    title:"",
+    contents:""
+  });
+
+  const onChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+
+    setData({
+      ...data,
+      [name]: value
+    })
+  }
+
+  const onSubmit = () => {
+    postAlarm(data).then(()=>{alert('공지가 성공적으로 등록되었습니다.');window.location.reload()}).catch((err)=>{alert('공지 등록을 실패했습니다.');console.log(err)})
+  }
+
   return (
     <Container>
       <Text>공지사항 등록</Text>
       <Inputs>
-        <TitleInput placeholder="공지 제목을 입력해주세요." />
-        <ContentsInput placeholder="공지 내용을 입력해주세요." />
+        <TitleInput placeholder="공지 제목을 입력해주세요." value={data.title} name="title" onChange={onChange}/>
+        <ContentsInput placeholder="공지 내용을 입력해주세요." value={data.contents} name="contents" onChange={onChange}/>
       </Inputs>
-      <AnnounceBtn>공지 등록하기</AnnounceBtn>
+      <AnnounceBtn onClick={onSubmit}>공지 등록하기</AnnounceBtn>
     </Container>
   );
 };
