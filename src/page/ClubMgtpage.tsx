@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlusWhite } from "../assets";
 import { createClub, postPage } from "../apis/admin";
+import Alarm from "../components/Alarm";
 
 interface ClubProps {
   setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,15 +26,11 @@ type ClubType = {
   memberResponses: MemberType[];
 }
 
-const ClubMgtpage: React.FC<ClubProps> = ({
-  setAnnounceVisible,
-  setPlusMemberVisible,
-}) => {
+const ClubMgtpage: React.FC<ClubProps> = () => {
   const [clubData, setClubData] = useState<ClubType[]>();
   const [clubName, setClubName] = useState<string>("");
   const [alarmVisible, setAlarmVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
-  const [plusMemberVisible, setPlusMemberVisible_] = useState(false);
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
@@ -74,6 +71,7 @@ const ClubMgtpage: React.FC<ClubProps> = ({
       </Buttons>
       <Club clubs={clubData} />
       {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible_} />}
+      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
 };
