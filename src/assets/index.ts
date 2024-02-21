@@ -21,3 +21,4 @@ export { default as RightArrowBlack } from "./img/RightArrowBlack.png";
 export { default as MyPage } from "./img/MyPage.png";
 export { default as Close } from "./img/Close.png";
 export { default as PlusWhite } from "./img/PlusWhite.png";
+export { default as NoneImage } from "./img/NoneImage.png";

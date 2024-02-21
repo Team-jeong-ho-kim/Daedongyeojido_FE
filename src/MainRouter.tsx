@@ -8,6 +8,8 @@ import Mypage from "./page/Mypage";
 import ApplicantDetailpage from "./page/ApplicantDetailpage";
 import Loginpage from "./page/Loginpage";
 import ClubMgtpage from "./page/ClubMgtpage";
+import ClubDetailsInfopage from "./page/ClubDetailsInfopageStudent";
+import CreateClub from "./page/CreateClub";
 
 function MainRouter() {
   return (
@@ -30,6 +32,8 @@ function MainRouter() {
         />
         <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
         <Route path="/Login" element={<Loginpage />} />
+        <Route path="/ClubDetailsInfo/Student" element={<ClubDetailsInfopage />} />
+        <Route path="/CreateClub" element={<CreateClub />} />
       </Routes>
     </BrowserRouter>
   );

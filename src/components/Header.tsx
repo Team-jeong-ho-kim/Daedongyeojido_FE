@@ -16,23 +16,25 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
 
   return (
     <Container>
-      <Wrapper>
-        <LogoWrapper to="/">
-          <LogoImg src={LogoBlack} />
-          <Name>대동여지도</Name>
-        </LogoWrapper>
-        <ButtonWrapper>
-          <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
-          <TextButton to="/ClubMgt">동아리 관리</TextButton>
-          <TextButton to="">회식 신청</TextButton>
-        </ButtonWrapper>
-      </Wrapper>
-      <IconWrapper>
-        <AlarmImg src={Alarm} onClick={AlarmClick} />
-        <Link to="/My">
-          <MyPageImg src={MyPage} />
-        </Link>
-      </IconWrapper>
+      <HeadWrapper>
+        <Wrapper>
+          <LogoWrapper to="/">
+            <LogoImg src={LogoBlack} />
+            <Name>대동여지도</Name>
+          </LogoWrapper>
+          <ButtonWrapper>
+            <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
+            <TextButton to="/ClubMgt">동아리 관리</TextButton>
+            <TextButton to="">회식 신청</TextButton>
+          </ButtonWrapper>
+        </Wrapper>
+        <IconWrapper>
+          <AlarmImg src={Alarm} onClick={AlarmClick} />
+          <Link to="/My">
+            <MyPageImg src={MyPage} />
+          </Link>
+        </IconWrapper>
+      </HeadWrapper>
       {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
@@ -41,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
 const Container = styled.div`
   position: sticky;
   top: 0px;
-  width: 100%;
+  width: 100vw;
   height: 64px;
   background-color: White;
   display: flex;
@@ -51,9 +53,23 @@ const Container = styled.div`
   z-index: 10;
 `;
 
-const Wrapper = styled.div`
+const HeadWrapper = styled.div`
+  width: 1444px;
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
+`;
+
+const Wrapper = styled.div`
+  margin-left: 26px;
+  display: flex;
+  gap: 100px;
+  width: 619px;
+  @media screen and (max-width: 1024px) {
+    gap: 50px;
+  }
+  @media screen and (max-width: 768px) {
+    gap: 20px;
+  }
 `;
 
 const LogoWrapper = styled(Link)`
@@ -80,14 +96,22 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 80px;
+  @media screen and (max-width: 1024px) {
+    gap: 40px;
+  }
+  @media screen and (max-width: 768px) {
+    gap: 15px;
+  }
 `;
 
 const IconWrapper = styled.div`
+  margin-right: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
+  width: 106px;
 `;
 
 const AlarmImg = styled.img`
