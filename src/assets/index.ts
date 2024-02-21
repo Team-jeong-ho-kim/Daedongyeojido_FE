@@ -23,3 +23,4 @@ export { default as Close } from "./img/Close.png";
 export { default as PlusWhite } from "./img/PlusWhite.png";
 export { default as Github } from "./img/Github.png";
 export { default as Instagram } from "./img/Instagram.png";
+export { default as NoneImage } from "./img/NoneImage.png";
