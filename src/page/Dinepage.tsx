@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
-import { postAll, acceptDine, cancleDine } from "../apis/dine";
+import { postAll, acceptDine } from "../apis/dine";
 
 type dineType = {
   myClub:string;
