@@ -6,10 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../apis/axios";
 
 const Loginpage = () => {
-  const [alarmVisible, setAlarmVisible_] = useState(false);
   const [xquareId, setXquareId] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState({});
   const [toMain, setToMain] = useState(false);
   const navigate = useNavigate();
 
@@ -45,7 +43,7 @@ const Loginpage = () => {
   }
   return (
     <Container>
-      <Header setAlarmVisible={setAlarmVisible_} />
+      <Header />
       <LoginWrapper>
         <TextWrapper>
           <Welcome>대동여지도에 오신 걸 환영합니다!</Welcome>
@@ -91,7 +89,6 @@ const LoginWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 100px;
-  margin-top: 160px;
 `;
 
 const TextWrapper = styled.div`

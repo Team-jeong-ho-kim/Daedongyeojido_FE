@@ -6,57 +6,61 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlusWhite } from "../assets";
 import { createClub, postPage } from "../apis/admin";
-import Alarm from "../components/Alarm";
 
 interface ClubProps {
-  setAnnounceVisible: React.Dispatch<React.SetStateAction<boolean>>;
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type MemberType = {
   userName: String;
   classNumber: String;
-  part: "INDEPENDENT" | "CLUB_MEMBER" | "CLUB_LEADER" | "TEACHER" | "CLUB_LEADER_TEACHER"
-}
+  part:
+    | "INDEPENDENT"
+    | "CLUB_MEMBER"
+    | "CLUB_LEADER"
+    | "TEACHER"
+    | "CLUB_LEADER_TEACHER";
+};
 
 type ClubType = {
   clubName: string;
   teacherName: string;
   messCount: number;
   memberResponses: MemberType[];
-}
+};
 
 const ClubMgtpage: React.FC<ClubProps> = () => {
   const [clubData, setClubData] = useState<ClubType[]>();
   const [clubName, setClubName] = useState<string>("");
-  const [alarmVisible, setAlarmVisible_] = useState(false);
   const [announceVisible, setAnnounceVisible_] = useState(false);
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
 
   useEffect(() => {
-    postPage().then((res)=>{
-      setClubData(res.data);
-      console.log(res.data);
-      
-    }).catch((err)=>{
-      console.log(err);
-    })
-  },[]);
+    postPage()
+      .then((res) => {
+        setClubData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  const onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setClubName(e.target.value);
-  }
+  };
 
   const handleOnKeyPress = () => {
-    createClub(clubName).then(() => window.location.reload())
-    .catch((err) => console.log(err))
+    createClub(clubName)
+      .then(() => window.location.reload())
+      .catch((err) => console.log(err));
   };
 
   return (
     <Container>
-      <Header setAlarmVisible={setAlarmVisible_} />
+      <Header />
       <Buttons>
         <LeftBtns>
           <Button to="" onClick={AnnounceClick}>
@@ -65,13 +69,17 @@ const ClubMgtpage: React.FC<ClubProps> = () => {
           <Button to="/Dine">회식 관리</Button>
         </LeftBtns>
         <PlusClubBtn>
-          <input type="text" placeholder="동아리명을 입력해주세요" value={clubName} onChange={onChange}/>
-          <PlusIcon src={PlusWhite} onClick={handleOnKeyPress}/>
+          <input
+            type="text"
+            placeholder="동아리명을 입력해주세요"
+            value={clubName}
+            onChange={onChange}
+          />
+          <PlusIcon src={PlusWhite} onClick={handleOnKeyPress} />
         </PlusClubBtn>
       </Buttons>
       <Club clubs={clubData} />
       {announceVisible && <Announce setAnnounceVisible={setAnnounceVisible_} />}
-      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
     </Container>
   );
 };

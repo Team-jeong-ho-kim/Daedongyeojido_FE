@@ -21,12 +21,7 @@ function MainRouter() {
         <Route path="/My" element={<Mypage />} />
         <Route
           path="/ClubMgt"
-          element={
-            <ClubMgtpage
-              setAnnounceVisible={() => {}}
-              setPlusMemberVisible={() => {}}
-            />
-          }
+          element={<ClubMgtpage setPlusMemberVisible={() => {}} />}
         />
         <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
         <Route path="/Login" element={<Loginpage />} />

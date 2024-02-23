@@ -1,10 +1,59 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { instance } from "../apis/axios";
 
 interface AlarmProps {
-  setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  alarmId: string;
+  title: string;
+  contents: string;
+  clubName: string;
+  userName: string;
+  passingResult: string;
+  major: string;
+  alarmType: string;
 }
 
-const Alarm: React.FC<AlarmProps> = ({ setAlarmVisible }) => {
+const MajorLabel = (major: string) => {
+  switch (major) {
+    case "FRONT":
+      return "프론트엔드";
+    case "BACK":
+      return "백엔드";
+    case "SECURITY":
+      return "보안";
+    case "IOS":
+      return "아이오에스";
+    case "AND":
+      return "안드로이드";
+    case "FLUTTER":
+      return "플러터";
+    case "EMBEDDED":
+      return "임베디드";
+    case "AI":
+      return "인공지능";
+    case "DEVOPS":
+      return "데브옵스";
+    case "DESIGN":
+      return "디자인";
+    case "GAME":
+      return "게임개발";
+    default:
+      return "알 수 없음";
+  }
+};
+
+const Alarm = () => {
+  const [my, setMy] = useState<AlarmProps>({
+    alarmId: "",
+    title: "",
+    contents: "",
+    clubName: "",
+    userName: "",
+    passingResult: "",
+    major: "",
+    alarmType: "",
+  });
+
   const elapsedTime = (date: number): string => {
     const start = new Date(date);
     const end = new Date();
@@ -23,91 +72,129 @@ const Alarm: React.FC<AlarmProps> = ({ setAlarmVisible }) => {
 
     return `${start.toLocaleDateString()}`;
   };
-  const alarms = [
-    {
-      time: elapsedTime(Date.now()),
-      title: "공지가 등록되었어요!",
-      detail: "{이름}님, {ㅇㅇ선생님}의 공지가 등록되었어요!",
-    },
-    {
-      time: elapsedTime(Date.now()),
-      title: "{동아리 이름} 신청 확인 🚀",
-      detail: "{이름}님, {동아리 이름}의 {전공} 분야 지원이 완료되었어요!",
-    },
-    {
-      time: elapsedTime(Date.now()),
-      title: "{동아리 이름} 면접 안내 ✨",
-      detail:
-        "{이름}님, {동아리 이름}의 {전공} 분야 면접이 1시간 남았어요! 면접은 {장소}에서 진행되니 늦지 않게 주의해주세요. 🥰",
-    },
-    {
-      time: elapsedTime(Date.now()),
-      title: "{동아리 이름} 합격 🎉",
-      detail: "{이름}님, {동아리 이름}의 프론트엔드 분야 합격을 축하드려요!",
-    },
-  ];
+
+  const renderAlarmContent = (
+    alarmType: string,
+    passingResult: string,
+    clubName: string,
+    userName: string,
+    major: string,
+    title: string,
+    contents: string
+  ) => {
+    switch (alarmType) {
+      case "PASS_RESULT":
+        return passingResult === "PASS" ? (
+          <>
+            <AlarmTitle>{`${clubName} 합격 🎉`}</AlarmTitle>
+            <Contents>{`${userName}님, ${clubName}의 ${MajorLabel(
+              major
+            )}분야의 합격을 축하드립니다.`}</Contents>
+          </>
+        ) : (
+          <>
+            <AlarmTitle>{`${clubName} 불합격 😢`}</AlarmTitle>
+            <Contents>{`${userName}님, ${clubName}의 ${MajorLabel(
+              major
+            )}분야의 불합격하셨습니다.`}</Contents>
+          </>
+        );
+
+      case "MESS_ACCEPT":
+        return contents ? (
+          <>
+            <AlarmTitle>{`${clubName} 회식 수락 🍽️`}</AlarmTitle>
+            <Contents>{`${userName}님, ${clubName}의 회식이 수락되었습니다.`}</Contents>
+          </>
+        ) : (
+          <>
+            <AlarmTitle>{`${clubName} 회식 수락X 😢`}</AlarmTitle>
+            <Contents>{`${userName}님, ${clubName}의 회식이 수락되지 않았습니다.`}</Contents>
+          </>
+        );
+
+      case "ANNOUNCEMENT":
+        return (
+          <>
+            <AlarmTitle>{title}</AlarmTitle>
+            <Contents>{contents}</Contents>
+          </>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  const fetchData = async () => {
+    const response = await instance
+      .get("/alarm/my-alarm")
+      .then((res) => {
+        setMy(res.data);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <Container>
-      <AlarmText>알림</AlarmText>
-      <AlarmWrappers>
-        {alarms.map((element) => (
-          <AlarmWrapper>
-            <AlarmTime>{element.time}</AlarmTime>
-            <AlarmTitle>{element.title}</AlarmTitle>
-            <AlarmDetail>{element.detail}</AlarmDetail>
-          </AlarmWrapper>
-        ))}
-      </AlarmWrappers>
+      <Title>알림</Title>
+      <AlarmWrapper>
+        <AlarmTime>{elapsedTime(Date.now())}</AlarmTime>
+        {renderAlarmContent(
+          my.alarmType,
+          my.passingResult,
+          my.clubName,
+          my.userName,
+          my.major,
+          my.title,
+          my.contents
+        )}
+      </AlarmWrapper>
     </Container>
   );
 };
 
 const Container = styled.div`
-  position: absolute;
-  top: 100px;
-  right: 260px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: 600px;
-  height: 680px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.5);
+  gap: 5px;
+  padding-top: 45px;
 `;
 
-const AlarmText = styled.p`
-  padding: 30px 0px 0px 40px;
-  font-size: 28px;
-  font-family: "DXhimchanBold";
-`;
-
-const AlarmWrappers = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+const Title = styled.p`
+  font-size: 24px;
 `;
 
 const AlarmWrapper = styled.div`
-  width: 100%;
-  padding: 0px 50px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  width: 880px;
+  height: 88px;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ececec;
 `;
 
-const AlarmTime = styled.div`
-  color: #6e6e87;
+const AlarmTime = styled.p`
   font-size: 12px;
-  font-family: "DXhimchanBold";
+  color: #6e6e87;
+  font-family: "Pretendard";
 `;
 
-const AlarmTitle = styled.div`
+const AlarmTitle = styled.b`
   font-size: 20px;
-  font-family: "DXhimchanBold";
+  font-family: "Pretendard";
 `;
 
-const AlarmDetail = styled.div`
+const Contents = styled.p`
   font-size: 16px;
+  font-family: "Pretendard";
 `;
 
 export default Alarm;

@@ -1,19 +1,9 @@
 import styled from "styled-components";
-import { Alarm, LogoBlack, MyPage } from "../assets";
-import { useState } from "react";
+import { LogoBlack, MyPage } from "../assets";
+
 import { Link } from "react-router-dom";
 
-interface HeaderProps {
-  setAlarmVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
-  const [alarmVisible, setAlarmVisible_] = useState(false);
-
-  const AlarmClick = () => {
-    setAlarmVisible((prevVisible) => !prevVisible);
-  };
-
+const Header = () => {
   const accessToken = localStorage.getItem("access_token");
 
   return (
@@ -29,19 +19,15 @@ const Header: React.FC<HeaderProps> = ({ setAlarmVisible }) => {
           <TextButton to="">회식 신청</TextButton>
         </ButtonWrapper>
       </Wrapper>
-      <IconWrapper>
-        <AlarmImg src={Alarm} onClick={AlarmClick} />
-        {accessToken ? (
-          <Link to="/My">
-            <MyPageImg src={MyPage} />
-          </Link>
-        ) : (
-          <Link to="/login">
-            <MyPageImg src={MyPage} />
-          </Link>
-        )}
-      </IconWrapper>
-      {alarmVisible && <Alarm setAlarmVisible={setAlarmVisible_} />}
+      {accessToken ? (
+        <Link to="/My">
+          <MyPageImg src={MyPage} />
+        </Link>
+      ) : (
+        <Link to="/login">
+          <MyPageImg src={MyPage} />
+        </Link>
+      )}
     </Container>
   );
 };
@@ -92,21 +78,6 @@ const ButtonWrapper = styled.div`
   gap: 30px;
 `;
 
-const IconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-`;
-
-const AlarmImg = styled.img`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 26px;
-`;
-        
 const MyPageImg = styled.img`
   display: flex;
   justify-content: center;

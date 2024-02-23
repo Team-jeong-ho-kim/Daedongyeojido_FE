@@ -4,41 +4,53 @@ import { useEffect, useState } from "react";
 import { postAll, acceptDine } from "../apis/dine";
 
 type dineType = {
-  myClub:string;
-  messDate:string;
-  messId:string;
-  messStartTime:number;
-  messEndTime:number;
-  acceptOrNot:boolean;
-}
+  myClub: string;
+  messDate: string;
+  messId: string;
+  messStartTime: number;
+  messEndTime: number;
+  acceptOrNot: boolean;
+};
 
 const Dinepage = () => {
-  const [alarmVisible, setAlarmVisible_] = useState(false);
   const [dines, setDines] = useState<dineType[]>();
 
   useEffect(() => {
-    postAll().then((res)=>setDines(res.data)).catch((err)=>console.log(err));
-  },[])
+    postAll()
+      .then((res) => setDines(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-  const onAccept = (id:string) => {
-    acceptDine(id).then(() => window.location.reload()).catch((err) => console.log(err))
-  }
+  const onAccept = (id: string) => {
+    acceptDine(id)
+      .then(() => window.location.reload())
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Container>
-      <Header setAlarmVisible={setAlarmVisible_} />
+      <Header />
       <Title>동아리 회식 관리</Title>
       <Wrapper>
         {dines?.map((element, index) => (
           <DineWrapper key={index}>
             <Club>
               <ClubName>{element.myClub}</ClubName>
-              <DineTime>{element.messDate.split('-')[0]}년 {element.messDate.split('-')[1]}월 {element.messDate.split('-')[2]}일 {element.messStartTime}교시 ~ {element.messEndTime}교시 회식 신청</DineTime>
+              <DineTime>
+                {element.messDate.split("-")[0]}년{" "}
+                {element.messDate.split("-")[1]}월{" "}
+                {element.messDate.split("-")[2]}일 {element.messStartTime}교시 ~{" "}
+                {element.messEndTime}교시 회식 신청
+              </DineTime>
             </Club>
             <Button>
-              <AcceptanceBtn onClick={()=>{
-                onAccept(element.messId)
-              }}>{element.acceptOrNot ? "취소" : "수락"}</AcceptanceBtn>
+              <AcceptanceBtn
+                onClick={() => {
+                  onAccept(element.messId);
+                }}
+              >
+                {element.acceptOrNot ? "취소" : "수락"}
+              </AcceptanceBtn>
             </Button>
           </DineWrapper>
         ))}

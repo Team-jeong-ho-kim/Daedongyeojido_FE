@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import ApplicantMgt from "../components/ApplicantMgt";
-import { useState } from "react";
 
 const ApplicantMgtpage = () => {
-  const [alarmVisible, setAlarmVisible_] = useState(false);
   const applicants = [
     { name: "김정호", info: "1305, FrontEnd" },
     { name: "김정호", info: "1305, FrontEnd" },
@@ -15,9 +13,7 @@ const ApplicantMgtpage = () => {
   ];
   return (
     <Container>
-      <Header
-        setAlarmVisible={setAlarmVisible_}
-      />
+      <Header />
       <Wrapper>
         <Title>동아리 지원자 관리</Title>
         <ApplicantWrapper>
