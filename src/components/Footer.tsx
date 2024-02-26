@@ -2,13 +2,6 @@ import styled from "styled-components";
 import { Github, Instagram, LogoWhite } from "../assets";
 
 const Footer = () => {
-  const members = [
-    { major: "Backend", name: "김가은", name2: "변정현" },
-    { major: "Frontend", name: "원은지", name2: "이영하" },
-    { major: "Android", name: "홍서은" },
-    { major: "iOS", name: "홍서은" },
-    { major: "Design", name: "이예흔" },
-  ];
   return (
     <Container>
       <Icons>

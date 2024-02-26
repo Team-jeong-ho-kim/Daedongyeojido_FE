@@ -61,7 +61,7 @@ const ApplyDetail = () => {
   });
 
   const fetchData = async () => {
-    const response = await instance
+    await instance
       .post("/user/my-info")
       .then((res) => {
         setMy(res.data);

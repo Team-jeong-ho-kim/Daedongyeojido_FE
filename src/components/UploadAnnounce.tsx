@@ -7,35 +7,55 @@ interface AnnounceProps {
 }
 
 type FormType = {
-  title:string;
-  contents:string;
-}
+  title: string;
+  contents: string;
+};
 
-const UploadAnnounce: React.FC<AnnounceProps> = ({ setAnnounceVisible }) => {
+const UploadAnnounce: React.FC<AnnounceProps> = () => {
   const [data, setData] = useState<FormType>({
-    title:"",
-    contents:""
+    title: "",
+    contents: "",
   });
 
-  const onChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
 
     setData({
       ...data,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   const onSubmit = () => {
-    postAlarm(data).then(()=>{alert('공지가 성공적으로 등록되었습니다.');window.location.reload()}).catch((err)=>{alert('공지 등록을 실패했습니다.');console.log(err)})
-  }
+    postAlarm(data)
+      .then(() => {
+        alert("공지가 성공적으로 등록되었습니다.");
+        window.location.reload();
+      })
+      .catch((err) => {
+        alert("공지 등록을 실패했습니다.");
+        console.log(err);
+      });
+  };
 
   return (
     <Container>
       <Text>공지사항 등록</Text>
       <Inputs>
-        <TitleInput placeholder="공지 제목을 입력해주세요." value={data.title} name="title" onChange={onChange}/>
-        <ContentsInput placeholder="공지 내용을 입력해주세요." value={data.contents} name="contents" onChange={onChange}/>
+        <TitleInput
+          placeholder="공지 제목을 입력해주세요."
+          value={data.title}
+          name="title"
+          onChange={onChange}
+        />
+        <ContentsInput
+          placeholder="공지 내용을 입력해주세요."
+          value={data.contents}
+          name="contents"
+          onChange={onChange}
+        />
       </Inputs>
       <AnnounceBtn onClick={onSubmit}>공지 등록하기</AnnounceBtn>
     </Container>

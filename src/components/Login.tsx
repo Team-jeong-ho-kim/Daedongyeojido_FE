@@ -20,7 +20,7 @@ const Login = ({ onLoginToggle }: { onLoginToggle: () => void }) => {
       xquareId,
       password,
     };
-    const response = await instance
+    await instance
       .post("/auth/login", requestData)
       .then((res) => {
         localStorage.setItem("access_token", res.data.accessToken);
@@ -28,8 +28,9 @@ const Login = ({ onLoginToggle }: { onLoginToggle: () => void }) => {
         localStorage.setItem("part", res.data.part);
         handleClose();
       })
-      .catch((err) => {});
-    console.log(response);
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleClose = () => {

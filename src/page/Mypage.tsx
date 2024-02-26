@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Profile } from "../assets";
-import Footer from "../components/Footer";
 import { instance } from "../apis/axios";
 import ApplyDetail from "../components/ApplyDetail";
 import Alarm from "../components/Alarm";
@@ -25,10 +24,9 @@ const Mypage = () => {
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
   };
-  
 
   const fetchData = async () => {
-    const response = await instance
+    await instance
       .get("/user/my-info")
       .then((res) => {
         setMy(res.data);

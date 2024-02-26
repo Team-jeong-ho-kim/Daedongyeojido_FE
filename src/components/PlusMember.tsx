@@ -10,8 +10,8 @@ type PartType =
   | "TEACHER"
   | "CLUB_LEADER_TEACHER";
 type MemberType = {
-  userName: String;
-  classNumber: String;
+  userName: string;
+  classNumber: string;
   part: PartType;
 };
 
@@ -30,7 +30,7 @@ const PlusMember = ({ club }: { club: ClubPropsType }) => {
     classNumber: "",
     part: "CLUB_MEMBER",
   });
-  const [PlusMemberVisible, setPlusMemberVisible] = useState(false);
+  const [,setPlusMemberVisible] = useState(false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

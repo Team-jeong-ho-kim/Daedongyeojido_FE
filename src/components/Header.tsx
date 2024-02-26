@@ -2,10 +2,6 @@ import styled from "styled-components";
 import { LogoBlack } from "../assets";
 import { Link } from "react-router-dom";
 
-interface StyledContainerProps {
-  partonly: boolean;
-}
-
 interface HeaderProps {
   onLoginToggle: () => void;
 }

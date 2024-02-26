@@ -4,13 +4,9 @@ import { useState } from "react";
 import PlusMember from "../components/PlusMember";
 import { deleteClub } from "../apis/admin";
 
-interface ClubProps {
-  setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 type MemberType = {
-  userName: String;
-  classNumber: String;
+  userName: string;
+  classNumber: string;
   part:
     | "INDEPENDENT"
     | "CLUB_MEMBER"

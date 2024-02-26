@@ -65,7 +65,7 @@ const Alarm = () => {
   };
 
   const fetchData = async () => {
-    const response = await instance
+    await instance
       .get("/alarm/my-alarm")
       .then((res) => {
         setMy(res.data);

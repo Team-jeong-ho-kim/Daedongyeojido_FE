@@ -37,7 +37,7 @@ const Announce = () => {
   };
 
   const fetchData = async () => {
-    const response = await instance
+    await instance
       .post("/announcement/query")
       .then((res) => {
         setMy(res.data);
