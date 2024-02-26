@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ onLoginToggle }) => {
   };
 
   return (
-    <Container partonly={partonly}>
+    <Container>
       <Wrapper>
         <LogoWrapper to="/">
           <LogoImg src={LogoBlack} />
@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ onLoginToggle }) => {
   );
 };
 
-const Container = styled.div<StyledContainerProps>`
+const Container = styled.div`
   position: sticky;
   top: 0px;
   width: 100%;

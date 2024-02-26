@@ -69,7 +69,7 @@ const AdBanner: React.FC = () => {
         </MoveBanner>
         <ExplainWrapper>
           {currentImage.map((_, index) => (
-            <BannerExplain key={index} isActive={index === img}>
+            <BannerExplain key={index} $isActive={index === img}>
               {currentImage?.[img]?.bannerTitle}
             </BannerExplain>
           ))}
@@ -142,19 +142,19 @@ const ExplainWrapper = styled.div`
   gap: 10px;
 `;
 
-const BannerExplain = styled.div<{ isActive: boolean }>`
+const BannerExplain = styled.div<{ $isActive: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90px;
   height: 38px;
   border: ${(props) =>
-    props.isActive ? "2px solid #333B3D" : "1px solid #e1e1e1"};
+    props.$isActive ? "2px solid #333B3D" : "1px solid #e1e1e1"};
   border-radius: 30px;
   color: #333b3d;
   font-size: 18px;
   font-family: ${(props) =>
-    props.isActive ? "DXhimchanBold" : "DXhimchanMedium"};
+    props.$isActive ? "DXhimchanBold" : "DXhimchanMedium"};
 `;
 
 export default AdBanner;

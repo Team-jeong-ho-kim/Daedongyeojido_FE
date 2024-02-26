@@ -24,11 +24,12 @@ instance.interceptors.response.use(
   },
   (err) => {
     const { config } = err;
-    const { status } = err.response;
-    console.log(status);
 
     const token = localStorage.getItem("refresh_token");
-    if ((status === 401 || status === 403) && token) {
+    if (
+      (err.response?.status === 401 || err.response?.status === 403) &&
+      token
+    ) {
       refresh(token)
         .then((res) => {
           localStorage.setItem("access_token", res.data.accessToken);
