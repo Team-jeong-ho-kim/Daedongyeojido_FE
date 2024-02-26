@@ -25,6 +25,7 @@ const Mypage = () => {
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
   };
+  
 
   const fetchData = async () => {
     const response = await instance
