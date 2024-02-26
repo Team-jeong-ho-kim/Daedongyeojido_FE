@@ -37,7 +37,7 @@ const AdBanner: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await instance.post("/main");
+      const response = await instance.get("/main");
       const images = response.data.banners;
       setCurrentImage(images);
     } catch (error) {

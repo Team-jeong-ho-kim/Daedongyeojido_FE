@@ -38,7 +38,7 @@ const Announce = () => {
 
   const fetchData = async () => {
     const response = await instance
-      .post("/alarm/announcement")
+      .post("/announcement/query")
       .then((res) => {
         setMy(res.data);
         console.log(res);

@@ -28,7 +28,7 @@ const Mypage = () => {
 
   const fetchData = async () => {
     const response = await instance
-      .post("/user/my-info")
+      .get("/user/my-info")
       .then((res) => {
         setMy(res.data);
         console.log(res);

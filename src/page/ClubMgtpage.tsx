@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlusWhite } from "../assets";
 import { createClub, postPage } from "../apis/admin";
+import PlusMember from "../components/PlusMember";
 
 interface ClubProps {
   setPlusMemberVisible: React.Dispatch<React.SetStateAction<boolean>>;
@@ -33,15 +34,16 @@ const ClubMgtpage: React.FC<ClubProps> = () => {
   const [clubData, setClubData] = useState<ClubType[]>();
   const [clubName, setClubName] = useState<string>("");
   const [announceVisible, setAnnounceVisible_] = useState(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
-  const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
   };
-
+  
   useEffect(() => {
     postPage()
       .then((res) => {

@@ -85,18 +85,17 @@ const LogoImg = styled.img`
 `;
 
 const Name = styled.p`
-  font-family: "DXhimchanBold";
   font-size: 26px;
 `;
 
 const Text = styled.p`
-  font-size: 26px;
+  font-size: 22px;
   font-family: "DXhimchanLight";
 `;
 
 const Line = styled.div`
   height: 30px;
-  border: 1px solid #575757;
+  border: 1px solid #aca6a6;
 `;
 
 const MyPageWrapper = styled.div`

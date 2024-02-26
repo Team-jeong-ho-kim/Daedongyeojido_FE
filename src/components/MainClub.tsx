@@ -14,7 +14,7 @@ const MainClub = () => {
 
   const fetchData = async () => {
     try {
-      const response = await instance.post("/main");
+      const response = await instance.get("/main");
       const allClubResponses = response.data.allClubResponses;
 
       if (Array.isArray(allClubResponses)) {
