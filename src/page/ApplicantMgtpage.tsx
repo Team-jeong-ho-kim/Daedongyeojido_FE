@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import ApplicantMgt from "../components/ApplicantMgt";
+import { useState } from "react";
 
 const ApplicantMgtpage = () => {
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
+  const handleLoginToggle = () => {
+    setIsLoginVisible(!isLoginVisible);
+  };
   const applicants = [
     { name: "김정호", info: "1305, FrontEnd" },
     { name: "김정호", info: "1305, FrontEnd" },
@@ -13,7 +19,7 @@ const ApplicantMgtpage = () => {
   ];
   return (
     <Container>
-      <Header />
+      <Header onLoginToggle={handleLoginToggle} />
       <Wrapper>
         <Title>동아리 지원자 관리</Title>
         <ApplicantWrapper>

@@ -1,53 +1,71 @@
 import styled from "styled-components";
-import { LogoBlack, MyPage } from "../assets";
-
+import { LogoBlack } from "../assets";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+interface StyledContainerProps {
+  partonly: boolean;
+}
+
+interface HeaderProps {
+  onLoginToggle: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onLoginToggle }) => {
   const accessToken = localStorage.getItem("access_token");
+  const part = localStorage.getItem("part");
+  const partonly =
+    part === "CLUB_LEADER_TEACHER" || part === "TEACHER" || part === "ADMIN";
+
+  const LogOut = () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("part");
+    window.location.reload();
+  };
 
   return (
-    <Container>
+    <Container partonly={partonly}>
       <Wrapper>
         <LogoWrapper to="/">
           <LogoImg src={LogoBlack} />
           <Name>대동여지도</Name>
         </LogoWrapper>
-        <ButtonWrapper>
-          <TextButton to="/ApplicantMgt">지원자 확인</TextButton>
-          <TextButton to="/ClubMgt">동아리 관리</TextButton>
-          <TextButton to="">회식 신청</TextButton>
-        </ButtonWrapper>
+        {partonly && <TextButton to="/ClubMgt">동아리 관리</TextButton>}
       </Wrapper>
       {accessToken ? (
-        <Link to="/My">
-          <MyPageImg src={MyPage} />
-        </Link>
+        <MyPageWrapper>
+          <Link to="/My">
+            <Text>마이페이지</Text>
+          </Link>
+          <Line></Line>
+          <Text onClick={LogOut}>로그아웃</Text>
+        </MyPageWrapper>
       ) : (
-        <Link to="/login">
-          <MyPageImg src={MyPage} />
-        </Link>
+        <MyPageWrapper>
+          <Text onClick={onLoginToggle}>로그인</Text>
+          <Text></Text>
+        </MyPageWrapper>
       )}
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<StyledContainerProps>`
   position: sticky;
   top: 0px;
   width: 100%;
   height: 64px;
   background-color: White;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 610px;
   box-shadow: 0 2px 4px 0 hsla(0, 0%, 80.8%, 0.5);
   z-index: 10;
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 30px;
 `;
 
@@ -71,19 +89,19 @@ const Name = styled.p`
   font-size: 26px;
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+const Text = styled.p`
+  font-size: 26px;
+  font-family: "DXhimchanLight";
 `;
 
-const MyPageImg = styled.img`
+const Line = styled.div`
+  height: 30px;
+  border: 1px solid #575757;
+`;
+
+const MyPageWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
+  gap: 15px;
 `;
 
 export default Header;

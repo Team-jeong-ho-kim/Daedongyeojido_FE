@@ -11,31 +11,23 @@ const Footer = () => {
   ];
   return (
     <Container>
-      <FooterWrapper>
-        <Icons>
-          <Icon src={Github} />
-          <Icon src={Instagram} />
-        </Icons>
-        <Logo src={LogoWhite} />
-      </FooterWrapper>
+      <Icons>
+        <Icon src={Github} />
+        <Icon src={Instagram} />
+      </Icons>
+      <Logo src={LogoWhite} />
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 40px;
   width: 100%;
   height: 200px;
-  background-color: black;
-`;
-
-const FooterWrapper = styled.div`
-  display: flex;
-  gap: 800px;
+  background-color: #333b3d;
 `;
 
 const Icons = styled.div`

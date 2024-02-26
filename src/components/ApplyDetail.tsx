@@ -109,7 +109,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 880px;
   padding-top: 45px;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 850px) {
+    width: 350px;
+  }
 `;
 
 const Title = styled.p`
@@ -131,6 +138,12 @@ const ApplyDetails = styled.div`
   background-color: #f1f1f1;
   padding: 0px 15px;
   border-radius: 5px;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 850px) {
+    width: 350px;
+  }
 `;
 
 const Club = styled.div`

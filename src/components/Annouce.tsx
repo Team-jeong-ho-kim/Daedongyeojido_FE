@@ -38,7 +38,7 @@ const Announce = () => {
 
   const fetchData = async () => {
     const response = await instance
-      .post("/main")
+      .post("/alarm/announcement")
       .then((res) => {
         setMy(res.data);
         console.log(res);
@@ -81,10 +81,17 @@ const Announce = () => {
 };
 
 const Container = styled.div`
+  width: 880px;
   display: flex;
   flex-direction: column;
   gap: 30px;
   padding-top: 45px;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 850px) {
+    width: 350px;
+  }
 `;
 
 const Title = styled.p`
@@ -103,6 +110,12 @@ const Announces = styled.div<{ isRead: boolean }>`
   padding: 15px 15px;
   &:hover {
     background-color: ${(props) => (props.isRead ? "#FFFFFF" : "#F4F4F4")};
+  }
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 850px) {
+    width: 350px;
   }
 `;
 

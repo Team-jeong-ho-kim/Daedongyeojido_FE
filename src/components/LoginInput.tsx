@@ -27,15 +27,14 @@ const LoginInput: React.FC<LoginInputProps> = ({
 };
 
 const Input = styled.input`
-  width: 400px;
-  height: 64px;
-  padding: 16px 24px;
-
-  font-size: 28px;
-  border-radius: 10px;
+  width: 300px;
+  height: 50px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 5px;
   border: 1px solid black;
   &::placeholder {
-    font-size: 28px;
+    font-size: 20px;
     color: #6e6e87;
   }
   &:focus {

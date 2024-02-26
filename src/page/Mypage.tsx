@@ -20,6 +20,11 @@ const Mypage = () => {
   });
 
   const [activeTab, setActiveTab] = useState<string>("지원내역");
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
+  const handleLoginToggle = () => {
+    setIsLoginVisible(!isLoginVisible);
+  };
 
   const fetchData = async () => {
     const response = await instance
@@ -39,7 +44,7 @@ const Mypage = () => {
 
   return (
     <Container>
-      <Header />
+      <Header onLoginToggle={handleLoginToggle} />
       <Wrapper>
         <Fixed>
           <MyProfile>
@@ -75,7 +80,6 @@ const Mypage = () => {
         {activeTab === "공지사항" && <Announce />}
         {activeTab === "알림" && <Alarm />}
       </Wrapper>
-      <Footer />
     </Container>
   );
 };

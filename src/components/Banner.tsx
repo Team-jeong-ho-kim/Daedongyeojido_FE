@@ -3,45 +3,36 @@ import styled from "styled-components";
 import { LeftArrow, RightArrow } from "../assets";
 import { instance } from "../apis/axios";
 
-interface BannerExplainProps {
-  borderIndex: number;
-}
-
 interface UrlProps {
   id: number;
   bannerImgUrl: string;
+  bannerTitle: string;
 }
 
 const AdBanner: React.FC = () => {
-  const banners = [
-    { explain: "1번배너소개" },
-    { explain: "2번배너소개" },
-    { explain: "3번배너소개" },
-    { explain: "4번배너소개" },
-    { explain: "5번배너소개" },
-    { explain: "6번배너소개" },
-    { explain: "7번배너소개" },
-    { explain: "8번배너소개" },
-    { explain: "9번배너소개" },
-    { explain: "10번배너소개" },
-  ];
-
   const [img, setImg] = useState(0);
-  const [borderIndex, setBorderIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState<UrlProps[]>([]);
 
   const imgChangeLeft = () => {
     setImg((prevImg) =>
       prevImg > 0 ? prevImg - 1 : currentImage?.length! - 1
     );
-    setBorderIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : 9));
   };
 
   const imgChangeRight = () => {
     setImg((prevImg) =>
       prevImg < currentImage?.length! - 1 ? prevImg + 1 : 0
     );
-    setBorderIndex((prevIndex) => (prevIndex < 9 ? prevIndex + 1 : 0));
+  };
+
+  const changeBannerWithInterval = () => {
+    const intervalId = setInterval(() => {
+      imgChangeRight();
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
   };
 
   const fetchData = async () => {
@@ -55,20 +46,8 @@ const AdBanner: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchDataAndChangeImage = async () => {
-      await fetchData();
-      imgChangeRight();
-    };
-
-    fetchDataAndChangeImage();
-
-    const intervalId = setInterval(() => {
-      fetchDataAndChangeImage();
-    }, 5000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
+    fetchData();
+    changeBannerWithInterval();
   }, []);
 
   return (
@@ -89,9 +68,9 @@ const AdBanner: React.FC = () => {
           />
         </MoveBanner>
         <ExplainWrapper>
-          {banners.map((element) => (
-            <BannerExplain borderIndex={borderIndex}>
-              <p>{element.explain}</p>
+          {currentImage.map((_, index) => (
+            <BannerExplain key={index} isActive={index === img}>
+              {currentImage?.[img]?.bannerTitle}
             </BannerExplain>
           ))}
         </ExplainWrapper>
@@ -110,11 +89,11 @@ const BannerImage = styled.img`
 
 const BannerBar = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 20px;
   width: 100%;
   height: 64px;
+  padding-left: 15%;
   border-bottom: 1px solid #e9ecef;
 `;
 
@@ -163,16 +142,19 @@ const ExplainWrapper = styled.div`
   gap: 10px;
 `;
 
-const BannerExplain = styled.div<BannerExplainProps>`
+const BannerExplain = styled.div<{ isActive: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90px;
   height: 38px;
-  border: 1px solid #e1e1e1;
+  border: ${(props) =>
+    props.isActive ? "2px solid #333B3D" : "1px solid #e1e1e1"};
   border-radius: 30px;
   color: #333b3d;
   font-size: 18px;
+  font-family: ${(props) =>
+    props.isActive ? "DXhimchanBold" : "DXhimchanMedium"};
 `;
 
 export default AdBanner;

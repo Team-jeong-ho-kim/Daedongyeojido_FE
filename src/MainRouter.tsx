@@ -6,7 +6,6 @@ import Dinepage from "./page/Dinepage";
 import ApplicantMgtpage from "./page/ApplicantMgtpage";
 import Mypage from "./page/Mypage";
 import ApplicantDetailpage from "./page/ApplicantDetailpage";
-import Loginpage from "./page/Loginpage";
 import ClubMgtpage from "./page/ClubMgtpage";
 
 function MainRouter() {
@@ -24,7 +23,6 @@ function MainRouter() {
           element={<ClubMgtpage setPlusMemberVisible={() => {}} />}
         />
         <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
-        <Route path="/Login" element={<Loginpage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -14,6 +14,11 @@ type dineType = {
 
 const Dinepage = () => {
   const [dines, setDines] = useState<dineType[]>();
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
+  const handleLoginToggle = () => {
+    setIsLoginVisible(!isLoginVisible);
+  };
 
   useEffect(() => {
     postAll()
@@ -29,7 +34,7 @@ const Dinepage = () => {
 
   return (
     <Container>
-      <Header />
+      <Header onLoginToggle={handleLoginToggle} />
       <Title>동아리 회식 관리</Title>
       <Wrapper>
         {dines?.map((element, index) => (

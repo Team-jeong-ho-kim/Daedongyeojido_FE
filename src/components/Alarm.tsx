@@ -43,16 +43,7 @@ const MajorLabel = (major: string) => {
 };
 
 const Alarm = () => {
-  const [my, setMy] = useState<AlarmProps>({
-    alarmId: "",
-    title: "",
-    contents: "",
-    clubName: "",
-    userName: "",
-    passingResult: "",
-    major: "",
-    alarmType: "",
-  });
+  const [my, setMy] = useState<AlarmProps[]>([]);
 
   const elapsedTime = (date: number): string => {
     const start = new Date(date);
@@ -73,59 +64,6 @@ const Alarm = () => {
     return `${start.toLocaleDateString()}`;
   };
 
-  const renderAlarmContent = (
-    alarmType: string,
-    passingResult: string,
-    clubName: string,
-    userName: string,
-    major: string,
-    title: string,
-    contents: string
-  ) => {
-    switch (alarmType) {
-      case "PASS_RESULT":
-        return passingResult === "PASS" ? (
-          <>
-            <AlarmTitle>{`${clubName} 합격 🎉`}</AlarmTitle>
-            <Contents>{`${userName}님, ${clubName}의 ${MajorLabel(
-              major
-            )}분야의 합격을 축하드립니다.`}</Contents>
-          </>
-        ) : (
-          <>
-            <AlarmTitle>{`${clubName} 불합격 😢`}</AlarmTitle>
-            <Contents>{`${userName}님, ${clubName}의 ${MajorLabel(
-              major
-            )}분야의 불합격하셨습니다.`}</Contents>
-          </>
-        );
-
-      case "MESS_ACCEPT":
-        return contents ? (
-          <>
-            <AlarmTitle>{`${clubName} 회식 수락 🍽️`}</AlarmTitle>
-            <Contents>{`${userName}님, ${clubName}의 회식이 수락되었습니다.`}</Contents>
-          </>
-        ) : (
-          <>
-            <AlarmTitle>{`${clubName} 회식 수락X 😢`}</AlarmTitle>
-            <Contents>{`${userName}님, ${clubName}의 회식이 수락되지 않았습니다.`}</Contents>
-          </>
-        );
-
-      case "ANNOUNCEMENT":
-        return (
-          <>
-            <AlarmTitle>{title}</AlarmTitle>
-            <Contents>{contents}</Contents>
-          </>
-        );
-
-      default:
-        return null;
-    }
-  };
-
   const fetchData = async () => {
     const response = await instance
       .get("/alarm/my-alarm")
@@ -144,18 +82,55 @@ const Alarm = () => {
   return (
     <Container>
       <Title>알림</Title>
-      <AlarmWrapper>
-        <AlarmTime>{elapsedTime(Date.now())}</AlarmTime>
-        {renderAlarmContent(
-          my.alarmType,
-          my.passingResult,
-          my.clubName,
-          my.userName,
-          my.major,
-          my.title,
-          my.contents
-        )}
-      </AlarmWrapper>
+      {my.map((alarm) => (
+        <AlarmWrapper key={alarm.alarmId}>
+          <AlarmTime>{elapsedTime(Date.now())}</AlarmTime>
+          {alarm.alarmType === "PASS_RESULT" && (
+            <>
+              {alarm.passingResult === "PASS" ? (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 합격 🎉`}</AlarmTitle>
+                  <Contents>{`${alarm.userName}님, ${
+                    alarm.clubName
+                  }의 ${MajorLabel(
+                    alarm.major
+                  )}분야의 합격을 축하드립니다.`}</Contents>
+                </>
+              ) : (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 불합격 😢`}</AlarmTitle>
+                  <Contents>{`${alarm.userName}님, ${
+                    alarm.clubName
+                  }의 ${MajorLabel(
+                    alarm.major
+                  )}분야의 불합격하셨습니다.`}</Contents>
+                </>
+              )}
+            </>
+          )}
+          {alarm.alarmType === "MESS_ACCEPT" && (
+            <>
+              {alarm.contents ? (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 회식 수락 🍽️`}</AlarmTitle>
+                  <Contents>{`${alarm.userName}님, ${alarm.clubName}의 회식이 수락되었습니다.`}</Contents>
+                </>
+              ) : (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 회식 수락X 😢`}</AlarmTitle>
+                  <Contents>{`${alarm.userName}님, ${alarm.clubName}의 회식이 수락되지 않았습니다.`}</Contents>
+                </>
+              )}
+            </>
+          )}
+          {alarm.alarmType === "ANNOUNCEMENT" && (
+            <>
+              <AlarmTitle>{alarm.title}</AlarmTitle>
+              <Contents>{alarm.contents}</Contents>
+            </>
+          )}
+        </AlarmWrapper>
+      ))}
     </Container>
   );
 };
@@ -164,7 +139,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 880px;
   padding-top: 45px;
+  @media (max-width: 1200px) {
+    width: 550px;
+  }
+  @media (max-width: 850px) {
+    width: 350px;
+  }
 `;
 
 const Title = styled.p`
@@ -175,7 +157,6 @@ const AlarmWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 880px;
   height: 88px;
   padding: 10px 0px;
   border-bottom: 1px solid #ececec;

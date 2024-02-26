@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { instance } from "../apis/axios";
 
@@ -14,9 +14,7 @@ const MainClub = () => {
 
   const fetchData = async () => {
     try {
-      const response = await instance.post(
-        "/main"
-      );
+      const response = await instance.post("/main");
       const allClubResponses = response.data.allClubResponses;
 
       if (Array.isArray(allClubResponses)) {
@@ -52,9 +50,12 @@ const MainClub = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px 200px 200px 200px 200px);
-  row-gap: 40px;
-  column-gap: 40px;
-  justify-content: center;
+  column-gap: 2%;
+  justify-content: space-around;
+  padding: 0px 20%;
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(auto-fill, 100px 100px 100px 100px 100px);
+  }
 `;
 
 const ClubWrapper = styled.div`
@@ -63,16 +64,27 @@ const ClubWrapper = styled.div`
   gap: 5px;
   width: 200px;
   height: 300px;
+  @media (max-width: 1150px) {
+    width: 100px;
+    height: 150px;
+  }
 `;
 
 const ClubLogo = styled.img`
   width: 200px;
   height: 200px;
   border: 1px solid;
+  @media (max-width: 1150px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const ClubName = styled.p`
   font-size: 32px;
+  @media (max-width: 1150px) {
+    font-size: 24px;
+  }
 `;
 
 const ClubInfo = styled.p`
@@ -82,6 +94,9 @@ const ClubInfo = styled.p`
   text-overflow: ellipsis;
   font-size: 15px;
   font-family: "DXhimchanLight";
+  @media (max-width: 1150px) {
+    font-size: 10px;
+  }
 `;
 
 const TagWrapper = styled.div`
@@ -96,6 +111,9 @@ const ClubTag = styled.p`
   font-size: 12px;
   font-family: "DXhimchanLight";
   color: #333b3d;
+  @media (max-width: 1150px) {
+    font-size: 8px;
+  }
 `;
 
 export default MainClub;

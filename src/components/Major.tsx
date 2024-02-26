@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LeftArrowBlack, ClubImg, RightArrowBlack } from "../assets";
+import { ClubImg } from "../assets";
 
 const Major = () => {
   const majors = [
@@ -35,47 +35,46 @@ const Major = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 28px;
+  padding: 0% 17%;
 `;
 
 const Title = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 36px;
   font-family: "DXhimchanLight";
-`;
-
-const Arrow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 48px;
-`;
-
-const ArrowIcon = styled.img`
-  width: 10px;
-  height: 20px;
+  @media (max-width: 900px) {
+    font-size: 28px;
+  }
 `;
 
 const MajorWrapper = styled.div`
   display: flex;
-  gap: 40px;
+  justify-content: space-evenly;
 `;
 
 const Majors = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
 `;
 
 const MajorImg = styled.img`
   width: 50px;
   height: 50px;
+  @media (max-width: 1100px) {
+    width: 45px;
+    height: 45px;
+  }
 `;
 
 const MajorName = styled.p`
   font-size: 14px;
+  @media (max-width: 1100px) {
+    font-size: 12px;
+  }
 `;
 
 export default Major;

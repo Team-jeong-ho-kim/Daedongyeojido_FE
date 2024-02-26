@@ -36,6 +36,11 @@ const ClubMgtpage: React.FC<ClubProps> = () => {
   const AnnounceClick = () => {
     setAnnounceVisible_((prevVisible) => !prevVisible);
   };
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
+  const handleLoginToggle = () => {
+    setIsLoginVisible(!isLoginVisible);
+  };
 
   useEffect(() => {
     postPage()
@@ -60,7 +65,7 @@ const ClubMgtpage: React.FC<ClubProps> = () => {
 
   return (
     <Container>
-      <Header />
+      <Header onLoginToggle={handleLoginToggle} />
       <Buttons>
         <LeftBtns>
           <Button to="" onClick={AnnounceClick}>
