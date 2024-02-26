@@ -26,4 +26,4 @@ ENV REACT_APP_API_URL $BASE_URL
 EXPOSE 3000
 
 # npm start 스크립트 실행
-CMD ["yarn", "start"]
+CMD ["yarn", "dev"]
