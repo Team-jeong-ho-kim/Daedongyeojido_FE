@@ -43,4 +43,4 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           buildargs: |
             BASE_URL=${{ secrets.BASE_URL }}
-          yarn_docker_build: true
+
