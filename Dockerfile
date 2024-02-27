@@ -1,5 +1,5 @@
 # 가져올 이미지를 정의
-FROM node:18.12.0
+FROM node:16.20.2
 
 # 경로 설정하기
 WORKDIR /app
