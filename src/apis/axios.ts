@@ -41,7 +41,6 @@ instance.interceptors.response.use(
       localStorage.removeItem("access_token");
       localStorage.removeItem("refresh_token");
       localStorage.removeItem("part");
-      window.location.href = "/";
       console.log(err);
     }
   }
