@@ -19,9 +19,8 @@ type EditClubType = {
 
 export const postPage = async () => {
   const token = localStorage.getItem("access_token");
-  return await axios.post(
+  return await axios.get(
     "https://prod-server.xquare.app/jung-ho/admin-club/page",
-    null,
     {
       headers: {
         Authorization: `Bearer ${token}`,

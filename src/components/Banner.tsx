@@ -68,9 +68,9 @@ const AdBanner: React.FC = () => {
           />
         </MoveBanner>
         <ExplainWrapper>
-          {currentImage.map((_, index) => (
+          {currentImage.map((item, index) => (
             <BannerExplain key={index} $isActive={index === img}>
-              {currentImage?.[img]?.bannerTitle}
+              {item.bannerTitle}
             </BannerExplain>
           ))}
         </ExplainWrapper>
