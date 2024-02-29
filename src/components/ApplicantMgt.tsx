@@ -3,7 +3,6 @@ import { instance } from "../apis/axios";
 import { useEffect, useState } from "react";
 import ApplicantModal from "./ApplicantModal";
 
-
 interface Applicant {
   classNumber: string;
   name: string;
@@ -101,8 +100,8 @@ const ApplicantMgt = () => {
     <Container>
       {applicants &&
         applicants.map((applicant, index) => (
-          <Box>
-            <Application key={index}>
+          <Box key={index}>
+            <Application>
               <Applicant>
                 <ApplicantName onClick={() => handleApplicantClick(applicant)}>
                   {applicant.name}

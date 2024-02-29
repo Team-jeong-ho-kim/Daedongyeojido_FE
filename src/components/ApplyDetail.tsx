@@ -82,7 +82,7 @@ const ApplyDetail = () => {
       <Wrapper>
         {my.myReport &&
           my.myReport.map((club) => (
-            <ApplyDetails>
+            <ApplyDetails key={club.clubName}>
               <Club>
                 <ClubName>{club.clubName}</ClubName>
                 <Text>

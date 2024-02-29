@@ -34,7 +34,11 @@ const Applicationpage = () => {
       <Wrapper>
         <Title>&#123;동아리이름&#125; 지원서</Title>
         {questions.map((element) => (
-          <Q_A ask={element.ask} placeholder={element.placeholder} />
+          <Q_A
+            key={element.ask}
+            ask={element.ask}
+            placeholder={element.placeholder}
+          />
         ))}
         <ApplyButton>지원하기</ApplyButton>
       </Wrapper>

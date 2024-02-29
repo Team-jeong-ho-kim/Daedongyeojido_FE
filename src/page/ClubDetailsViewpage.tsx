@@ -1,126 +1,153 @@
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { ClubImg } from "../assets";
 import { useState } from "react";
 import Login from "../components/Login";
+import { LogoWhite } from "../assets";
 
 const ClubDetailsInfopage = () => {
-    const [clubIntro, setClubIntro] = useState<boolean>(true);
-    const [clubMembers, setClubMembers] = useState<boolean>(false);
-    const [clubProjects, setClubProjects] = useState<boolean>(false);
-    const [idealTalent, setIdealTalent] = useState<boolean>(false);
-    const [QnA, setQnA] = useState<boolean>(false);
-    const [isCancel, setIsCancel] = useState<boolean>(false);
-    const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [clubIntro] = useState<boolean>(true);
+  const [clubMembers] = useState<boolean>(false);
+  const [clubProjects] = useState<boolean>(false);
+  const [idealTalent] = useState<boolean>(false);
+  const [QnA] = useState<boolean>(false);
+  const [isCancel, setIsCancel] = useState<boolean>(false);
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
   };
 
-    const handleCancel = () => {
-        setIsCancel(!isCancel);
-    }
+  const handleCancel = () => {
+    setIsCancel(!isCancel);
+  };
 
-    return (
-        <Container>
-            <Header onLoginToggle={handleLoginToggle}/>
-            <ClubBanner>
-                <ClubFrame>
-                    <ClubLogo src={ClubImg} alt="로고"/>
-                    <ClubInfo>
-                        <ClubName>대동여지도</ClubName>
-                        <ClubContents>대마고 동아리 어쩌구 저쩌구</ClubContents>
-                        <ClubTags>
-                            <ClubTag>#행복한</ClubTag>
-                            <ClubTag>#행복한</ClubTag>
-                            <ClubTag>#행복한</ClubTag>
-                            <ClubTag>#행복한</ClubTag>
-                            <ClubTag>#행복한</ClubTag>
-                            <ClubTag>#행복한</ClubTag>
-                        </ClubTags>
-                    </ClubInfo>
-                </ClubFrame>
-            </ClubBanner>
-            <ClubInfoHeader>
-                <Wrapper>
-                    <ClubIntro clubIntro={clubIntro} href="#introduction">동아리 소개</ClubIntro>
-                    <ClubMembers clubMembers={clubMembers} href="#members">동아리원</ClubMembers>
-                    <ClubProjects clubProjects={clubProjects} href="#projects">프로젝트</ClubProjects>
-                    <IdealTalent idealTalent={idealTalent} href="#idealTalent">인재상</IdealTalent>
-                    <QuesAndAns QnA={QnA} href="#Q&A">QnA</QuesAndAns>
-                </Wrapper>
-            </ClubInfoHeader>
-            <ClubInfoMain>
-                <ClubDetails>
-                    <Boxed>
-                        <Titlebar id="introduction">동아리 소개</Titlebar>
-                        <Contentbar>아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우</Contentbar>
-                    </Boxed>
-                    <Boxed>
-                        <Titlebar id="members">동아리원</Titlebar>
-                        <Contentbar>&gt; 1학년<br />&gt; 2학년<br />&gt; 3학년</Contentbar>
-                    </Boxed>
-                    <Boxed>
-                        <Titlebar id="projects">프로젝트</Titlebar>
-                        <Contentbar>아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우</Contentbar>
-                    </Boxed>
-                    <Boxed>
-                        <Titlebar id="idealTalent">인재상</Titlebar>
-                        <Contentbar>아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우</Contentbar>
-                    </Boxed>
-                    <Boxed>
-                        <Titlebar id="Q&A">QnA</Titlebar>
-                        <Contentbar>아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우</Contentbar>
-                    </Boxed>
-                </ClubDetails>
-                <RecruitmentForm>
-                    <Not>대동여지도 채용 공고</Not>
-                    <Recruitment>
-                        <Notice>
-                            <NoticeHd>
-                                <NoticeTitle>프론트엔드</NoticeTitle>
-                                <NoticeTerm>2024-02-10 까지</NoticeTerm>
-                            </NoticeHd>
-                            <Butt onClick={handleCancel}>지원하기</Butt>
-                        </Notice>
-                        <Notice>
-                            <NoticeHd>
-                                <NoticeTitle>백엔드</NoticeTitle>
-                                <NoticeTerm>2024-02-10 까지</NoticeTerm>
-                            </NoticeHd>
-                            <Butt onClick={handleCancel}>지원하기</Butt>
-                        </Notice>
-                        <Notice>
-                            <NoticeHd>
-                                <NoticeTitle>안드로이드</NoticeTitle>
-                                <NoticeTerm>2024-02-10 까지</NoticeTerm>
-                            </NoticeHd>
-                            <Butt onClick={handleCancel}>지원하기</Butt>
-                        </Notice>
-                    </Recruitment>
-                </RecruitmentForm>
-            </ClubInfoMain>
-            <Footer />
-            {isCancel ? 
-                <Contain onClick={() => setIsCancel(false)}>
-                    <Modal>
-                        <ModalTop1>
-                            <ModalTop2>
-                                <Warning>경고</Warning>
-                                <AUS>정말 지원을 취소하시겠습니까?</AUS>
-                            </ModalTop2>
-                        </ModalTop1>
-                        <ModalBottom>
-                            <Cancel>취소하기</Cancel>
-                            <TurnBack onClick={() => setIsCancel(false)}>돌아가기</TurnBack>
-                        </ModalBottom>
-                    </Modal>
-                </Contain> : <></>}
-            {isLoginVisible && <Login onLoginToggle={handleLoginToggle} />}
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <Header onLoginToggle={handleLoginToggle} />
+      <ClubBanner>
+        <ClubFrame>
+          <ClubLogo src={LogoWhite} alt="로고" />
+          <ClubInfo>
+            <ClubName>대동여지도</ClubName>
+            <ClubContents>대마고 동아리 어쩌구 저쩌구</ClubContents>
+            <ClubTags>
+              <ClubTag>#행복한</ClubTag>
+              <ClubTag>#행복한</ClubTag>
+              <ClubTag>#행복한</ClubTag>
+              <ClubTag>#행복한</ClubTag>
+              <ClubTag>#행복한</ClubTag>
+              <ClubTag>#행복한</ClubTag>
+            </ClubTags>
+          </ClubInfo>
+        </ClubFrame>
+      </ClubBanner>
+      <ClubInfoHeader>
+        <Wrapper>
+          <ClubIntro clubIntro={clubIntro} href="#introduction">
+            동아리 소개
+          </ClubIntro>
+          <ClubMembers clubMembers={clubMembers} href="#members">
+            동아리원
+          </ClubMembers>
+          <ClubProjects clubProjects={clubProjects} href="#projects">
+            프로젝트
+          </ClubProjects>
+          <IdealTalent idealTalent={idealTalent} href="#idealTalent">
+            인재상
+          </IdealTalent>
+          <QuesAndAns QnA={QnA} href="#Q&A">
+            QnA
+          </QuesAndAns>
+        </Wrapper>
+      </ClubInfoHeader>
+      <ClubInfoMain>
+        <ClubDetails>
+          <Boxed>
+            <Titlebar id="introduction">동아리 소개</Titlebar>
+            <Contentbar>
+              아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우
+            </Contentbar>
+          </Boxed>
+          <Boxed>
+            <Titlebar id="members">동아리원</Titlebar>
+            <Contentbar>
+              &gt; 1학년
+              <br />
+              &gt; 2학년
+              <br />
+              &gt; 3학년
+            </Contentbar>
+          </Boxed>
+          <Boxed>
+            <Titlebar id="projects">프로젝트</Titlebar>
+            <Contentbar>
+              아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우
+            </Contentbar>
+          </Boxed>
+          <Boxed>
+            <Titlebar id="idealTalent">인재상</Titlebar>
+            <Contentbar>
+              아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우
+            </Contentbar>
+          </Boxed>
+          <Boxed>
+            <Titlebar id="Q&A">QnA</Titlebar>
+            <Contentbar>
+              아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우아에이오우
+            </Contentbar>
+          </Boxed>
+        </ClubDetails>
+        <RecruitmentForm>
+          <Not>대동여지도 채용 공고</Not>
+          <Recruitment>
+            <Notice>
+              <NoticeHd>
+                <NoticeTitle>프론트엔드</NoticeTitle>
+                <NoticeTerm>2024-02-10 까지</NoticeTerm>
+              </NoticeHd>
+              <Butt onClick={handleCancel}>지원하기</Butt>
+            </Notice>
+            <Notice>
+              <NoticeHd>
+                <NoticeTitle>백엔드</NoticeTitle>
+                <NoticeTerm>2024-02-10 까지</NoticeTerm>
+              </NoticeHd>
+              <Butt onClick={handleCancel}>지원하기</Butt>
+            </Notice>
+            <Notice>
+              <NoticeHd>
+                <NoticeTitle>안드로이드</NoticeTitle>
+                <NoticeTerm>2024-02-10 까지</NoticeTerm>
+              </NoticeHd>
+              <Butt onClick={handleCancel}>지원하기</Butt>
+            </Notice>
+          </Recruitment>
+        </RecruitmentForm>
+      </ClubInfoMain>
+      <Footer />
+      {isCancel ? (
+        <Contain onClick={() => setIsCancel(false)}>
+          <Modal>
+            <ModalTop1>
+              <ModalTop2>
+                <Warning>경고</Warning>
+                <AUS>정말 지원을 취소하시겠습니까?</AUS>
+              </ModalTop2>
+            </ModalTop1>
+            <ModalBottom>
+              <Cancel>취소하기</Cancel>
+              <TurnBack onClick={() => setIsCancel(false)}>돌아가기</TurnBack>
+            </ModalBottom>
+          </Modal>
+        </Contain>
+      ) : (
+        <></>
+      )}
+      {isLoginVisible && <Login onLoginToggle={handleLoginToggle} />}
+    </Container>
+  );
+};
 
 const Container = styled.div`
   position: relative;
@@ -130,7 +157,7 @@ const ClubBanner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #333B3D;
+  background-color: #333b3d;
   width: 100vw;
   height: 441px;
   color: #fff;
@@ -186,7 +213,7 @@ const ClubTags = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
-`
+`;
 
 const ClubTag = styled.p`
   line-height: 20px;
@@ -200,7 +227,7 @@ const ClubInfoHeader = styled.div`
   align-items: center;
   width: 100vw;
   height: 58px;
-  border: 1px solid #B0B0B0;
+  border: 1px solid #b0b0b0;
 `;
 
 const Wrapper = styled.div`
@@ -214,7 +241,7 @@ const Wrapper = styled.div`
 const ClubIntro = styled.a<{ clubIntro: boolean }>`
   line-height: 18px;
   width: auto;
-  color: ${({ clubIntro }) => (clubIntro ? '#000' : '#A1A4A8')};
+  color: ${({ clubIntro }) => (clubIntro ? "#000" : "#A1A4A8")};
   &:hover {
     cursor: pointer;
   }
@@ -223,7 +250,7 @@ const ClubIntro = styled.a<{ clubIntro: boolean }>`
 const ClubMembers = styled.a<{ clubMembers: boolean }>`
   line-height: 18px;
   width: auto;
-  color: ${({ clubMembers }) => (clubMembers ? '#000' : '#A1A4A8')};
+  color: ${({ clubMembers }) => (clubMembers ? "#000" : "#A1A4A8")};
   &:hover {
     cursor: pointer;
   }
@@ -232,7 +259,7 @@ const ClubMembers = styled.a<{ clubMembers: boolean }>`
 const ClubProjects = styled.a<{ clubProjects: boolean }>`
   line-height: 18px;
   width: auto;
-  color: ${({ clubProjects }) => (clubProjects ? '#000' : '#A1A4A8')};
+  color: ${({ clubProjects }) => (clubProjects ? "#000" : "#A1A4A8")};
   &:hover {
     cursor: pointer;
   }
@@ -241,7 +268,7 @@ const ClubProjects = styled.a<{ clubProjects: boolean }>`
 const IdealTalent = styled.a<{ idealTalent: boolean }>`
   line-height: 18px;
   width: auto;
-  color: ${({ idealTalent }) => (idealTalent ? '#000' : '#A1A4A8')};
+  color: ${({ idealTalent }) => (idealTalent ? "#000" : "#A1A4A8")};
   &:hover {
     cursor: pointer;
   }
@@ -250,7 +277,7 @@ const IdealTalent = styled.a<{ idealTalent: boolean }>`
 const QuesAndAns = styled.a<{ QnA: boolean }>`
   line-height: 18px;
   width: auto;
-  color: ${({ QnA }) => (QnA ? '#000' : '#A1A4A8')};
+  color: ${({ QnA }) => (QnA ? "#000" : "#A1A4A8")};
   &:hover {
     cursor: pointer;
   }
@@ -323,7 +350,7 @@ const Notice = styled.div`
   width: 100%;
   gap: 12px;
   padding: 23px 55px;
-  border: 1px solid #CCC3C3;
+  border: 1px solid #ccc3c3;
   border-radius: 30px;
 `;
 
@@ -345,7 +372,7 @@ const NoticeTerm = styled.p`
   font-size: 11px;
   font-weight: 400;
   width: auto;
-  color: #6E6E87;
+  color: #6e6e87;
 `;
 
 const Butt = styled.button`
@@ -388,9 +415,9 @@ const ModalTop1 = styled.div`
   height: 144px;
   border-radius: 16px 16px 0px 0px;
   padding: 36px 56px;
-  border-left: 2px solid #E1E1E1;
-  border-top: 2px solid #E1E1E1;
-  border-right: 2px solid #E1E1E1;
+  border-left: 2px solid #e1e1e1;
+  border-top: 2px solid #e1e1e1;
+  border-right: 2px solid #e1e1e1;
 `;
 
 const ModalTop2 = styled.div`
@@ -408,7 +435,7 @@ const Warning = styled.p`
   font-weight: 700;
   line-height: 32px;
   width: auto;
-  color: #FF0000;
+  color: #ff0000;
 `;
 
 const AUS = styled.p`
@@ -430,9 +457,9 @@ const ModalBottom = styled.div`
 const Cancel = styled.button`
   width: 176px;
   height: 48px;
-  border-left: 2px solid #E1E1E1;
-  border-bottom: 2px solid #E1E1E1;
-  border-top: 2px solid #E1E1E1;
+  border-left: 2px solid #e1e1e1;
+  border-bottom: 2px solid #e1e1e1;
+  border-top: 2px solid #e1e1e1;
   border-right: none;
   background-color: #fff;
   border-radius: 0px 0px 0px 16px;
@@ -447,7 +474,7 @@ const Cancel = styled.button`
 const TurnBack = styled.button`
   width: 176px;
   height: 48px;
-  border: 2px solid #E1E1E1;
+  border: 2px solid #e1e1e1;
   background-color: #fff;
   border-radius: 0px 0px 16px 0px;
   font-family: "DXHimchanLight";

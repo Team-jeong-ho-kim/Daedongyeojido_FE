@@ -34,7 +34,7 @@ const Major = () => {
       <Title>대마고 동아리 여기서 지원하고 도움받자!</Title>
       <MajorWrapper>
         {majors.map((element) => (
-          <Majors>
+          <Majors key={element.img}>
             <MajorImg src={element.img} />
             <MajorName>{element.name}</MajorName>
           </Majors>

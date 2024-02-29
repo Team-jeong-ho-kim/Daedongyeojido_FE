@@ -34,7 +34,11 @@ const ApplicantDetailpage = () => {
       <Wrapper>
         <Title>1305 김정호 - 지원서</Title>
         {questions.map((element) => (
-          <Q_A ask={element.ask} placeholder={element.placeholder} />
+          <Q_A
+            key={element.ask}
+            ask={element.ask}
+            placeholder={element.placeholder}
+          />
         ))}
       </Wrapper>
     </Container>
