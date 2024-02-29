@@ -16,7 +16,6 @@ const MainClub = () => {
     try {
       const response = await instance.get("/main");
       const allClubResponses = response.data.allClubResponses;
-
       if (Array.isArray(allClubResponses)) {
         setClubs(allClubResponses);
       }

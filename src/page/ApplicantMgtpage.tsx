@@ -2,58 +2,44 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import ApplicantMgt from "../components/ApplicantMgt";
 import { useState } from "react";
+import ApplicantModal from "../components/applicantModal";
 
 const ApplicantMgtpage = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
   };
-  const applicants = [
-    { name: "김정호", info: "1305, FrontEnd" },
-    { name: "김정호", info: "1305, FrontEnd" },
-    { name: "김정호", info: "1305, FrontEnd" },
-    { name: "김정호", info: "1305, FrontEnd" },
-    { name: "김정호", info: "1305, FrontEnd" },
-    { name: "김정호", info: "1305, FrontEnd" },
-  ];
+
+  const handleModalToggle = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
   return (
     <Container>
       <Header onLoginToggle={handleLoginToggle} />
-      <Wrapper>
-        <Title>동아리 지원자 관리</Title>
-        <ApplicantWrapper>
-          {applicants.map((element) => (
-            <ApplicantMgt name={element.name} info={element.info} />
-          ))}
-        </ApplicantWrapper>
-      </Wrapper>
+      <ApplicantWrapper>
+        <ApplicantMgt />
+      </ApplicantWrapper>
     </Container>
   );
 };
 
-const Container = styled.div``;
-
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 50px;
-  margin-top: 60px;
-`;
-
-const Title = styled.p`
-  font-size: 44px;
-  font-weight: 900;
-  margin-right: 775px;
+  gap: 40px;
 `;
 
 const ApplicantWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 370px 370px 370px);
-  row-gap: 16px;
-  column-gap: 23px;
+  padding: 55px 69px;
+  width: 1177px;
+  height: 800px;
+  border: 1px solid black;
+  background-color: #e1e1e1;
+  border-radius: 10px;
 `;
 
 export default ApplicantMgtpage;

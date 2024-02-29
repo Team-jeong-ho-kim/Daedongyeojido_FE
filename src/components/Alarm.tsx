@@ -85,25 +85,54 @@ const Alarm = () => {
       {my.map((alarm) => (
         <AlarmWrapper key={alarm.alarmId}>
           <AlarmTime>{elapsedTime(Date.now())}</AlarmTime>
-          {alarm.alarmType === "PASS_RESULT" && (
+          {alarm.alarmType === "REPORT_PASS_RESULT" && (
             <>
               {alarm.passingResult === "PASS" ? (
                 <>
-                  <AlarmTitle>{`${alarm.clubName} 합격 🎉`}</AlarmTitle>
-                  <Contents>{`${alarm.userName}님, ${
-                    alarm.clubName
-                  }의 ${MajorLabel(
-                    alarm.major
-                  )}분야의 합격을 축하드립니다.`}</Contents>
+                  <AlarmTitle>{`${alarm.clubName} 1차 서류 합격 🎉`}</AlarmTitle>
+                  <div>
+                    <Contents>{`${alarm.userName}님, ${
+                      alarm.clubName
+                    }의 ${MajorLabel(
+                      alarm.major
+                    )}분야의 1차 서류 합격을 축하드립니다.`}</Contents>
+                    <Button>면접 시간 선택</Button>
+                  </div>
                 </>
               ) : (
                 <>
-                  <AlarmTitle>{`${alarm.clubName} 불합격 😢`}</AlarmTitle>
+                  <AlarmTitle>{`${alarm.clubName} 1차 서류 불합격 😢`}</AlarmTitle>
                   <Contents>{`${alarm.userName}님, ${
                     alarm.clubName
                   }의 ${MajorLabel(
                     alarm.major
-                  )}분야의 불합격하셨습니다.`}</Contents>
+                  )}분야 1차 서류 불합격하셨습니다.`}</Contents>
+                </>
+              )}
+            </>
+          )}
+          {alarm.alarmType === "INTERVIEW_PASS_RESULT" && (
+            <>
+              {alarm.passingResult === "PASS" ? (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 최종 합격 🎉`}</AlarmTitle>
+                  <div>
+                    <Contents>{`${alarm.userName}님, ${
+                      alarm.clubName
+                    }의 ${MajorLabel(
+                      alarm.major
+                    )}분야의 최종 합격을 축하드립니다.`}</Contents>
+                    <Button>면접 시간 선택</Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <AlarmTitle>{`${alarm.clubName} 최종 불합격 😢`}</AlarmTitle>
+                  <Contents>{`${alarm.userName}님, ${
+                    alarm.clubName
+                  }의 ${MajorLabel(
+                    alarm.major
+                  )}분야 최종 불합격하셨습니다.`}</Contents>
                 </>
               )}
             </>
@@ -121,12 +150,6 @@ const Alarm = () => {
                   <Contents>{`${alarm.userName}님, ${alarm.clubName}의 회식이 수락되지 않았습니다.`}</Contents>
                 </>
               )}
-            </>
-          )}
-          {alarm.alarmType === "ANNOUNCEMENT" && (
-            <>
-              <AlarmTitle>{alarm.title}</AlarmTitle>
-              <Contents>{alarm.contents}</Contents>
             </>
           )}
         </AlarmWrapper>
@@ -151,6 +174,16 @@ const Container = styled.div`
 
 const Title = styled.p`
   font-size: 24px;
+`;
+
+const Button = styled.div`
+  width: 80px;
+  height: 20px;
+  background-color: #333b3d;
+  border-radius: 5px;
+  color: white;
+  font-size: 10px;
+  font-family: "Pretendard";
 `;
 
 const AlarmWrapper = styled.div`

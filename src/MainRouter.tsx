@@ -8,6 +8,7 @@ import Mypage from "./page/Mypage";
 import ApplicantDetailpage from "./page/ApplicantDetailpage";
 import ClubMgtpage from "./page/ClubMgtpage";
 import ClubDetailsViewpage from "./page/ClubDetailsViewpage";
+import Recordpage from "./page/Recordpage";
 
 function MainRouter() {
   return (
@@ -25,6 +26,7 @@ function MainRouter() {
         />
         <Route path="/ApplicantDetail" element={<ApplicantDetailpage />} />
         <Route path="/ClubDetails" element={<ClubDetailsViewpage />} />
+        <Route path="/Record" element={<Recordpage />} />
       </Routes>
     </BrowserRouter>
   );

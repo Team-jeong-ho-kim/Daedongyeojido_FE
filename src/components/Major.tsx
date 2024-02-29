@@ -1,21 +1,33 @@
 import styled from "styled-components";
-import { ClubImg } from "../assets";
+import {
+  AI,
+  Android,
+  Back,
+  Design,
+  DevOps,
+  Embedded,
+  Flutter,
+  Front,
+  FullStack,
+  Game,
+  Security,
+  ios,
+} from "../assets";
 
 const Major = () => {
   const majors = [
-    { img: ClubImg, name: "프론트엔드" },
-    { img: ClubImg, name: "백엔드" },
-    { img: ClubImg, name: "데브옵스" },
-    { img: ClubImg, name: "안드로이드" },
-    { img: ClubImg, name: "ios" },
-    { img: ClubImg, name: "AI" },
-    { img: ClubImg, name: "임베디드" },
-    { img: ClubImg, name: "디자인" },
-    { img: ClubImg, name: "플러터" },
-    { img: ClubImg, name: "정보보안" },
-    { img: ClubImg, name: "풀스택" },
-    { img: ClubImg, name: "게임" },
-    { img: ClubImg, name: "데브옵스" },
+    { img: Front, name: "프론트엔드" },
+    { img: Back, name: "백엔드" },
+    { img: DevOps, name: "데브옵스" },
+    { img: Android, name: "안드로이드" },
+    { img: ios, name: "ios" },
+    { img: AI, name: "AI" },
+    { img: Embedded, name: "임베디드" },
+    { img: Design, name: "디자인" },
+    { img: Flutter, name: "플러터" },
+    { img: Security, name: "정보보안" },
+    { img: FullStack, name: "풀스택" },
+    { img: Game, name: "게임" },
   ];
   return (
     <Container>
