@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -22,6 +22,7 @@ time, mark, audio, video, input, button, select, option, textarea {
   vertical-align: baseline;
   cursor: default;
   font-family: 'DXhimchanMedium';
+  scroll-behavior: smooth;
 }
 
 article, aside, details, figcaption, figure,
