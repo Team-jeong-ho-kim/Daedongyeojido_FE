@@ -3,6 +3,7 @@ import { instance } from "../apis/axios";
 import { useEffect, useState } from "react";
 import ApplicantModal from "./ApplicantModal";
 
+
 interface Applicant {
   classNumber: string;
   name: string;
