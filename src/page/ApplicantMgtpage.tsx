@@ -2,18 +2,12 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import ApplicantMgt from "../components/ApplicantMgt";
 import { useState } from "react";
-import ApplicantModal from "../components/applicantModal";
 
 const ApplicantMgtpage = () => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleLoginToggle = () => {
     setIsLoginVisible(!isLoginVisible);
-  };
-
-  const handleModalToggle = () => {
-    setIsModalVisible(!isModalVisible);
   };
 
   return (

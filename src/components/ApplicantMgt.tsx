@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { instance } from "../apis/axios";
 import { useEffect, useState } from "react";
-import ApplicantModal from "./applicantModal";
+import ApplicantModal from "./ApplicantModal";
 
 interface Applicant {
   classNumber: string;
