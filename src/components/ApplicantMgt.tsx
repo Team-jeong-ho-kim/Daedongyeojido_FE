@@ -82,7 +82,7 @@ const ApplicantMgt = () => {
 
   const fetchData = async () => {
     await instance
-      .get("/report/applicant/대동여지도")
+      .get("/report/applicant/entry")
       .then((res) => {
         setApplicants(res.data);
         console.log(res);
