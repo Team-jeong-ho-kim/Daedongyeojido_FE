@@ -17,6 +17,10 @@ const ClubBanner = () => {
             <ClubTag>#행복한</ClubTag>
             <ClubTag>#행복한</ClubTag>
           </ClubTags>
+          <ButtonWrapper>
+            <Button>면접 일정 수정</Button>
+            <Button>회식 신청</Button>
+          </ButtonWrapper>
         </ClubInfo>
       </ClubFrame>
     </Container>
@@ -90,4 +94,21 @@ const ClubTags = styled.div`
 const ClubTag = styled.p`
   line-height: 20px;
   width: auto;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const Button = styled.button`
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  color: white;
+  font-size: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-top: 20px;
 `;
